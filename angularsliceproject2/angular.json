@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "AngularSlice": {
+    "angularsliceproject2": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/AngularSlice",
+            "outputPath": "dist/angularsliceproject2",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -63,18 +63,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "AngularSlice:build"
+            "browserTarget": "angularsliceproject2:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "AngularSlice:build:production"
+              "browserTarget": "angularsliceproject2:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "AngularSlice:build"
+            "browserTarget": "angularsliceproject2:build"
           }
         },
         "test": {
@@ -111,15 +111,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "AngularSlice:serve"
+            "devServerTarget": "angularsliceproject2:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "AngularSlice:serve:production"
+              "devServerTarget": "angularsliceproject2:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "AngularSlice"
+  "defaultProject": "angularsliceproject2"
 }
