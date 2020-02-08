@@ -1,0 +1,12 @@
+.header{
+    background-color: crimson;
+    
+}
+
+.homepage{
+    background-image: url(C:\Users\willi\Desktop\Project 2 Git\Current Version\AngularSliceFront_End\angularsliceproject2\src\assets\img\angular pizza.jpeg);
+    height:40em; 
+    background-size:cover; 
+    width:auto;
+    background-position:50% 50%;
+}
