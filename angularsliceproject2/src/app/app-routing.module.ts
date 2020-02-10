@@ -6,7 +6,6 @@ import { ManagerComponent } from './manager/manager.component';
 import { OrderComponent } from './order/order.component';
 import { ContactComponent } from './contact/contact.component';
 
-
 const routes: Routes = [
   {path : "checkout", component : CheckoutComponent},
   {path : "home", component : HomeComponent},

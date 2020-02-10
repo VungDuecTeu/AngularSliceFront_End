@@ -1,5 +1,13 @@
-#cool{
-    float:right;
-    height: 100px;
-    width: 100px;
+.holder{
+    overflow-y: scroll;
+    height: 300px;
+}
+.orderButton{
+    float: right; 
+    font-size: 18pt;
+    background-color:whitesmoke;
+    border: none;
+    padding: 8px 4px;
+    text-align: center;
+    margin: 1px 1px;
 }
