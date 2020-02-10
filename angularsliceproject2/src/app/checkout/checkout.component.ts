@@ -5,9 +5,9 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
  * @title Table with expandable rows
  */
 @Component({
-  selector: 'table-expandable-rows-example',
-  styleUrls: ['table-expandable-rows-example.css'],
-  templateUrl: 'table-expandable-rows-example.html',
+  selector: 'app-checkout',
+  templateUrl: './checkout.component.html',
+  styleUrls: ['./checkout.component.css'],
   animations: [
     trigger('detailExpand', [
       state('collapsed', style({height: '0px', minHeight: '0'})),
@@ -16,7 +16,23 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
     ]),
   ],
 })
-export class TableExpandableRowsExample {
+export class TableMultipleHeaderFooterExample {
+  displayedColumns: string[] = ['item', 'cost'];
+  transactions: Transaction[] = [
+    {item: 'Beach ball', cost: 4},
+    {item: 'Towel', cost: 5},
+    {item: 'Frisbee', cost: 2},
+    {item: 'Sunscreen', cost: 4},
+    {item: 'Cooler', cost: 25},
+    {item: 'Swim suit', cost: 15},
+  ];
+
+  /** Gets the total cost of all transactions. */
+  getTotalCost() {
+    return this.transactions.map(t => t.cost).reduce((acc, value) => acc + value, 0);
+  }
+}
+export class CheckoutComponent  {
   dataSource = ELEMENT_DATA;
   columnsToDisplay = ['name', 'weight', 'symbol', 'position'];
   expandedElement: PeriodicElement | null;
