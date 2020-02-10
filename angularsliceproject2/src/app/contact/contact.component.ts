@@ -55,7 +55,13 @@ export class ContactComponent implements OnInit {
       this.fooditemscollapse[item] = !this.fooditemscollapse[item];
     }
 
-    myLocation = { lat: 39.633611, lng: -79.950556 };
+    lat = 40.730610;
+    lng = -73.935242;
+    coordinates = new google.maps.LatLng(this.lat, this.lng);
+    marker = new google.maps.Marker({
+      position: this.coordinates,
+      map: this.map,
+    });
 
   ngOnInit() {
     setTimeout(()=> {
@@ -75,23 +81,16 @@ export class ContactComponent implements OnInit {
     //     ]
     // }
   
-    var marker = new google.maps.Marker({
-      position: this.myLocation,
-      map: this.map,
-      title: 'everyone'
-  });
-
       const mapProperties = {
         center: new google.maps.LatLng(35.2271, -80.8431),
         zoom: 15,
         mapTypeId: google.maps.MapTypeId.ROADMAP,
    };
 
- this.map = new google.maps.Map(this.gmap.nativeElement, mapProperties);
- this.map.addMarker(new MarkerOptions()
- .position(new LatLng(10, 10))
- .title("Hello world"));
 
+
+ this.map = new google.maps.Map(this.gmap.nativeElement, mapProperties);
+ this.marker.setMap(this.map);
 
       }, 1000);
   }
