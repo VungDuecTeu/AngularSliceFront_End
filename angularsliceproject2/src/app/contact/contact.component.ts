@@ -25,6 +25,16 @@ export class ContactComponent implements OnInit {
   fooditemscollapse = [false,false,false,false,false,false];
   step = 0;
 
+  markers = [
+    // These are all just random coordinates from https://www.random.org/geographic-coordinates/
+    { lat: 22.33159, lng: 105.63233, alpha: 1 },
+    { lat: 7.92658, lng: -12.05228, alpha: 1 },
+    { lat: 48.75606, lng: -118.859, alpha: 1 },
+    { lat: 5.19334, lng: -67.03352, alpha: 1 },
+    { lat: 12.09407, lng: 26.31618, alpha: 1 },
+    { lat: 47.92393, lng: 78.58339, alpha: 1 }
+  ];
+
   setStep(index: number) {
     this.step = index;
   }
@@ -45,17 +55,46 @@ export class ContactComponent implements OnInit {
       this.fooditemscollapse[item] = !this.fooditemscollapse[item];
     }
 
+    myLocation = { lat: 39.633611, lng: -79.950556 };
+
   ngOnInit() {
     setTimeout(()=> {
       // Put the logic here 
+
+    //   this.location = {
+    //     latitude: -28.68352,
+    //     longitude: -147.20785,
+    //     mapType: "satelite",
+    //     zoom: 5,
+    //     markers: [
+    //         {
+    //             lat: -28.68352,
+    //             lng: -147.20785,
+    //             label: "new york"
+    //         }
+    //     ]
+    // }
+  
+    var marker = new google.maps.Marker({
+      position: this.myLocation,
+      map: this.map,
+      title: 'everyone'
+  });
+
       const mapProperties = {
         center: new google.maps.LatLng(35.2271, -80.8431),
         zoom: 15,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
    };
- this.map = new google.maps.Map(this.gmap.nativeElement,    mapProperties);
-     
+
+ this.map = new google.maps.Map(this.gmap.nativeElement, mapProperties);
+ this.map.addMarker(new MarkerOptions()
+ .position(new LatLng(10, 10))
+ .title("Hello world"));
+
+
       }, 1000);
   }
 
+  
 }
