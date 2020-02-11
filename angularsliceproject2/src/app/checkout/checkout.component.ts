@@ -1,48 +1,38 @@
 import { Component, OnInit } from '@angular/core';
 
+export interface PeriodicElement {
+  name: string;
+  position: number;
+  weight: number;
+  symbol: string;
+}
+
+const ELEMENT_DATA: PeriodicElement[] = [
+  {position: 1, name: 'Peperoni pizza', weight: 500, symbol: '$20.50'},
+  {position: 2, name: 'Cheesesticks', weight: 300, symbol: '$10.15'},
+  {position: 3, name: 'Soda', weight: 60, symbol: '$2.00'},
+  {position: 4, name: 'Brownie', weight: 500, symbol: '$5.00'},
+ 
+];
+
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
-<<<<<<< HEAD
-  styleUrls: ['./checkout.component.css'],
-  animations: [
-    trigger('detailExpand', [
-      state('collapsed', style({height: '0px', minHeight: '0'})),
-      state('expanded', style({height: '*'})),
-      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
-    ]),
-  ],
-})
-export class TableMultipleHeaderFooterExample {
-  displayedColumns: string[] = ['item', 'cost'];
-  transactions: Transaction[] = [
-    {item: 'Beach ball', cost: 4},
-    {item: 'Towel', cost: 5},
-    {item: 'Frisbee', cost: 2},
-    {item: 'Sunscreen', cost: 4},
-    {item: 'Cooler', cost: 25},
-    {item: 'Swim suit', cost: 15},
-  ];
-
-  /** Gets the total cost of all transactions. */
-  getTotalCost() {
-    return this.transactions.map(t => t.cost).reduce((acc, value) => acc + value, 0);
-  }
-}
-export class CheckoutComponent  {
-  dataSource = ELEMENT_DATA;
-  columnsToDisplay = ['name', 'weight', 'symbol', 'position'];
-  expandedElement: PeriodicElement | null;
-}
-=======
   styleUrls: ['./checkout.component.css']
 })
-export class CheckoutComponent implements OnInit {
->>>>>>> parent of f79cc147... commit
 
+
+export class CheckoutComponent implements OnInit {
+
+
+  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  dataSource = ELEMENT_DATA;
   constructor() { }
 
   ngOnInit() {
   }
 
+  
+
 }
+
