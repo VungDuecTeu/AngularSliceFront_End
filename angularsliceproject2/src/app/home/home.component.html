@@ -1,37 +1,16 @@
-<div class = "homepage" *ngIf = 'picBool'>
-    
-    <mat-tab-group animationDuration="0ms">
-        
-        <mat-tab label="First">
-            <div >
-                <img src = 'https://i.imgur.com/RN3V4Pv.jpg'>
-            </div>
-        </mat-tab>
 
-        <mat-tab label="Second">
-            <div>
-                <img src = 'https://i.imgur.com/lu81PTr.jpg'>
-            </div>
-        </mat-tab>
-        <mat-tab label="Third">
-            <img src = 'https://i.imgur.com/Zakdwyq.jpg'>
-        </mat-tab>
-    
-    </mat-tab-group>
+<app-header></app-header>
+<br><br>
 
+<div style="height:87%"> 
+    <app-home *ngIf='homeBool'></app-home>
+
+
+
+
+    <app-checkout *ngIf='checkBool'></app-checkout>
+
+    <app-contact *ngIf='contactBool'></app-contact>
 
 </div>
-<!-- 
-<div>
-
-    <app-home *ngIf = 'homeBool'></app-home>
-
-    <app-order *ngIf = 'menuBool'></app-order>
-
-    <app-checkout *ngIf = 'checkBool'></app-checkout>
-
-    <app-contact *ngIf = 'contactBool'></app-contact>
-
-</div> -->
-
-
+    <app-footer></app-footer>
