@@ -1,6 +1,6 @@
-<header class = "header">
+<header class = "header" style="height:6.5%; position: absolute; top:0; width:100%">
     <div class = "image"></div> 
-    <p>Angular Slice!</p>
+    <p style = "color:white; text-align: center; font-size: 25px; margin:10px">Angular Slice!</p>
 <!-- 
     <button (click) = "showHome()">Home</button>
     <button (click) = "showMenu()">Menu</button>
@@ -13,7 +13,7 @@
         <a routerLink="/menu" routerLinkActive="active">Checkout</a>
         <a routerLink="/menu" routerLinkActive="active">Contact</a>
       </nav> -->
-
+      <div style="position:absolute; top: 0;">
       <button mat-button [matMenuTriggerFor]="menu">Menu</button>
       <mat-menu #menu="matMenu">
         <button mat-menu-item routerLink="/home">Home</button>
@@ -21,5 +21,6 @@
         <button mat-menu-item routerLink="/checkout">Checkout</button>
         <button mat-menu-item routerLink="/contact">Contact</button>
       </mat-menu>
-  
+    </div>
+
     </header>

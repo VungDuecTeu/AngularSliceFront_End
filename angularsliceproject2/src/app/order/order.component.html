@@ -1,7 +1,10 @@
-<div style="width:70%; height:100%">
+<app-header></app-header>
+<br><br>
+
+<div style="width:70%; height:87%">
     <mat-accordion class="example-headers-align">
         <!--Pizza panel-->
-        <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle style="background-color:gray">
+        <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle style="background-color:white">
             <!-- Header for this panel -->
             <mat-expansion-panel-header>
                 <mat-panel-title>Pizzas</mat-panel-title>
@@ -29,7 +32,7 @@
                         <h4>Calories: 800</h4>
                     </span>
                         
-                    <mat-action-row align="end" style="background-color: lightgray;">
+                    <mat-action-row align="end" style="background-color: white;">
                         <mat-form-field>
                             <mat-label>Amount</mat-label>
                             <input matInput type="number" min="0" >
@@ -58,7 +61,7 @@
                         <h4>Calories: 1050</h4>
                     </span>
                         
-                    <mat-action-row align="end" style="background-color: lightgray;">
+                    <mat-action-row align="end" style="background-color: white;">
                         <mat-form-field>
                             <mat-label>Amount</mat-label>
                             <input matInput type="number" min="0" >
@@ -87,7 +90,7 @@
                         <h4>Calories: 1750</h4>
                     </span>
                         
-                    <mat-action-row align="end" style="background-color: lightgray;">
+                    <mat-action-row align="end" style="background-color: white;">
                         <mat-form-field>
                             <mat-label>Amount</mat-label>
                             <input matInput type="number" min="0" >
@@ -98,7 +101,7 @@
             </div>
         </mat-expansion-panel>
     
-        <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle style="background-color:gray">
+        <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle style="background-color:white">
             <!-- Header for this panel -->
             <mat-expansion-panel-header>
                 <mat-panel-title>Wings</mat-panel-title>
@@ -126,7 +129,7 @@
                         <h4>Calories: 550</h4>
                     </span>
                         
-                    <mat-action-row align="end" style="background-color: lightgray;">
+                    <mat-action-row align="end" style="background-color: white;">
                         <mat-form-field>
                             <mat-label>Amount</mat-label>
                             <input matInput type="number" min="0" >
@@ -155,7 +158,7 @@
                         <h4>Calories: 500</h4>
                     </span>
                         
-                    <mat-action-row align="end" style="background-color: lightgray;">
+                    <mat-action-row align="end" style="background-color: white;">
                         <mat-form-field>
                             <mat-label>Amount</mat-label>
                             <input matInput type="number" min="0" >
@@ -184,7 +187,7 @@
                         <h4>Calories: 550</h4>
                     </span>
                         
-                    <mat-action-row align="end" style="background-color: lightgray;">
+                    <mat-action-row align="end" style="background-color: white;">
                         <mat-form-field>
                             <mat-label>Amount</mat-label>
                             <input matInput type="number" min="0" >
@@ -195,7 +198,7 @@
             </div>
         </mat-expansion-panel>
 
-        <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle style="background-color:gray">
+        <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle style="background-color:white">
             <!-- Header for this panel -->
             <mat-expansion-panel-header>
                 <mat-panel-title>Drinks</mat-panel-title>
@@ -223,7 +226,7 @@
                         <h4>Calories: 100</h4>
                     </span>
                         
-                    <mat-action-row align="end" style="background-color: lightgray;">
+                    <mat-action-row align="end" style="background-color: white;">
                         <mat-form-field>
                             <mat-label>Amount</mat-label>
                             <input matInput type="number" min="0" >
@@ -252,7 +255,7 @@
                         <h4>Calories: 0</h4>
                     </span>
                         
-                    <mat-action-row align="end" style="background-color: lightgray;">
+                    <mat-action-row align="end" style="background-color: white;">
                         <mat-form-field>
                             <mat-label>Amount</mat-label>
                             <input matInput type="number" min="0" >
@@ -281,7 +284,7 @@
                         <h4>Calories: 350</h4>
                     </span>
                         
-                    <mat-action-row align="end" style="background-color: lightgray;">
+                    <mat-action-row align="end" style="background-color: white;">
                         <mat-form-field>
                             <mat-label>Amount</mat-label>
                             <input matInput type="number" min="0" >
@@ -293,3 +296,6 @@
         </mat-expansion-panel>
     </mat-accordion>
 </div>
+
+
+  <app-footer></app-footer>

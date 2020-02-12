@@ -3,7 +3,10 @@
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </header>
 
+<app-header></app-header>
+
 <body>
+<br><br>
   <h1 class="border-bottom my-3" style="text-align: center;"> Contact </h1>
 
   <h3 class="border-bottom my-3" style="width: 100%; text-align: center;">Our Locations: </h3>
@@ -14,7 +17,6 @@
     <div #mapContainer id="map" style="width: 70%;"></div>
 
   </div>
-
   <div>
 
     <mat-accordion *ngFor = "let x of citylabels; index as i">
@@ -30,5 +32,7 @@
     </mat-accordion>
 
   </div>
-
 </body>
+
+<br><br><br>
+  <app-footer></app-footer>
