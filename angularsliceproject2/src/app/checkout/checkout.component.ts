@@ -24,13 +24,13 @@ interface Food {
 
 const FOOD: Food[] = [
   {
-    name: 'Peperoni PizzaS',
+    name: 'Pepperoni Pizza',
     image: '/menu_item_280x175/public/images/menu-items/thumbnails/build-you-own_0.png?itok=kqLw4gRp',
     callories: 280,
-    price: '$12.50'
+    price: '$120.50'
   },
   {
-    name: 'Sausage & Peperoni Pizza',
+    name: 'Sausage & Pepperoni Pizza',
     image: '/menu_item_280x175/public/images/menu-items/thumbnails/meat-eaters.png?itok=X5GvwbNj',
     callories: 300,
     price: '$15.25'

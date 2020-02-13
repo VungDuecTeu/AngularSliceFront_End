@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import {} from 'googlemaps';
-import { ThemePalette } from '@angular/material';
 
 @Component({
   selector: 'app-contact',
@@ -15,85 +14,61 @@ export class ContactComponent implements OnInit {
   @ViewChild('mapContainer', {static: false}) gmap: ElementRef;
   map: google.maps.Map;
   
-  panelOpenState = false;
+  panelOpenState = [false,false,false,false,false];
 
+  indexexpand: number = -1;
 
-  color: ThemePalette = 'primary';
-  value = 50;
-  bufferValue = 75;
-  
-  fooditemscollapse = [false,false,false,false,false,false];
-  step = 0;
-
-  markers = [
-    // These are all just random coordinates from https://www.random.org/geographic-coordinates/
-    { lat: 22.33159, lng: 105.63233, alpha: 1 },
-    { lat: 7.92658, lng: -12.05228, alpha: 1 },
-    { lat: 48.75606, lng: -118.859, alpha: 1 },
-    { lat: 5.19334, lng: -67.03352, alpha: 1 },
-    { lat: 12.09407, lng: 26.31618, alpha: 1 },
-    { lat: 47.92393, lng: 78.58339, alpha: 1 }
+  coordinates = [
+    new google.maps.LatLng(35.22,  -80.84),
+    new google.maps.LatLng(25.775, -80.208),
+    new google.maps.LatLng(40.439, -79.976),
+    new google.maps.LatLng(42.3580, -71.06),
+    new google.maps.LatLng(39.633, -79.950),
   ];
 
-  setStep(index: number) {
-    this.step = index;
-  }
+  markers = [];
 
-  nextStep() {
-    this.step++;
-  }
-
-  prevStep() {
-    this.step--;
-  }
-
-  fooditemCollapse(item:number){
-    for (let i:number = 0; i < this.fooditemscollapse.length; i++){
-      this.fooditemscollapse[i] = false;
-    }
-
-      this.fooditemscollapse[item] = !this.fooditemscollapse[item];
-    }
-
-    lat = 40.730610;
-    lng = -73.935242;
-    coordinates = new google.maps.LatLng(this.lat, this.lng);
-    marker = new google.maps.Marker({
-      position: this.coordinates,
-      map: this.map,
-    });
+  citylabels = ["Charlotte", "Miami", "Pittsburgh", "Boston", "Morgantown"];
+  names = ["Rai Sai", "Mai Sai", "Hamlet Lazz", "Robert Joe", "Sarah Jones"];
+  emails = ["kai912@gmail.com", "mai912@gmail.com", "ham912@gmail.com ", "tao112@gmail.com", "kam321@gmail.com "]
+  addresses = ["3215 Freedon Dr", "20 Commerce Dr", "2110 Railroad Ave", "793 Boston Rd", "374 Patteson Drive"]
+  phonenumbers = ["704-313-4313", "786-123-1321", "412-431-3241", "617-421-9221", "304-122-1111"];
 
   ngOnInit() {
-    setTimeout(()=> {
-      // Put the logic here 
 
-    //   this.location = {
-    //     latitude: -28.68352,
-    //     longitude: -147.20785,
-    //     mapType: "satelite",
-    //     zoom: 5,
-    //     markers: [
-    //         {
-    //             lat: -28.68352,
-    //             lng: -147.20785,
-    //             label: "new york"
-    //         }
-    //     ]
-    // }
-  
-      const mapProperties = {
-        center: new google.maps.LatLng(35.2271, -80.8431),
-        zoom: 15,
-        mapTypeId: google.maps.MapTypeId.ROADMAP,
-   };
+    for (let x:number = 0; x < this.coordinates.length; x++)
+    {
+      this.markers.push(new google.maps.Marker({
+        position: this.coordinates[x],
+        map: this.map
 
-
-
- this.map = new google.maps.Map(this.gmap.nativeElement, mapProperties);
- this.marker.setMap(this.map);
-
-      }, 1000);
+      }));
+    }
   }
 
+  ngAfterViewInit() {
+    this.mapInitializer();
+  }
+
+  changelocation(i:number){
+    this.indexexpand = i == this.indexexpand ? -1 : i;
+    this.map.setCenter(this.coordinates[i]);
+  }
+
+  mapInitializer() {
+    let x = {
+      lat: this.markers[0].lat, lng:this.markers[0].lng
+    }
+    const mapProperties = {
+      center: this.coordinates[0],
+      zoom: 10,
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+ };
+ 
+    this.map = new google.maps.Map(this.gmap.nativeElement, mapProperties);
+    for (let i:number = 0; i < this.markers.length; i++)
+      this.markers[i].setMap(this.map);
+
+  }
   
 }

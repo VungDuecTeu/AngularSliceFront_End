@@ -1,18 +1,22 @@
+<!-- 
+<div class="homepage" *ngIf='picBool'>
 
-<div class = "homepage" *ngIf = 'picBool'>
-    
+</div> -->
+
+
+
+<app-header></app-header>
+<br><br>
+
+<div style="height:87%"> 
+    <app-home *ngIf='homeBool'></app-home>
+
+    <app-order *ngIf='menuBool'></app-order>
+
+    <app-checkout *ngIf='checkBool'></app-checkout>
+
+    <app-contact *ngIf='contactBool'></app-contact>
+
 </div>
 
-<div>
-
-    <app-home *ngIf = 'homeBool'></app-home>
-
-    <app-order *ngIf = 'menuBool'></app-order>
-
-    <app-checkout *ngIf = 'checkBool'></app-checkout>
-
-    <app-contact *ngIf = 'contactBool'></app-contact>
-
-</div>
-
-
+<app-footer></app-footer>
