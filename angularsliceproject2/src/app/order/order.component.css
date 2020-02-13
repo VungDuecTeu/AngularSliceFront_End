@@ -50,12 +50,16 @@
     word-wrap:break-word;
  }
 
+ input{
+     color:white;
+ }
+
  mat-action-row{
-    background-color: lightgray;
+    background-color: rgb(148, 24, 14);
  }
 
  mat-expansion-panel{
-    background-color:gray;
+    background-color:rgb(148, 24, 14, 0.7);
  }
 
  mat-card{
