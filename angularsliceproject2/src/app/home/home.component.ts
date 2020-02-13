@@ -20,6 +20,7 @@ export class HomeComponent implements OnInit {
   }
 
   showHome(){
+    this.homeBool = true;
     this.picBool = true;
     this.menuBool = false;
     this.checkBool = false;

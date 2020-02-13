@@ -1,6 +1,12 @@
+#whole{
+    display: flex; 
+    justify-content: space-between; 
+    height:83%;
+}
+
 .holder{
     overflow-y: scroll;
-    height: 300px;
+    height: 420px;
 }
 .orderButton{
     float: right; 
@@ -11,3 +17,48 @@
     text-align: center;
     margin: 1px 1px;
 }
+
+#orderList{
+    border: 1px black solid;
+    width: 25%;
+    height: 95%;
+
+}
+
+#orderItems{
+    overflow-y: scroll;
+    height:85%;
+}
+
+#segment{
+    width:70%; 
+    height:100%; 
+    overflow-y: scroll;
+}
+
+#segment::-webkit-scrollbar { 
+    width: 0 !important
+ }
+
+ img{
+    width: 150px; 
+    height: 150px;
+ }
+
+ .descriptionHolder{
+    width: 60%; 
+    word-wrap:break-word;
+ }
+
+ mat-action-row{
+    background-color: lightgray;
+ }
+
+ mat-expansion-panel{
+    background-color:gray;
+ }
+
+ mat-card{
+    background-color:white; 
+    margin:1px;
+ }
