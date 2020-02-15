@@ -5,3 +5,18 @@
 .image{
     background-image: url(src\assets\img\AngularSliceLogo.jpg);
 }
+
+.login{
+    position: absolute; 
+    right: 0%;
+    left: 1650px;
+    top: 0;
+}
+
+.button{
+    width: 1000px;
+}
+
+.menu{
+    width: 6000px;
+}

@@ -13,14 +13,71 @@
         <a routerLink="/menu" routerLinkActive="active">Checkout</a>
         <a routerLink="/menu" routerLinkActive="active">Contact</a>
       </nav> -->
-      <div style="position:absolute; top: 0;">
-      <button mat-button [matMenuTriggerFor]="menu">Menu</button>
-      <mat-menu #menu="matMenu">
-        <button mat-menu-item routerLink="/home">Home</button>
-        <button mat-menu-item routerLink="/order">Order</button>
-        <button mat-menu-item routerLink="/checkout">Checkout</button>
-        <button mat-menu-item routerLink="/contact">Contact</button>
+
+
+    <div style="position:absolute; top: 0;">
+    
+      <div>
+        <button mat-button [matMenuTriggerFor]="menu1" >Menu</button>
+         
+        <mat-menu #menu1="matMenu" overlapTrigger="false" class = "menu" style = "width: 3000px">
+           <div style="display: flex; justify-content: flex-start;">
+            <button mat-menu-item routerLink="/home" class = "button">Home</button>
+            <button mat-menu-item routerLink="/order" class = "button">Order</button>
+            <button mat-menu-item routerLink="/checkout" class = "button">Checkout</button>
+            <button mat-menu-item routerLink="/contact" class = "button">Contact</button>
+          </div>
+       </mat-menu>
+       </div>
+    
+       <!-- <div>
+      <button mat-button [matMenuTriggerFor]="menu">Menu</button> -->
+      <!-- <mat-menu #menu="matMenu">
+          <button mat-menu-item routerLink="/home">Home</button>
+          <button mat-menu-item routerLink="/order">Order</button>
+          <button mat-menu-item routerLink="/checkout">Checkout</button>
+          <button mat-menu-item routerLink="/contact">Contact</button>
       </mat-menu>
+    </div> --> 
+
+
+      <!-- <mat-tab-group headerPosition="below">
+        <mat-tab label="Go to the home page!"> 
+          <button mat-tab-item routerLink="/home">Home</button>
+        </mat-tab>
+
+        <mat-tab label="Make your order!"> 
+          <button mat-tab-item routerLink="/order">Order</button>
+        </mat-tab>
+
+        <mat-tab label="Go to checkout!"> 
+          <button mat-tab-item routerLink="/checkout">Checkout</button>
+        </mat-tab >
+
+        <mat-tab label="Contact Us!">
+          <button mat-tab-item routerLink="/contact">Contact</button>
+        </mat-tab>
+        
+      </mat-tab-group> -->
+
+      <div>    
+      <button mat-button [matMenuTriggerFor]="menu2" class = "login" style="display: flex; justify-content: flex-start;">Login to your Angular Slice Account!</button>
+      <mat-menu #menu2="matMenu" overlapTrigger = "false">
+        
+        <div >
+          <button mat-menu-item routerLink="/login">Login</button>
+          <button mat-menu-item routerLink="/update">Update Account</button>
+          <button mat-menu-item routerLink="/displayaccount">Display Account</button>
+          <button mat-menu-item routerLink="/logout">Logout</button>
+        </div>
+       
+      </mat-menu>
+    </div>  
+
+
     </div>
 
-    </header>
+   
+
+
+</header>
