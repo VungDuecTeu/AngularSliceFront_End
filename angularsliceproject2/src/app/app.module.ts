@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ChartsModule } from 'ng2-charts';
+import { FormsModule } from '@angular/forms';
 
 import { CheckoutComponent } from './checkout/checkout.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -14,6 +15,7 @@ import { MaterialModule } from './material.module';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { CheckouttableComponent } from './checkout/checkouttable/checkouttable.component';
+import { HttpClientModule } from '@angular/common/http';
 //import { RouterModule, Routes } from '@angular/router';
 
 @NgModule({
@@ -34,7 +36,9 @@ import { CheckouttableComponent } from './checkout/checkouttable/checkouttable.c
     AppRoutingModule,
     ChartsModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    HttpClientModule,
+    FormsModule
 
   ],
   providers: [],
