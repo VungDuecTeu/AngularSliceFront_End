@@ -1,12 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-// export interface PeriodicElement {
-//   name: string;
-//   position: number;
-//   weight: number;
-//   symbol: string;
-
-// }
 interface Food {
   name: string;
   image: string;
@@ -14,13 +7,6 @@ interface Food {
   price: string;
 }
 
-// const ELEMENT_DATA: PeriodicElement[] = [
-//   {position: 1, name: 'Peperoni pizza', weight: 500, symbol: '$20.50'},
-//   {position: 2, name: 'Cheesesticks', weight: 300, symbol: '$10.15'},
-//   {position: 3, name: 'Soda', weight: 60, symbol: '$2.00'},
-//   {position: 4, name: 'Brownie', weight: 500, symbol: '$5.00'},
- 
-// ];
 
 const FOOD: Food[] = [
   {
@@ -60,8 +46,6 @@ export class CheckoutComponent implements OnInit {
 
 
   foods = FOOD;
-  // displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  // dataSource = ELEMENT_DATA;
   constructor() { }
 
   ngOnInit() {
