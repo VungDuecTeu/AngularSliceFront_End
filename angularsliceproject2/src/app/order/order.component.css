@@ -22,7 +22,7 @@
     border: 1px black solid;
     width: 25%;
     height: 95%;
-
+    background-color:rgb(148, 24, 14, 0.8);
 }
 
 #orderItems{
@@ -52,14 +52,20 @@
 
  input{
      color:white;
+     align-self: center;
+     font-size: 16pt;
  }
 
  mat-action-row{
-    background-color: rgb(148, 24, 14);
+    background-color: rgb(148, 24, 14, 0.8);
+    place-content: space-between;
  }
 
  mat-expansion-panel{
-    background-color:rgb(148, 24, 14, 0.7);
+    background-color:rgb(148, 24, 14, 0.8);
+ }
+ mat-panel-title, mat-panel-description{
+     color: white;
  }
 
  mat-card{
