@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClientModule, HttpHeaders, HttpClient, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { bill_fooditem } from 'src/entities/bill_fooditem';
+import { bill_fooditem } from 'src/app/entities/bill_fooditem';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +17,7 @@ export class GetBillFooditemByBillIdService {
         { // httpOptions
           headers: new HttpHeaders({'Content-Type': 'application/json'}),
           params: new HttpParams()
-        .set('bid', id.toString())
+        .set('bfiid', id.toString())
       }
     ).toPromise();
   }
