@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { GetBillFooditemByBillIdService } from '../services/billfooditemservice/get-bill-fooditem-by-bill-id.service';
+import { bill_fooditem } from 'src/entities/bill_fooditem';
 
 @Component({
   selector: 'app-manager',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ManagerComponent implements OnInit {
 
-  constructor() { }
+  constructor(private getbillfooditembyidservice:GetBillFooditemByBillIdService) { }
+
+  bfiid:number = 0;
+  bfi: bill_fooditem = null;
 
   ngOnInit() {
   }
+
+  async GetBillFooditemByBillIdService(id:number) {
+    let special : bill_fooditem = await this.getbillfooditembyidservice.getBillFooditemByBillId(id)
+    .then((onfulfilled) => {
+      this.bfi = onfulfilled;
+      console.log(this.bfi);
+      return onfulfilled;
+    })
+  }
+
 
 }
