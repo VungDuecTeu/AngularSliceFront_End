@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GetBillFooditemByBillIdService } from '../services/billfooditemservice/get-bill-fooditem-by-bill-id.service';
-import { bill_fooditem } from 'src/entities/bill_fooditem';
+import { bill_fooditem } from 'src/app/entities/bill_fooditem';
 
 @Component({
   selector: 'app-manager',

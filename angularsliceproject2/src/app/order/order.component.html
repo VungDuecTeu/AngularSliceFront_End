@@ -4,7 +4,7 @@
     <div id="segment">
         <mat-accordion class="example-headers-align">
             <!--Pizza panel-->
-            <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+            <mat-expansion-panel [expanded]="true" (opened)="setStep(0)" hideToggle>
                 <!-- Header for this panel -->
                 <mat-expansion-panel-header>
                     <mat-panel-title>Pizzas</mat-panel-title>
@@ -27,12 +27,12 @@
                             </p>
                         </span>
 
-                        <span style="float:right;width: 20%;">
+                        <span style="float:right; width: 20%;">
                             <h3>Price: 8.99</h3>
                             <h4>Calories: 800</h4>
                         </span>
                             
-                        <mat-action-row align="end">
+                        <mat-action-row>
                             <mat-form-field>
                                 <mat-label style="color: white;">Amount</mat-label>
                                 <input matInput type="number" min="0" value="1">
