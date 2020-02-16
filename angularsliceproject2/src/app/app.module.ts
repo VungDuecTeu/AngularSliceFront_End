@@ -16,6 +16,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { CheckouttableComponent } from './checkout/checkouttable/checkouttable.component';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
 //import { RouterModule, Routes } from '@angular/router';
 
 @NgModule({
@@ -28,7 +29,8 @@ import { HttpClientModule } from '@angular/common/http';
     HeaderComponent,
     FooterComponent,
     CheckoutComponent,
-    CheckouttableComponent
+    CheckouttableComponent,
+    LoginComponent
         
   ],
   imports: [
