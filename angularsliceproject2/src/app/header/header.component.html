@@ -1,7 +1,7 @@
-<header class = "header" style="height:6.5%; position: absolute; top:0; width:100%">
-    <div class = "image"></div> 
-    <p style = "color:white; text-align: center; font-size: 25px; margin:10px">Angular Slice!</p>
-<!-- 
+<header class="header" style="height:6.5%; position: absolute; top:0; width:100%">
+  <div class="image"></div>
+  <p style="color:white; text-align: center; font-size: 25px; margin:10px">Angular Slice!</p>
+  <!-- 
     <button (click) = "showHome()">Home</button>
     <button (click) = "showMenu()">Menu</button>
     <button (click) = "showCheckout()">Checkout</button>
@@ -15,7 +15,7 @@
       </nav> -->
 
 
-    <!-- <div style="position:absolute; top: 0;">
+  <!-- <div style="position:absolute; top: 0;">
     
       <div>
         <button mat-button [matMenuTriggerFor]="menu1" >Menu</button>
@@ -29,8 +29,8 @@
           </div>
        </mat-menu>
        </div> -->
-    
-       <!-- <div>    
+
+  <!-- <div>    
       <button mat-button [matMenuTriggerFor]="menu2" class = "login" style="display: flex; justify-content: flex-start;">Login to your Angular Slice Account!</button>
       <mat-menu #menu2="matMenu" overlapTrigger = "false">
         
@@ -46,14 +46,13 @@
 
 
     </div> -->
-    <span style="width:100%; display: inline-block; position: absolute; top:0">
+  <span style="width:100%; display: inline-block; position: absolute; top:0">
 
-    <mat-tab-group style="float:left" (selectedTabChange)="showPages($event)"
-    [selectedIndex]="selectedIndex">
-      <mat-tab label ="First"></mat-tab>
-      <mat-tab label ="Second"></mat-tab>
-      <mat-tab label ="Third"></mat-tab>
-      <mat-tab label ="Fourth"></mat-tab>
+    <mat-tab-group style="float:left" (selectedTabChange)="showPages($event)" [selectedIndex]="selectedIndex">
+      <mat-tab label="First"></mat-tab>
+      <mat-tab label="Second"></mat-tab>
+      <mat-tab label="Third"></mat-tab>
+      <mat-tab label="Fourth"></mat-tab>
     </mat-tab-group>
 
     <!-- <mat-tab-group style="float:right">
@@ -62,7 +61,19 @@
       <mat-tab label="Third"></mat-tab>
     </mat-tab-group> -->
   </span>
-   
+
+
+  <div style="position:absolute; top: 0;">
+    <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="/home">Home</button>
+      <button mat-menu-item routerLink="/order">Order</button>
+      <button mat-menu-item routerLink="/checkout">Checkout</button>
+      <button mat-menu-item routerLink="/contact">Contact</button>
+
+    </mat-menu>
+
+  </div>
 
 
 </header>
