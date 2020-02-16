@@ -17,6 +17,7 @@ export class ManagerComponent implements OnInit {
   ngOnInit() {
   }
 
+  
   async GetBillFooditemByBillIdService(id:number) {
     let special : bill_fooditem = await this.getbillfooditembyidservice.getBillFooditemByBillId(id)
     .then((onfulfilled) => {
