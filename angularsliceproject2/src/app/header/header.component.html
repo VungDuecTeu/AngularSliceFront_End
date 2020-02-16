@@ -15,7 +15,7 @@
       </nav> -->
 
 
-    <div style="position:absolute; top: 0;">
+    <!-- <div style="position:absolute; top: 0;">
     
       <div>
         <button mat-button [matMenuTriggerFor]="menu1" >Menu</button>
@@ -28,39 +28,9 @@
             <button mat-menu-item routerLink="/contact" class = "button">Contact</button>
           </div>
        </mat-menu>
-       </div>
+       </div> -->
     
-       <!-- <div>
-      <button mat-button [matMenuTriggerFor]="menu">Menu</button> -->
-      <!-- <mat-menu #menu="matMenu">
-          <button mat-menu-item routerLink="/home">Home</button>
-          <button mat-menu-item routerLink="/order">Order</button>
-          <button mat-menu-item routerLink="/checkout">Checkout</button>
-          <button mat-menu-item routerLink="/contact">Contact</button>
-      </mat-menu>
-    </div> --> 
-
-
-      <!-- <mat-tab-group headerPosition="below">
-        <mat-tab label="Go to the home page!"> 
-          <button mat-tab-item routerLink="/home">Home</button>
-        </mat-tab>
-
-        <mat-tab label="Make your order!"> 
-          <button mat-tab-item routerLink="/order">Order</button>
-        </mat-tab>
-
-        <mat-tab label="Go to checkout!"> 
-          <button mat-tab-item routerLink="/checkout">Checkout</button>
-        </mat-tab >
-
-        <mat-tab label="Contact Us!">
-          <button mat-tab-item routerLink="/contact">Contact</button>
-        </mat-tab>
-        
-      </mat-tab-group> -->
-
-      <div>    
+       <!-- <div>    
       <button mat-button [matMenuTriggerFor]="menu2" class = "login" style="display: flex; justify-content: flex-start;">Login to your Angular Slice Account!</button>
       <mat-menu #menu2="matMenu" overlapTrigger = "false">
         
@@ -72,11 +42,26 @@
         </div>
        
       </mat-menu>
-    </div>  
+    </div>   
 
 
-    </div>
+    </div> -->
+    <span style="width:100%; display: inline-block; position: absolute; top:0">
 
+    <mat-tab-group style="float:left" (selectedTabChange)="showPages($event)"
+    [selectedIndex]="selectedIndex">
+      <mat-tab label ="First"></mat-tab>
+      <mat-tab label ="Second"></mat-tab>
+      <mat-tab label ="Third"></mat-tab>
+      <mat-tab label ="Fourth"></mat-tab>
+    </mat-tab-group>
+
+    <!-- <mat-tab-group style="float:right">
+      <mat-tab label="First"></mat-tab>
+      <mat-tab label="Second"></mat-tab>
+      <mat-tab label="Third"></mat-tab>
+    </mat-tab-group> -->
+  </span>
    
 
 
