@@ -37,6 +37,18 @@
     opacity: 1;
   }
   
+  ::ng-deep .mat-menu-content{
+    background-color:rgb(184, 23, 23);;
+  }
+  
+  button.mat-menu-item{
+      background-color: rgb(184, 23, 23);
+      border: 2px solid white;
+  }
+  
+  button.mat-menu-item:hover {
+      background-color: rgb(155, 24, 24) ;
+  }
 
   .mat-tab-link-active,
 .mat-tab-label-active {
