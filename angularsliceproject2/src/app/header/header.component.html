@@ -48,12 +48,26 @@
     </div> -->
   <span style="width:100%; display: inline-block; position: absolute; top:0">
 
-    <mat-tab-group style="float:left" (selectedTabChange)="showPages($event)" [selectedIndex]="selectedIndex">
-      <mat-tab label="First"></mat-tab>
-      <mat-tab label="Second"></mat-tab>
-      <mat-tab label="Third"></mat-tab>
-      <mat-tab label="Fourth"></mat-tab>
-    </mat-tab-group>
+    <nav mat-tab-nav-bar id="nav_bar" style="color:white; float: left;">
+      <a  [active]="rla.isActive" class = "links" routerLinkActive #rla="routerLinkActive" mat-tab-link routerLink="/home"> Home </a>
+      <a  [active]="rla1.isActive" class = "links" routerLinkActive #rla1="routerLinkActive" mat-tab-link routerLink="/order"> Order </a>
+      <a  [active]="rla2.isActive" class = "links" routerLinkActive #rla2="routerLinkActive" mat-tab-link routerLink="/checkout"> Checkout </a>
+      <a  [active]="rla3.isActive" class = "links" routerLinkActive #rla3="routerLinkActive" mat-tab-link routerLink="/contact"> Contact </a>
+    </nav>
+
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" style="float:right;color:white">
+      <mat-icon >more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item >
+        <mat-icon>account_box</mat-icon>
+        <span>Login</span>
+      </button>
+      <button mat-menu-item >
+        <mat-icon>account_circle</mat-icon>
+        <span>Create Account</span>
+      </button>
+    </mat-menu>
 
     <!-- <mat-tab-group style="float:right">
       <mat-tab label="First"></mat-tab>
@@ -63,7 +77,7 @@
   </span>
 
 
-  <div style="position:absolute; top: 0;">
+  <!-- <div style="position:absolute; top: 0;">
     <button mat-button [matMenuTriggerFor]="menu">Menu</button>
     <mat-menu #menu="matMenu">
       <button mat-menu-item routerLink="/home">Home</button>
@@ -73,7 +87,7 @@
 
     </mat-menu>
 
-  </div>
+  </div> -->
 
 
 </header>

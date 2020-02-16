@@ -20,3 +20,40 @@
 .menu{
     width: 6000px;
 }
+
+.links{
+    color:white;
+
+}
+
+#nav_bar a.active-page
+{
+  color:yellow;
+}
+
+
+
+.mat-tab-link {
+    opacity: 1;
+  }
+  
+
+  .mat-tab-link-active,
+.mat-tab-label-active {
+    background-color: rgb(184, 23, 23);
+    color: white;
+    border: 2px solid white;
+    font-weight: bold;
+}
+/* .mat-tab-link,
+.mat-tab-label {
+    line-height: 30px !important;
+    height: 30px !important;
+    min-width: 100px !important;
+    border: 1px solid #7e7e7e;
+} */
+
+/* .tabContentContainer {
+    border: 1px solid #aaaaaa;
+    background: #ffffff 50% 50% repeat-x;
+} */

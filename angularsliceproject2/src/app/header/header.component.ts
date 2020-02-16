@@ -14,22 +14,7 @@ export class HeaderComponent implements OnInit {
   public selectedIndex: number = 0;
 
   ngOnInit() {
-  }
 
-  showPages(tabChangeEvent: MatTabChangeEvent){
-    console.log(tabChangeEvent);
-    switch(tabChangeEvent.index){
-      case 0: this.router.navigate(["/home"]);
-      break;
-      case 1: this.router.navigate(["/order"]);
-      break;
-      case 2: this.router.navigate(["/contact"]);
-      break;
-      case 3: this.router.navigate(["/checkout"]);
-      break;
-      default: this.router.navigate(["/home"]);
-        break;
-    }
   }
 
   // openMyMenu() {
