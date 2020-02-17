@@ -23,12 +23,14 @@ export class OrderComponent implements OnInit {
     private updatefoodservice:UpdateFoodService) { }
 
   fi:fooditem = null;
+  pizzas:fooditem;
+  wings:fooditem;
+  drinks:fooditem;
 
   ngOnInit() {
-    this.GetAllFoodService();
+    this.GetAllFoodByTypeService("Pizza");
     this.GetAllFoodByTypeService("Wings");
-    this.GetFoodByIdService(3);
-    this.GetFoodByNameService("Pepperoni Pizza");
+    this.GetAllFoodByTypeService("Drinks");
   }
 
   async CreateFoodService(food:fooditem){
@@ -70,8 +72,18 @@ export class OrderComponent implements OnInit {
   async GetAllFoodByTypeService(type:string){
     let special: fooditem = await this.getallfoodbytypeservice.getAllFoodByType(type)
     .then((onfulfilled) => {
+      if(type == "Pizza"){
+        this.pizzas = onfulfilled;
+        console.log(this.pizzas);
+      } else if(type == "Wings"){
+        this.wings = onfulfilled;
+        console.log(this.wings);
+      } else if(type == "Drinks"){
+        this.drinks = onfulfilled;
+        console.log(this.drinks);
+      }
       this.fi = onfulfilled;
-      console.log(this.fi);
+      // console.log(this.fi);
       return onfulfilled;
     })
   }
