@@ -26,11 +26,21 @@ export class OrderComponent implements OnInit {
   pizzas:fooditem;
   wings:fooditem;
   drinks:fooditem;
+  order:Array<fooditem> = [];
+  orderList:Array<string> = [];
+  total:number = 0.0;
 
   ngOnInit() {
     this.GetAllFoodByTypeService("Pizza");
     this.GetAllFoodByTypeService("Wings");
     this.GetAllFoodByTypeService("Drinks");
+  }
+
+  addToOrder(food:fooditem){
+    this.order.push(food);
+    let amount = Number((<HTMLInputElement>document.getElementById("input_" + food.foodID)).value);
+    this.orderList.push(amount + " " + food.name);
+    this.total += (food.price * amount);
   }
 
   async CreateFoodService(food:fooditem){
@@ -83,7 +93,7 @@ export class OrderComponent implements OnInit {
         console.log(this.drinks);
       }
       this.fi = onfulfilled;
-      // console.log(this.fi);
+      console.log(this.fi);
       return onfulfilled;
     })
   }
