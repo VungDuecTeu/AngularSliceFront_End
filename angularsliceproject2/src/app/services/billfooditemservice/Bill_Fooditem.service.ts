@@ -6,7 +6,7 @@ import { Bill_Fooditem } from 'src/app/entities/Bill_Fooditem';
   providedIn: 'root'
 })
 
-export class GetBillFooditemByBillIdService {
+export class BillFooditemService {
 
   constructor(private http:HttpClient) { }
 
@@ -21,8 +21,8 @@ export class GetBillFooditemByBillIdService {
       }
     ).toPromise();
   }
-  getAllBillFooditems(id:number): Promise<bill_fooditem> {
-    return this.http.get<bill_fooditem>(this.url,
+  getAllBillFooditems(id:number): Promise<Bill_Fooditem> {
+    return this.http.get<Bill_Fooditem>(this.url,
         { // httpOptions
           headers: new HttpHeaders({'Content-Type': 'application/json'}),
           params: new HttpParams()
@@ -30,8 +30,8 @@ export class GetBillFooditemByBillIdService {
       }
     ).toPromise();
   }
-  updateBillFooditem(id:number): Promise<bill_fooditem> {
-    return this.http.get<bill_fooditem>(this.url,
+  updateBillFooditem(id:number): Promise<Bill_Fooditem> {
+    return this.http.get<Bill_Fooditem>(this.url,
         { // httpOptions
           headers: new HttpHeaders({'Content-Type': 'application/json'}),
           params: new HttpParams()
@@ -39,8 +39,8 @@ export class GetBillFooditemByBillIdService {
       }
     ).toPromise();
   }
-  createBillFooditem(bill_fooditem:number): Promise<bill_fooditem> {
-    return this.http.get<bill_fooditem>(this.url,
+  createBillFooditem(bill_fooditem:number): Promise<Bill_Fooditem> {
+    return this.http.get<Bill_Fooditem>(this.url,
         { // httpOptions
           headers: new HttpHeaders({'Content-Type': 'application/json'}),
           params: new HttpParams()
@@ -48,8 +48,8 @@ export class GetBillFooditemByBillIdService {
       }
     ).toPromise();
   }
-  deleteBillFooditem(id:number): Promise<bill_fooditem> {
-    return this.http.get<bill_fooditem>(this.url,
+  deleteBillFooditem(id:number): Promise<Bill_Fooditem> {
+    return this.http.get<Bill_Fooditem>(this.url,
         { // httpOptions
           headers: new HttpHeaders({'Content-Type': 'application/json'}),
           params: new HttpParams()

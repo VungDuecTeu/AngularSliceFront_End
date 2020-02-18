@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { GetBillFooditemByBillIdService } from '../services/billfooditemservice/get-bill-fooditem-by-bill-id.service';
 import { Bill_Fooditem } from 'src/app/entities/Bill_Fooditem';
 import * as Chart from 'chart.js';
 import { FoodService } from '../services/fooditemservice/food.service';
@@ -37,11 +36,14 @@ export class ManagerComponent implements OnInit {
 
       case 1: this.createCustomerPurchaseChart();
         break;
+
+      case 2: this.createFoodChart();
+      case 3: this.createFoodChart();
     }
   }
 
   async GetAllFoodService(){
-    console.log("calling this");
+
     let special: any = await this.foodservice.getAllFood()
     .then((onfulfilled) => {
       // this.foodlabels = onfulfilled;
@@ -56,6 +58,8 @@ export class ManagerComponent implements OnInit {
   }
 
   createFoodChart() {
+    console.log("in here");
+    this.customerpurchasechart = null;
     this.foodchart = new Chart(this.foodchartRef.nativeElement, {
       type: 'bar',
       data: {
@@ -98,6 +102,7 @@ export class ManagerComponent implements OnInit {
   }
 
   createCustomerPurchaseChart() {
+    this.foodchart = null;
     this.customerpurchasechart = new Chart(this.customerpurchaseRef.nativeElement, {
       type: 'bar',
       data: {
