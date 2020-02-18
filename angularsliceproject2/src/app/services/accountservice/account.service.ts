@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
-import { Account } from '../entities/account';
-import { BillService } from './bill.service';
+import { Account } from '../../entities/Account';
+import { BillService } from '../billservice/bill.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,35 +12,35 @@ export class AccountService {
   constructor(private http:HttpClient){}
   Url = "http://localhost:4200/Account";
 
-  getAccountByid(id:number):Promise<Account>  { 
-    return this.http.get<Account>(`http://localhost:4200/account/${id}`,
-     {// httpOptions
-      headers: new HttpHeaders({'Content-Type':'application/json'}),
-      params: new HttpParams()
-      .set('bfiid',id.toString())
-     } 
-      ).toPromise();
-  }
-  creatAccount(account:Account):Promise<Account>  { 
+  // getAccountByid(id:number):Promise<Account>  { 
+  //   return this.http.get<Account>(`http://localhost:4200/Account/${id}`
+  //    {// httpOptions
+  //     headers: new HttpHeaders({'Content-Type':'application/json'}),
+  //     params: new HttpParams()
+  //     .set('bfiid',id.toString())
+  //    } 
+  //     ).toPromise;
+  // }
+  creatAccount(Account:Account):Promise<Account>  { 
 
-    const body= new HttpParams().set('payload',JSON.stringify(account));
-    return this.http.post<Account>(`http://localhost:4200/account`,account
+    const body= new HttpParams().set('payload',JSON.stringify(Account));
+    return this.http.post<Account>(`http://localhost:4200/Account`,Account
     
      ).toPromise();
   }
   getAllAccounts(aid:number):Promise<Account>  { 
-    return this.http.get<Account>(`http://localhost:4200/account`
+    return this.http.get<Account>(`http://localhost:4200/Account`
      
      ).toPromise();
   }
-  updateAccount(account:any):Promise<Account>  { 
-    const body= new HttpParams().set('payload',JSON.stringify(account));
+  updateAccount(Account:any):Promise<Account>  { 
+    const body= new HttpParams().set('payload',JSON.stringify(Account));
     return this.http.post<Account>(this.Url,
      {// httpOptions
       headers: new HttpHeaders({'Content-Type':'application/json'}),
       params: new HttpParams()
       
-      .set('bfiid',account.toString())
+      .set('bfiid',Account.toString())
      } 
      ).toPromise();
   }

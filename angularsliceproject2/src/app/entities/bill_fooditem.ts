@@ -1,13 +1,13 @@
-import { fooditem } from './fooditem';
-import { bill } from './bill';
+import { Fooditem } from './Fooditem';
+import { Bill } from './Bill';
 
-export class bill_fooditem{
+export class Bill_Fooditem{
     billfooditemid: number;
-    bill: bill;
+    bill: Bill;
     amount: number;
-    fooditem: fooditem;
+    fooditem: Fooditem;
 
-    constructor(id:number, bill:bill, amount:number, fooditem:fooditem){
+    constructor(id:number, bill:Bill, amount:number, fooditem:Fooditem){
         this.billfooditemid = id;
         this.amount = amount;
         this.bill = bill;

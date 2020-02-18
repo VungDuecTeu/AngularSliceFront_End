@@ -1,4 +1,4 @@
-export class account{
+export class Account{
 
     aid: number;
     Username: string;
