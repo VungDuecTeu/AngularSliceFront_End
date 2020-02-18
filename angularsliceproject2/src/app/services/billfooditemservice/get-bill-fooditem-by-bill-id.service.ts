@@ -10,7 +10,7 @@ export class GetBillFooditemByBillIdService {
 
   constructor(private http:HttpClient) { }
 
-  url = "http://localhost:9000/BillFooditems/query";
+  url = "http://localhost:9000/billfooditems/billfooditem";
 
   getBillFooditemByBillId(id:number): Promise<bill_fooditem> {
     return this.http.get<bill_fooditem>(this.url,
