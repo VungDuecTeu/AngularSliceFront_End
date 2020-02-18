@@ -1,12 +1,12 @@
-import { account } from './Account';
+import { Account } from './Account';
 
-export class bill{
+export class Bill{
     bId: number;
-    account: account;
+    account: Account;
     total: number;
     orderDate: String;
 
-    constructor (id:number, account:account, total:number, orderdate:String){
+    constructor (id:number, account:Account, total:number, orderdate:String){
         this.bId = id;
         this.account = account;
         this.total = total;

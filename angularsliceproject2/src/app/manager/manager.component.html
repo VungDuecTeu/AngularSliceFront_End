@@ -6,13 +6,13 @@
   <app-header></app-header>
   <br><br><br><br><br>
 
-      <div style="width:100%; display: inline-block; height:6%"  class="row d-flex justify-content-center" >
+      <div style="width:100%; display: inline-block; height:40%" >
   
         <mat-tab-group (selectedTabChange)="tabGroupDispatcher($event)">
             <mat-tab label="Food Analytics">
-                <div style="display: block;color:white">
-                    <canvas #foodChart>{{ foodchart }} 
-                    style="color: white;"
+                <div style="display: block;color:white; height:20%">
+                    <canvas  style="color: white" #foodChart>{{ foodchart }} 
+                    
                     <!-- [data]="doughnutChartData"
                     [labels]="doughnutChartLabels"
                     [chartType]="doughnutChartType"> -->

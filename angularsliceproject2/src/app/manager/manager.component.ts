@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { GetBillFooditemByBillIdService } from '../services/billfooditemservice/get-bill-fooditem-by-bill-id.service';
-import { bill_fooditem } from 'src/app/entities/Bill_Fooditem';
+import { Bill_Fooditem } from 'src/app/entities/Bill_Fooditem';
 import * as Chart from 'chart.js';
 import { FoodService } from '../services/fooditemservice/food.service';
-import { fooditem } from '../entities/Fooditem';
+import { Fooditem } from '../entities/Fooditem';
 
 @Component({
   selector: 'app-manager',
@@ -15,7 +15,7 @@ export class ManagerComponent implements OnInit {
   constructor(private foodservice: FoodService) { }
 
   foodlabels = [];
-  foodquantities = [1, 2, 3, 4, 5, 6];
+  foodquantities = [1, 2, 3, 4, 5, 6,1, 2, 3, 4, 5, 6];
 
   customerlabels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
   customerpurchasequantities = [1, 2, 3, 4, 5, 6];
@@ -27,7 +27,7 @@ export class ManagerComponent implements OnInit {
   customerpurchasechart: any;
 
   ngOnInit() {
-
+    this.GetAllFoodService();
   }
 
   tabGroupDispatcher($event) {
@@ -41,10 +41,16 @@ export class ManagerComponent implements OnInit {
   }
 
   async GetAllFoodService(){
-    let special: fooditem = await this.foodservice.getAllFood()
+    console.log("calling this");
+    let special: any = await this.foodservice.getAllFood()
     .then((onfulfilled) => {
-      this.foodlabels = onfulfilled;
-      console.log(this.foodlabels);
+      // this.foodlabels = onfulfilled;
+      
+      for (let i:number = 0; i < onfulfilled.length; i++){
+        this.foodlabels.push(onfulfilled[i].name);
+        console.log(onfulfilled[i].name);
+      }
+
       return onfulfilled;
     })
   }
@@ -76,14 +82,14 @@ export class ManagerComponent implements OnInit {
           xAxes: [{
             display: true,
             ticks: {
-              fontSize: 40
+              fontSize: 20
             }
           }],
           yAxes: [{
             display: true,
             ticks: {
               beginAtZero: true,
-              fontSize: 40
+              fontSize: 20
             }
           }],
         }

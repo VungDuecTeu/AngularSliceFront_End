@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { fooditem } from 'src/app/entities/Fooditem';
+import { Fooditem } from 'src/app/entities/Fooditem';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +11,8 @@ export class FoodService {
 
   createFoodurl = "http://localhost:9000/food";
 
-  createFood(food:fooditem): Promise<fooditem> {
-    return this.http.post<fooditem>(this.createFoodurl,
+  createFood(food:Fooditem): Promise<Fooditem> {
+    return this.http.post<Fooditem>(this.createFoodurl,
         {
           headers: new HttpHeaders({'Content-Type': 'application/json'}),
           params: new HttpParams()
@@ -23,8 +23,8 @@ export class FoodService {
 
   getAllFoodByTypeurl = "http://localhost:9000/food/type";
 
-  getAllFoodByType(type:string): Promise<fooditem> {
-    return this.http.get<fooditem>(this.getAllFoodByTypeurl,
+  getAllFoodByType(type:string): Promise<Fooditem> {
+    return this.http.get<Fooditem>(this.getAllFoodByTypeurl,
         {
           headers: new HttpHeaders({'Content-Type': 'application/json'}),
           params: new HttpParams()
@@ -35,14 +35,14 @@ export class FoodService {
 
   getAllFoodurl = "http://localhost:9000/food";
 
-  getAllFood(): Promise<fooditem>{
-    return this.http.get<fooditem>(this.getAllFoodurl).toPromise();
+  getAllFood(): Promise<any>{
+    return this.http.get<any>(this.getAllFoodurl).toPromise();
   }
 
   getFoodByIdurl = "http://localhost:9000/food/id";
 
-  getFoodById(id:number): Promise<fooditem> {
-    return this.http.get<fooditem>(this.getFoodByIdurl,
+  getFoodById(id:number): Promise<Fooditem> {
+    return this.http.get<Fooditem>(this.getFoodByIdurl,
         {
           headers: new HttpHeaders({'Content-Type': 'application/json'}),
           params: new HttpParams()
@@ -53,8 +53,8 @@ export class FoodService {
 
   getFoodByNameurl = "http://localhost:9000/food/name";
 
-  getFoodByName(name:string): Promise<fooditem> {
-    return this.http.get<fooditem>(this.getFoodByNameurl,
+  getFoodByName(name:string): Promise<Fooditem> {
+    return this.http.get<Fooditem>(this.getFoodByNameurl,
         {
           headers: new HttpHeaders({'Content-Type': 'application/json'}),
           params: new HttpParams()
@@ -65,8 +65,8 @@ export class FoodService {
 
   updateFoodurl = "http://localhost:9000/food";
 
-  updateFood(food:fooditem): Promise<fooditem> {
-    return this.http.put<fooditem>(this.updateFoodurl,
+  updateFood(food:Fooditem): Promise<Fooditem> {
+    return this.http.put<Fooditem>(this.updateFoodurl,
         {
           headers: new HttpHeaders({'Content-Type': 'application/json'}),
           params: new HttpParams()
