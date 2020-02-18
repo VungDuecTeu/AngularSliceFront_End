@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { GetFoodByNameService } from './get-food-by-name.service';
+import { BillService } from './bill.service';
 
-describe('GetFoodByNameService', () => {
+describe('BillService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: GetFoodByNameService = TestBed.get(GetFoodByNameService);
+    const service: BillService = TestBed.get(BillService);
     expect(service).toBeTruthy();
   });
 });

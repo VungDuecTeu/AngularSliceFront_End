@@ -47,10 +47,11 @@
 
     </div> -->
 
+  
     <div style="width:100%; display: inline-block;height:6%">
       <p style="color:white; text-align: center; font-size: 25px; margin:10px">Angular Slice!</p>
 
-      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" style="outline: none;color:white;float:right; position: absolute; top:0;">
+      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" style="outline: none;color:white;right:0vmax ;position: absolute; top:0;">
         <mat-icon >more_vert</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
@@ -67,13 +68,13 @@
 
     <div style="width:100%; display: inline-block; height:6%"  class="row d-flex justify-content-center" >
 
-    <nav mat-tab-nav-bar id="nav_bar" style="color:primary;">
+    <nav mat-tab-nav-bar id="nav_bar">
       <a  [active]="rla.isActive" class = "links" routerLinkActive #rla="routerLinkActive" mat-tab-link routerLink="/home"> Home </a>
       <a  [active]="rla1.isActive" class = "links" routerLinkActive #rla1="routerLinkActive" mat-tab-link routerLink="/order"> Order </a>
       <a  [active]="rla2.isActive" class = "links" routerLinkActive #rla2="routerLinkActive" mat-tab-link routerLink="/checkout"> Checkout </a>
       <a  [active]="rla3.isActive" class = "links" routerLinkActive #rla3="routerLinkActive" mat-tab-link routerLink="/contact"> Contact </a>
     </nav>
-
+    
     </div>
 
     <!-- <mat-tab-group style="float:right">

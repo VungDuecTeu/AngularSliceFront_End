@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FoodService } from '../services/Fooditemservice/food.service';
+import { Fooditem } from 'src/app/entities/Fooditem';
 
 interface Food {
   name: string;
@@ -43,15 +45,23 @@ const FOOD: Food[] = [
 
 
 export class CheckoutComponent implements OnInit {
-
+  order:Array<Fooditem> = [];
+  orderAmounts:Array<number> = [];
+  total:number;
 
   foods = FOOD;
-  constructor() { }
+  constructor(private fs:FoodService) { }
 
   ngOnInit() {
+    this.makeOrder();
   }
 
-  
+  makeOrder(){
+    this.order = this.fs.order;
+    this.orderAmounts = this.fs.orderAmounts;
+    this.total = this.fs.total;
+    console.log(this.order);
+  }
 
 }
 
