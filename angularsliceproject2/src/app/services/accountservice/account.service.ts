@@ -10,10 +10,10 @@ import { BillService } from '../billservice/bill.service';
 export class AccountService {
 
   constructor(private http:HttpClient){}
-  Url = "http://localhost:4200/Account";
+  Url = "http://ec2-3-14-9-87.us-east-2.compute.amazonaws.com:9000/Account";
 
   // getAccountByid(id:number):Promise<Account>  { 
-  //   return this.http.get<Account>(`http://localhost:4200/Account/${id}`
+  //   return this.http.get<Account>(`http://ec2-3-14-9-87.us-east-2.compute.amazonaws.com:9000/Account/${id}`
   //    {// httpOptions
   //     headers: new HttpHeaders({'Content-Type':'application/json'}),
   //     params: new HttpParams()
@@ -24,12 +24,12 @@ export class AccountService {
   creatAccount(Account:Account):Promise<Account>  { 
 
     const body= new HttpParams().set('payload',JSON.stringify(Account));
-    return this.http.post<Account>(`http://localhost:4200/Account`,Account
+    return this.http.post<Account>(`http://ec2-3-14-9-87.us-east-2.compute.amazonaws.com:9000/Account`,Account
     
      ).toPromise();
   }
   getAllAccounts(aid:number):Promise<Account>  { 
-    return this.http.get<Account>(`http://localhost:4200/Account`
+    return this.http.get<Account>(`http://ec2-3-14-9-87.us-east-2.compute.amazonaws.com:9000/Account`
      
      ).toPromise();
   }

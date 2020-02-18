@@ -9,7 +9,7 @@ export class FoodService {
 
   constructor(private http:HttpClient) { }
 
-  createFoodurl = "http://localhost:9000/food";
+  createFoodurl = "http://ec2-3-14-9-87.us-east-2.compute.amazonaws.com:9000//food";
 
   createFood(food:Fooditem): Promise<Fooditem> {
     return this.http.post<Fooditem>(this.createFoodurl,
@@ -21,7 +21,7 @@ export class FoodService {
     ).toPromise();
   }
 
-  getAllFoodByTypeurl = "http://localhost:9000/food/type";
+  getAllFoodByTypeurl = "http://ec2-3-14-9-87.us-east-2.compute.amazonaws.com:9000//food/type";
 
   getAllFoodByType(type:string): Promise<Fooditem> {
     return this.http.get<Fooditem>(this.getAllFoodByTypeurl,
@@ -33,13 +33,13 @@ export class FoodService {
     ).toPromise();
   }
 
-  getAllFoodurl = "http://localhost:9000/food";
+  getAllFoodurl = "http://ec2-3-14-9-87.us-east-2.compute.amazonaws.com:9000//food";
 
   getAllFood(): Promise<any>{
     return this.http.get<any>(this.getAllFoodurl).toPromise();
   }
 
-  getFoodByIdurl = "http://localhost:9000/food/id";
+  getFoodByIdurl = "http://ec2-3-14-9-87.us-east-2.compute.amazonaws.com:9000//food/id";
 
   getFoodById(id:number): Promise<Fooditem> {
     return this.http.get<Fooditem>(this.getFoodByIdurl,
@@ -51,7 +51,7 @@ export class FoodService {
     ).toPromise();
   }
 
-  getFoodByNameurl = "http://localhost:9000/food/name";
+  getFoodByNameurl = "http://ec2-3-14-9-87.us-east-2.compute.amazonaws.com:9000//food/name";
 
   getFoodByName(name:string): Promise<Fooditem> {
     return this.http.get<Fooditem>(this.getFoodByNameurl,
@@ -63,7 +63,7 @@ export class FoodService {
     ).toPromise();
   }
 
-  updateFoodurl = "http://localhost:9000/food";
+  updateFoodurl = "http://ec2-3-14-9-87.us-east-2.compute.amazonaws.com:9000//food";
 
   updateFood(food:Fooditem): Promise<Fooditem> {
     return this.http.put<Fooditem>(this.updateFoodurl,

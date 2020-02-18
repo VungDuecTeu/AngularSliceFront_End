@@ -1,11 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CreateFoodService } from '../services/Fooditemservices/create-food.service';
-import { GetAllFoodService } from '../services/Fooditemservices/get-all-food.service';
-import { GetFoodByIdService } from '../services/Fooditemservices/get-food-by-id.service';
-import { GetFoodByNameService } from '../services/Fooditemservices/get-food-by-name.service';
-import { GetAllFoodByTypeService } from '../services/Fooditemservices/get-all-food-by-type.service';
-import { UpdateFoodService } from '../services/Fooditemservices/update-food.service';
 import { Fooditem } from 'src/app/entities/Fooditem';
+import { FoodService } from '../services/fooditemservice/food.service';
 
 @Component({
   selector: 'app-order',
@@ -14,13 +9,7 @@ import { Fooditem } from 'src/app/entities/Fooditem';
 })
 export class OrderComponent implements OnInit {
 
-  constructor(
-    private createfoodservice:CreateFoodService,
-    private getallfoodservice:GetAllFoodService,
-    private getfoodbyidservice:GetFoodByIdService,
-    private getfoodbynameservice:GetFoodByNameService,
-    private getallfoodbytypeservice:GetAllFoodByTypeService,
-    private updatefoodservice:UpdateFoodService) { }
+  constructor(private foodservice:FoodService) { }
 
   fi:Fooditem = null;
   pizzas:Fooditem;
@@ -44,7 +33,7 @@ export class OrderComponent implements OnInit {
   }
 
   async CreateFoodService(food:Fooditem){
-    let special: Fooditem = await this.createfoodservice.createFood(food)
+    let special: Fooditem = await this.foodservice.createFood(food)
     .then((onfulfilled) => {
       this.fi = onfulfilled;
       console.log(this.fi);
@@ -53,7 +42,7 @@ export class OrderComponent implements OnInit {
   }
 
   async GetAllFoodService(){
-    let special: Fooditem = await this.getallfoodservice.getAllFood()
+    let special: Fooditem = await this.foodservice.getAllFood()
     .then((onfulfilled) => {
       this.fi = onfulfilled;
       console.log(this.fi);
@@ -62,7 +51,7 @@ export class OrderComponent implements OnInit {
   }
 
   async GetFoodByIdService(id:number){
-    let special: Fooditem = await this.getfoodbyidservice.getFoodById(id)
+    let special: Fooditem = await this.foodservice.getFoodById(id)
     .then((onfulfilled) => {
       this.fi = onfulfilled;
       console.log(this.fi);
@@ -71,7 +60,7 @@ export class OrderComponent implements OnInit {
   }
 
   async GetFoodByNameService(name:string){
-    let special: Fooditem = await this.getfoodbynameservice.getFoodByName(name)
+    let special: Fooditem = await this.foodservice.getFoodByName(name)
     .then((onfulfilled) => {
       this.fi = onfulfilled;
       console.log(this.fi);
@@ -80,7 +69,7 @@ export class OrderComponent implements OnInit {
   }
 
   async GetAllFoodByTypeService(type:string){
-    let special: Fooditem = await this.getallfoodbytypeservice.getAllFoodByType(type)
+    let special: Fooditem = await this.foodservice.getAllFoodByType(type)
     .then((onfulfilled) => {
       if(type == "Pizza"){
         this.pizzas = onfulfilled;
@@ -99,7 +88,7 @@ export class OrderComponent implements OnInit {
   }
 
   async UpdateFoodService(food:Fooditem){
-    let special: Fooditem = await this.updatefoodservice.updateFood(food)
+    let special: Fooditem = await this.foodservice.updateFood(food)
     .then((onfulfilled) => {
       this.fi = onfulfilled;
       console.log(this.fi);
