@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { GetBillFooditemByBillIdService } from './get-bill-fooditem-by-bill-id.service';
+import { GetBillFooditemByBillIdService } from './get-bill-Fooditem-by-bill-id.service';
 
 describe('GetBillFooditemByBillIdService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));

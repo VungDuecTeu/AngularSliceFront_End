@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClientModule, HttpHeaders, HttpClient, HttpParams } from '@angular/common/http';
-import { fooditem } from 'src/app/entities/fooditem';
+import { Fooditem } from 'src/app/entities/Fooditem';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +11,8 @@ export class GetAllFoodByTypeService {
 
   url = "http://localhost:9000/food/type";
 
-  getAllFoodByType(type:string): Promise<fooditem> {
-    return this.http.get<fooditem>(this.url,
+  getAllFoodByType(type:string): Promise<Fooditem> {
+    return this.http.get<Fooditem>(this.url,
         {
           headers: new HttpHeaders({'Content-Type': 'application/json'}),
           params: new HttpParams()

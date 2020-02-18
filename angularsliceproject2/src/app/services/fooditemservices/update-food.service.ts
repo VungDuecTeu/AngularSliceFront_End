@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClientModule, HttpHeaders, HttpClient, HttpParams } from '@angular/common/http';
-import { fooditem } from 'src/app/entities/fooditem';
+import { Fooditem } from 'src/app/entities/Fooditem';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +11,8 @@ export class UpdateFoodService {
 
   url = "http://localhost:9000/food";
 
-  updateFood(food:fooditem): Promise<fooditem> {
-    return this.http.put<fooditem>(this.url,
+  updateFood(food:Fooditem): Promise<Fooditem> {
+    return this.http.put<Fooditem>(this.url,
         {
           headers: new HttpHeaders({'Content-Type': 'application/json'}),
           params: new HttpParams()

@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { CreateFoodService } from '../services/fooditemservices/create-food.service';
-import { GetAllFoodService } from '../services/fooditemservices/get-all-food.service';
-import { GetFoodByIdService } from '../services/fooditemservices/get-food-by-id.service';
-import { GetFoodByNameService } from '../services/fooditemservices/get-food-by-name.service';
-import { GetAllFoodByTypeService } from '../services/fooditemservices/get-all-food-by-type.service';
-import { UpdateFoodService } from '../services/fooditemservices/update-food.service';
-import { fooditem } from 'src/app/entities/fooditem';
+import { CreateFoodService } from '../services/Fooditemservices/create-food.service';
+import { GetAllFoodService } from '../services/Fooditemservices/get-all-food.service';
+import { GetFoodByIdService } from '../services/Fooditemservices/get-food-by-id.service';
+import { GetFoodByNameService } from '../services/Fooditemservices/get-food-by-name.service';
+import { GetAllFoodByTypeService } from '../services/Fooditemservices/get-all-food-by-type.service';
+import { UpdateFoodService } from '../services/Fooditemservices/update-food.service';
+import { Fooditem } from 'src/app/entities/Fooditem';
 
 @Component({
   selector: 'app-order',
@@ -22,11 +22,11 @@ export class OrderComponent implements OnInit {
     private getallfoodbytypeservice:GetAllFoodByTypeService,
     private updatefoodservice:UpdateFoodService) { }
 
-  fi:fooditem = null;
-  pizzas:fooditem;
-  wings:fooditem;
-  drinks:fooditem;
-  order:Array<fooditem> = [];
+  fi:Fooditem = null;
+  pizzas:Fooditem;
+  wings:Fooditem;
+  drinks:Fooditem;
+  order:Array<Fooditem> = [];
   orderList:Array<string> = [];
   total:number = 0.0;
 
@@ -36,15 +36,15 @@ export class OrderComponent implements OnInit {
     this.GetAllFoodByTypeService("Drinks");
   }
 
-  addToOrder(food:fooditem){
+  addToOrder(food:Fooditem){
     this.order.push(food);
     let amount = Number((<HTMLInputElement>document.getElementById("input_" + food.foodID)).value);
     this.orderList.push(amount + " " + food.name);
     this.total += (food.price * amount);
   }
 
-  async CreateFoodService(food:fooditem){
-    let special: fooditem = await this.createfoodservice.createFood(food)
+  async CreateFoodService(food:Fooditem){
+    let special: Fooditem = await this.createfoodservice.createFood(food)
     .then((onfulfilled) => {
       this.fi = onfulfilled;
       console.log(this.fi);
@@ -53,7 +53,7 @@ export class OrderComponent implements OnInit {
   }
 
   async GetAllFoodService(){
-    let special: fooditem = await this.getallfoodservice.getAllFood()
+    let special: Fooditem = await this.getallfoodservice.getAllFood()
     .then((onfulfilled) => {
       this.fi = onfulfilled;
       console.log(this.fi);
@@ -62,7 +62,7 @@ export class OrderComponent implements OnInit {
   }
 
   async GetFoodByIdService(id:number){
-    let special: fooditem = await this.getfoodbyidservice.getFoodById(id)
+    let special: Fooditem = await this.getfoodbyidservice.getFoodById(id)
     .then((onfulfilled) => {
       this.fi = onfulfilled;
       console.log(this.fi);
@@ -71,7 +71,7 @@ export class OrderComponent implements OnInit {
   }
 
   async GetFoodByNameService(name:string){
-    let special: fooditem = await this.getfoodbynameservice.getFoodByName(name)
+    let special: Fooditem = await this.getfoodbynameservice.getFoodByName(name)
     .then((onfulfilled) => {
       this.fi = onfulfilled;
       console.log(this.fi);
@@ -80,7 +80,7 @@ export class OrderComponent implements OnInit {
   }
 
   async GetAllFoodByTypeService(type:string){
-    let special: fooditem = await this.getallfoodbytypeservice.getAllFoodByType(type)
+    let special: Fooditem = await this.getallfoodbytypeservice.getAllFoodByType(type)
     .then((onfulfilled) => {
       if(type == "Pizza"){
         this.pizzas = onfulfilled;
@@ -98,8 +98,8 @@ export class OrderComponent implements OnInit {
     })
   }
 
-  async UpdateFoodService(food:fooditem){
-    let special: fooditem = await this.updatefoodservice.updateFood(food)
+  async UpdateFoodService(food:Fooditem){
+    let special: Fooditem = await this.updatefoodservice.updateFood(food)
     .then((onfulfilled) => {
       this.fi = onfulfilled;
       console.log(this.fi);
