@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClientModule, HttpHeaders, HttpClient, HttpParams } from '@angular/common/http';
-import { bill_fooditem } from 'src/app/entities/bill_fooditem';
+import { bill_fooditem } from 'src/app/entities/Bill_Fooditem';
 
 @Injectable({
   providedIn: 'root'

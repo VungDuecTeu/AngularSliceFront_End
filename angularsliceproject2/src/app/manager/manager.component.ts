@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { GetBillFooditemByBillIdService } from '../services/billfooditemservice/get-bill-fooditem-by-bill-id.service';
-import { bill_fooditem } from 'src/app/entities/bill_fooditem';
+import { bill_fooditem } from 'src/app/entities/Bill_Fooditem';
+import * as Chart from 'chart.js';
+import { FoodService } from '../services/fooditemservice/food.service';
+import { fooditem } from '../entities/Fooditem';
 
 @Component({
   selector: 'app-manager',
@@ -9,23 +12,125 @@ import { bill_fooditem } from 'src/app/entities/bill_fooditem';
 })
 export class ManagerComponent implements OnInit {
 
-  constructor(private getbillfooditembyidservice:GetBillFooditemByBillIdService) { }
+  constructor(private foodservice: FoodService) { }
 
-  bfiid:number = 0;
-  bfi: bill_fooditem = null;
+  foodlabels = [];
+  foodquantities = [1, 2, 3, 4, 5, 6];
+
+  customerlabels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
+  customerpurchasequantities = [1, 2, 3, 4, 5, 6];
+
+
+  @ViewChild('foodChart', { static: true }) private foodchartRef;
+  @ViewChild('customerpurchasechart', { static: true }) private customerpurchaseRef;
+  foodchart: any;
+  customerpurchasechart: any;
 
   ngOnInit() {
+
   }
 
-  
-  async GetBillFooditemByBillIdService(id:number) {
-    let special : bill_fooditem = await this.getbillfooditembyidservice.getBillFooditemByBillId(id)
+  tabGroupDispatcher($event) {
+    switch ($event.index) {
+      case 0: this.createFoodChart();
+        break;
+
+      case 1: this.createCustomerPurchaseChart();
+        break;
+    }
+  }
+
+  async GetAllFoodService(){
+    let special: fooditem = await this.foodservice.getAllFood()
     .then((onfulfilled) => {
-      this.bfi = onfulfilled;
-      console.log(this.bfi);
+      this.foodlabels = onfulfilled;
+      console.log(this.foodlabels);
       return onfulfilled;
     })
   }
 
+  createFoodChart() {
+    this.foodchart = new Chart(this.foodchartRef.nativeElement, {
+      type: 'bar',
+      data: {
+        labels: this.foodlabels,
+
+        datasets: [
+          {
+
+            data: this.foodquantities,
+            borderColor: 'white',
+            backgroundColor: ["red", "blue", "green", "orange", "yellow", "pink", "purple", "violet", "gold",
+              "aqua", "lime", "coral", "teal", "brown"],
+            fill: true
+
+          }
+        ]
+      },
+      options: {
+        legend: {
+          display: false,
+        },
+
+        scales: {
+          xAxes: [{
+            display: true,
+            ticks: {
+              fontSize: 40
+            }
+          }],
+          yAxes: [{
+            display: true,
+            ticks: {
+              beginAtZero: true,
+              fontSize: 40
+            }
+          }],
+        }
+      }
+    });
+  }
+
+  createCustomerPurchaseChart() {
+    this.customerpurchasechart = new Chart(this.customerpurchaseRef.nativeElement, {
+      type: 'bar',
+      data: {
+        labels: this.customerlabels,
+
+        datasets: [
+          {
+
+            data: this.customerpurchasequantities,
+            borderColor: 'white',
+            backgroundColor: ["red", "blue", "green", "orange", "yellow", "pink", "purple", "violet", "gold",
+              "aqua", "lime", "coral", "teal", "brown"],
+            fill: true
+
+          }
+        ]
+      },
+      options: {
+        legend: {
+          display: false,
+        },
+
+        scales: {
+          xAxes: [{
+            display: true,
+            ticks: {
+              fontSize: 40
+            }
+          }],
+          yAxes: [{
+            display: true,
+            ticks: {
+              beginAtZero: true,
+              fontSize: 40
+            }
+          }],
+        }
+      }
+    });
+  }
 
 }

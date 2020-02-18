@@ -1,4 +1,4 @@
-import { account } from './account';
+import { account } from './Account';
 
 export class bill{
     bId: number;

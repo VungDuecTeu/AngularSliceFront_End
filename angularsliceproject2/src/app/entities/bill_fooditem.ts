@@ -1,5 +1,5 @@
-import { fooditem } from './fooditem';
-import { bill } from './bill';
+import { fooditem } from './Fooditem';
+import { bill } from './Bill';
 
 export class bill_fooditem{
     billfooditemid: number;

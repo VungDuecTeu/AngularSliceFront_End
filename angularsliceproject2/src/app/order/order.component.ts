@@ -5,7 +5,7 @@ import { GetFoodByIdService } from '../services/fooditemservices/get-food-by-id.
 import { GetFoodByNameService } from '../services/fooditemservices/get-food-by-name.service';
 import { GetAllFoodByTypeService } from '../services/fooditemservices/get-all-food-by-type.service';
 import { UpdateFoodService } from '../services/fooditemservices/update-food.service';
-import { fooditem } from 'src/app/entities/fooditem';
+import { fooditem } from 'src/app/entities/Fooditem';
 
 @Component({
   selector: 'app-order',
