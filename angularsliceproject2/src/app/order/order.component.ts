@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FoodService } from '../services/Fooditemservice/food.service';
 import { Fooditem } from 'src/app/entities/Fooditem';
+import { FoodService } from '../services/fooditemservice/food.service';
 
 @Component({
   selector: 'app-order',
@@ -34,12 +34,22 @@ export class OrderComponent implements OnInit {
     this.total += (food.price * amount);
   }
 
+
   headToCheckOut(){
     this.foodservice.moveOrder(this.order, this.orderAmounts, this.total);
   }
 
   async CreateFoodService(food:Fooditem){
     let special: Fooditem = await this.foodservice.createFood(food)
+    .then((onfulfilled) => {
+      this.fi = onfulfilled;
+      console.log(this.fi);
+      return onfulfilled;
+    })
+  }
+
+  async GetAllFoodService(){
+    let special: Fooditem = await this.foodservice.getAllFood()
     .then((onfulfilled) => {
       this.fi = onfulfilled;
       console.log(this.fi);

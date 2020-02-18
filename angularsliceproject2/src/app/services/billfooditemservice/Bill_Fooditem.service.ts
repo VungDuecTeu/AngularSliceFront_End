@@ -10,7 +10,7 @@ export class BillFooditemService {
 
   constructor(private http:HttpClient) { }
 
-  url = "http://localhost:9000/billFooditems/billFooditem";
+  url = "http://ec2-3-14-9-87.us-east-2.compute.amazonaws.com:9000/billFooditems/billFooditem";
 
   getBillFooditemByBillId(id:number): Promise<Bill_Fooditem> {
     return this.http.get<Bill_Fooditem>(this.url,
