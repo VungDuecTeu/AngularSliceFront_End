@@ -8,7 +8,7 @@ import { Bill } from '../../entities/Bill';
 export class BillService {
 
   constructor(private http:HttpClient) { }
-  Url = "http://locallhost:9000/Bill";
+  Url = "http://ec2-3-14-9-87.us-east-2.compute.amazonaws.com:9000/Bill";
 
   getBillByid(id:number):Promise<Bill>  { 
     return this.http.get<Bill>(this.Url,
