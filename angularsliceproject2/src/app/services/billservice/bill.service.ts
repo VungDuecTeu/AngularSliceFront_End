@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { bill } from '../entities/bill';
+import { Bill } from '../../entities/Bill';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +10,8 @@ export class BillService {
   constructor(private http:HttpClient) { }
   Url = "http://locallhost:9000/Bill";
 
-  getBillByid(id:number):Promise<bill>  { 
-    return this.http.get<bill>(this.Url,
+  getBillByid(id:number):Promise<Bill>  { 
+    return this.http.get<Bill>(this.Url,
      {// httpOptions
       headers: new HttpHeaders({'Content-Type':'application/json'}),
       params: new HttpParams()
@@ -19,8 +19,8 @@ export class BillService {
      } 
      ).toPromise();
   }
-  creatBill(bill:any):Promise<bill>  { 
-    return this.http.get<bill>(this.Url,
+  creatBill(bill:any):Promise<Bill>  { 
+    return this.http.get<Bill>(this.Url,
      {// httpOptions
       headers: new HttpHeaders({'Content-Type':'application/json'}),
       params: new HttpParams()
@@ -29,8 +29,8 @@ export class BillService {
      } 
      ).toPromise();
   }
-  getAllBills(bid:number):Promise<bill>  { 
-    return this.http.get<bill>(this.Url,
+  getAllBills(bid:number):Promise<Bill>  { 
+    return this.http.get<Bill>(this.Url,
      {// httpOptions
       headers: new HttpHeaders({'Content-Type':'application/json'}),
       params: new HttpParams()
@@ -39,8 +39,8 @@ export class BillService {
      } 
      ).toPromise();
   }
-  updateBills(bid:number):Promise<bill>  { 
-    return this.http.get<bill>(this.Url,
+  updateBills(bid:number):Promise<Bill>  { 
+    return this.http.get<Bill>(this.Url,
      {// httpOptions
       headers: new HttpHeaders({'Content-Type':'application/json'}),
       params: new HttpParams()
@@ -49,8 +49,8 @@ export class BillService {
      } 
      ).toPromise();
   }
-  deleteBill(bid:number):Promise<bill>  { 
-    return this.http.get<bill>(this.Url,
+  deleteBill(bid:number):Promise<Bill>  { 
+    return this.http.get<Bill>(this.Url,
      {// httpOptions
       headers: new HttpHeaders({'Content-Type':'application/json'}),
       params: new HttpParams()

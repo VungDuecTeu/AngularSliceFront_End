@@ -12,15 +12,15 @@ export class AccountService {
   constructor(private http:HttpClient){}
   Url = "http://localhost:4200/Account";
 
-  getAccountByid(id:number):Promise<account>  { 
-    return this.http.get<account>(`http://localhost:4200/account/${id}`
-     {
-      headers: new HttpHeaders({'Content-Type':'application/json'}),
-      params: new HttpParams()
-      .set('bfiid',id.toString())
-     } 
-      ).toPromise;
-  }
+  // getAccountByid(id:number):Promise<account>  { 
+  //   return this.http.get<account>(`http://localhost:4200/account/${id}`
+  //    {
+  //     headers: new HttpHeaders({'Content-Type':'application/json'}),
+  //     params: new HttpParams()
+  //     .set('bfiid',id.toString())
+  //    } 
+  //     ).toPromise;
+  // }
   creatAccount(account:Account):Promise<account>  { 
 
     const body= new HttpParams().set('payload',JSON.stringify(account));

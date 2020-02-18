@@ -1,6 +1,6 @@
-<header class="header" style="height:6.5%; position: absolute; top:0; width:100%">
+<header class="header" style="height:12.5%; position: absolute; top:0; width:100%">
   <div class="image"></div>
-  <p style="color:white; text-align: center; font-size: 25px; margin:10px">Angular Slice!</p>
+
   <!-- 
     <button (click) = "showHome()">Home</button>
     <button (click) = "showMenu()">Menu</button>
@@ -46,35 +46,43 @@
 
 
     </div> -->
-  <span style="width:100%; display: inline-block; position: absolute; top:0">
 
-    <nav mat-tab-nav-bar id="nav_bar" style="color:white; float: left;">
+  
+    <div style="width:100%; display: inline-block;height:6%">
+      <p style="color:white; text-align: center; font-size: 25px; margin:10px">Angular Slice!</p>
+
+      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" style="outline: none;color:white;right:0vmax ;position: absolute; top:0;">
+        <mat-icon >more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item style="outline: none;">
+          <mat-icon style="color: white;">account_box</mat-icon>
+          <span style="color: white;">Login</span>
+        </button>
+        <button mat-menu-item style="outline: none;">
+          <mat-icon style="color: white;">account_circle</mat-icon>
+          <span style="color: white;">Create Account</span>
+        </button>
+      </mat-menu>
+    </div>
+
+    <div style="width:100%; display: inline-block; height:6%"  class="row d-flex justify-content-center" >
+
+    <nav mat-tab-nav-bar id="nav_bar">
       <a  [active]="rla.isActive" class = "links" routerLinkActive #rla="routerLinkActive" mat-tab-link routerLink="/home"> Home </a>
       <a  [active]="rla1.isActive" class = "links" routerLinkActive #rla1="routerLinkActive" mat-tab-link routerLink="/order"> Order </a>
       <a  [active]="rla2.isActive" class = "links" routerLinkActive #rla2="routerLinkActive" mat-tab-link routerLink="/checkout"> Checkout </a>
       <a  [active]="rla3.isActive" class = "links" routerLinkActive #rla3="routerLinkActive" mat-tab-link routerLink="/contact"> Contact </a>
     </nav>
-
-    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" style="float:right;color:white">
-      <mat-icon >more_vert</mat-icon>
-    </button>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item >
-        <mat-icon style="color: white;">account_box</mat-icon>
-        <span style="color: white;">Login</span>
-      </button>
-      <button mat-menu-item >
-        <mat-icon style="color: white;">account_circle</mat-icon>
-        <span style="color: white;">Create Account</span>
-      </button>
-    </mat-menu>
+    
+    </div>
 
     <!-- <mat-tab-group style="float:right">
       <mat-tab label="First"></mat-tab>
       <mat-tab label="Second"></mat-tab>
       <mat-tab label="Third"></mat-tab>
     </mat-tab-group> -->
-  </span>
+
 
 
   <!-- <div style="position:absolute; top: 0;">
