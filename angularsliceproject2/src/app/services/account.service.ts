@@ -14,7 +14,7 @@ export class AccountService {
 
   getAccountByid(id:number):Promise<account>  { 
     return this.http.get<account>(`http://localhost:4200/account/${id}`
-     {// httpOptions
+     {
       headers: new HttpHeaders({'Content-Type':'application/json'}),
       params: new HttpParams()
       .set('bfiid',id.toString())
