@@ -6,8 +6,17 @@ import { Fooditem } from 'src/app/entities/Fooditem';
   providedIn: 'root'
 })
 export class FoodService {
+  order:Array<Fooditem> = [];
+  orderAmounts:Array<number> = [];
+  total:number;
 
   constructor(private http:HttpClient) { }
+
+  moveOrder(sentOrder:Array<Fooditem>, sentAmounts:Array<number>, sentTotal:number){
+    this.order = sentOrder;
+    this.orderAmounts = sentAmounts;
+    this.total = sentTotal;
+  }
 
   createFoodurl = "http://ec2-3-14-9-87.us-east-2.compute.amazonaws.com:9000//food";
 

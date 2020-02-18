@@ -15,11 +15,10 @@
     
     <thead>
     <tr >
-      <th scope="col">Items</th>
+      <th scope="col">Amount</th>
       <th scope="col"></th>
       <th scope="col">Name</th>
       <th scope="col"></th>
-     
       <th scope="col"></th>
       <th scope = "col">Price</th>
      
@@ -27,17 +26,17 @@
     </thead>
   
     <tbody>
-    <tr *ngFor="let food of foods; index as i" >
-      <th scope="row">{{ i + 1 }}</th>
+    <tr *ngFor="let fooditem of order; index as i" >
+      <th scope="row">{{orderAmounts[i]}}</th>
       
       <td>
-        <img [src]="'https://www.hungryhowies.com/sites/default/files/styles' + food.image" class="mr-2" style="width: 100px">
+        <img src={{fooditem.url}} style="width: 100px; height: 100px;">
       
       </td>
-      <td> <h5> {{ food.name }} <h6> {{ "Calories :"+food.callories  }}</h6> </h5></td>
+      <td> <h5> {{fooditem.name}} <h6>Calories: {{fooditem.calories}}</h6> </h5></td>
       <td><h5></h5> </td>
       <td></td>
-      <td> <h6> {{ food.price  }} </h6> </td>
+      <td> <h6>{{fooditem.price}}</h6> </td>
     </tr>
     </tbody>
     <tfoot>
@@ -48,7 +47,7 @@
         <th scope="col"></th>
        
         <th scope="col"></th>
-        <th scope = "col"><h4 matLine>Total: 0.00</h4></th>
+        <th scope = "col"><h4 matLine>Total: {{total}}</h4></th>
        
       </tr>
       </tfoot> 
