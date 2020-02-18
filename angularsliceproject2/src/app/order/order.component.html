@@ -1,8 +1,44 @@
 <app-header></app-header>
 <br><br><br><br><br>
-<div id="whole" style="width:70%; height:87%" class="row d-flex justify-content-center">
+<div id="whole">
     <div id="segment">
         <mat-accordion class="example-headers-align">
+            <!--Test panel-->
+            <mat-expansion-panel [expanded]="true" (opened)="setStep(0)" hideToggle>
+                <!-- Header for this panel -->
+                <mat-expansion-panel-header>
+                    <mat-panel-title>Pizzas</mat-panel-title>
+                    <mat-panel-description>A selection of our delicious pizza options.</mat-panel-description>
+                </mat-expansion-panel-header>
+
+                <div class="holder" >
+                    <!-- First card -->
+                    <mat-card *ngFor = "let fooditem of pizzas">
+                        <mat-card-title>{{fooditem.name}}</mat-card-title>
+                        <span style="float:left;width: 25%;">
+                            <img src={{fooditem.url}}>
+                        </span>
+
+                        <span style="min-width: 60%; height: 80%; word-wrap:break-word;">
+                            <p style="min-height: 50%;">
+                                {{fooditem.description}}
+                            </p>
+
+                            <h3 style="float: left; width: 40%;">Calories: {{fooditem.calories}}</h3>
+                            <h3 style="float: right; width: 40%; text-align: right;">Price: {{fooditem.price}}</h3>
+                        </span>
+
+                        <mat-action-row>
+                            <mat-form-field>
+                                <mat-label style="color: white;">Amount</mat-label>
+                                <input matInput type="number" min="0" value="1">
+                            </mat-form-field>
+                            <button class="orderButton" mat-button (click)="nextStep()">Order</button>
+                        </mat-action-row>
+                    </mat-card>
+                </div>
+            </mat-expansion-panel>
+
             <!--Pizza panel-->
             <mat-expansion-panel [expanded]="true" (opened)="setStep(0)" hideToggle>
                 <!-- Header for this panel -->
@@ -15,7 +51,7 @@
                     <!-- First card -->
                     <mat-card>
                         <mat-card-title>Cheese Pizza</mat-card-title>
-                        <span style="float:left;width: 20%;">
+                        <span style="float:left;width: 25%;">
                             <img src="https://images.contentstack.io/v3/assets/blt068dbc54bf4fc7ed/bltf70df0a3f7b98d04/5db5c829e9effa6ba52972ea/Triple_Cheese_Pizza_v2.jpg">
                         </span>
 
@@ -25,11 +61,101 @@
                                 To add options to the select, add mat-option> elements to the mat-select>. Each mat-option has a value property that can be used to set the value that will be selected if the user chooses this option. The content of the mat-option is what will be shown to the user.
                                 Angular Material also supports use of the native select> element inside of mat-form-field. The native control has several performance, accessibility, and usability advantages. See the documentation for form-field for more information.   
                             </p>
+
+                            <h3 style="float: left; width: 50%;">Calories: 800</h3>
+                            <h3 style="float: right; width: 50%; text-align: right;">Price: 8.99</h3>
                         </span>
 
-                        <span style="float:right; width: 20%;">
-                            <h3>Price: 8.99</h3>
-                            <h4>Calories: 800</h4>
+                        <mat-action-row>
+                            <mat-form-field>
+                                <mat-label style="color: white;">Amount</mat-label>
+                                <input matInput type="number" min="0" value="1">
+                            </mat-form-field>
+                            <button class="orderButton" mat-button (click)="nextStep()">Order</button>
+                        </mat-action-row>
+                    </mat-card>
+
+                    <!-- second card -->
+                    <mat-card>
+                        <mat-card-title>Pepperoni Pizza</mat-card-title>
+                        <span style="float:left;width: 25%;">
+                            <img src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fcdn-image.myrecipes.com%2Fsites%2Fdefault%2Ffiles%2Fstyles%2Fmedium_2x%2Fpublic%2Fimage%2Frecipes%2Fck%2Fgluten-free-cookbook%2Fpepperoni-pizza-ck-x.jpg%3Fitok%3DNWreajsZ&w=450&c=sc&poi=face&q=85">
+                        </span>
+
+                        <span style="width: 60%; word-wrap:break-word;">
+                            <p>
+                                mat-select> is a form control for selecting a value from a set of options, similar to the native select> element. You can read more about selects in the Material Design spec. It is designed to work inside of a mat-form-field element.
+                                To add options to the select, add mat-option> elements to the mat-select>. Each mat-option has a value property that can be used to set the value that will be selected if the user chooses this option. The content of the mat-option is what will be shown to the user.
+                                Angular Material also supports use of the native select> element inside of mat-form-field. The native control has several performance, accessibility, and usability advantages. See the documentation for form-field for more information.   
+                            </p>
+
+                            <h3 style="float: left; width: 50%;">Calories: 1050</h3>
+                            <h3 style="float: right; width: 50%; text-align: right;">Price: 9.99</h3>
+                        </span>
+
+                        <mat-action-row>
+                            <mat-form-field>
+                                <mat-label style="color: white;">Amount</mat-label>
+                                <input matInput type="number" min="0" value="1">
+                            </mat-form-field>
+                            <button class="orderButton" mat-button (click)="nextStep()">Order</button>
+                        </mat-action-row>
+                    </mat-card>
+
+                    <!-- third card -->
+                    <mat-card>
+                        <mat-card-title>Supreme Pizza</mat-card-title>
+                        <span style="float:left;width: 25%;">
+                            <img src="https://www.wilton.com/dw/image/v2/AAWA_PRD/on/demandware.static/-/Sites-wilton-project-master/default/dw141e010b/images/project/WLRECIP-8636/supreme-pizza-recipe.jpg?sw=800&sh=800">
+                        </span>
+
+                        <span style="width: 60%; word-wrap:break-word;">
+                            <p>
+                                mat-select> is a form control for selecting a value from a set of options, similar to the native select> element. You can read more about selects in the Material Design spec. It is designed to work inside of a mat-form-field element.
+                                To add options to the select, add mat-option> elements to the mat-select>. Each mat-option has a value property that can be used to set the value that will be selected if the user chooses this option. The content of the mat-option is what will be shown to the user.
+                                Angular Material also supports use of the native select> element inside of mat-form-field. The native control has several performance, accessibility, and usability advantages. See the documentation for form-field for more information.   
+                            </p>
+
+                            <h3 style="float: left; width: 50%;">Calories: 1750</h3>
+                            <h3 style="float: right; width: 50%; text-align: right;">Price: 15.99</h3>
+                        </span>
+
+                        <mat-action-row>
+                            <mat-form-field>
+                                <mat-label style="color: white;">Amount</mat-label>
+                                <input matInput type="number" min="0" value="1">
+                            </mat-form-field>
+                            <button class="orderButton" mat-button (click)="nextStep()">Order</button>
+                        </mat-action-row>
+                    </mat-card>
+                </div>
+            </mat-expansion-panel>
+        
+            <!-- Wings Panel -->
+            <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+                <!-- Header for this panel -->
+                <mat-expansion-panel-header>
+                    <mat-panel-title>Wings</mat-panel-title>
+                    <mat-panel-description>Juicy boneless and bone-in wings with any sauce you want!</mat-panel-description>
+                </mat-expansion-panel-header>
+
+                <div class="holder">
+                    <!-- First card -->
+                    <mat-card>
+                        <mat-card-title>Honey BBQ Wings (8)</mat-card-title>
+                        <span style="float:left;width: 25%;">
+                            <img src="https://img.buzzfeed.com/thumbnailer-prod-us-east-1/4c41b09cf41644a7b7ca1780edbeb960/BFV8354_Honey_BBQ_Chicken_Wings-FB1080.jpg">
+                        </span>
+
+                        <span style="width: 60%; word-wrap:break-word;">
+                            <p>
+                                mat-select> is a form control for selecting a value from a set of options, similar to the native select> element. You can read more about selects in the Material Design spec. It is designed to work inside of a mat-form-field element.
+                                To add options to the select, add mat-option> elements to the mat-select>. Each mat-option has a value property that can be used to set the value that will be selected if the user chooses this option. The content of the mat-option is what will be shown to the user.
+                                Angular Material also supports use of the native select> element inside of mat-form-field. The native control has several performance, accessibility, and usability advantages. See the documentation for form-field for more information.   
+                            </p>
+
+                            <h3 style="float: left; width: 50%;">Calories: 550</h3>
+                            <h3 style="float: right; width: 50%; text-align: right;">Price: 6.99</h3>
                         </span>
                             
                         <mat-action-row>
@@ -43,105 +169,8 @@
 
                     <!-- second card -->
                     <mat-card>
-                        <mat-card-title>Pepperoni Pizza</mat-card-title>
-                        <span style="float:left;width: 20%;">
-                            <img src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fcdn-image.myrecipes.com%2Fsites%2Fdefault%2Ffiles%2Fstyles%2Fmedium_2x%2Fpublic%2Fimage%2Frecipes%2Fck%2Fgluten-free-cookbook%2Fpepperoni-pizza-ck-x.jpg%3Fitok%3DNWreajsZ&w=450&c=sc&poi=face&q=85">
-                        </span>
-
-                        <span style="width: 60%; word-wrap:break-word;">
-                            <p>
-                                mat-select> is a form control for selecting a value from a set of options, similar to the native select> element. You can read more about selects in the Material Design spec. It is designed to work inside of a mat-form-field element.
-                                To add options to the select, add mat-option> elements to the mat-select>. Each mat-option has a value property that can be used to set the value that will be selected if the user chooses this option. The content of the mat-option is what will be shown to the user.
-                                Angular Material also supports use of the native select> element inside of mat-form-field. The native control has several performance, accessibility, and usability advantages. See the documentation for form-field for more information.   
-                            </p>
-                        </span>
-
-                        <span style="float:right;width: 20%;">
-                            <h3>Price: 9.99</h3>
-                            <h4>Calories: 1050</h4>
-                        </span>
-                            
-                        <mat-action-row align="end">
-                            <mat-form-field>
-                                <mat-label style="color: white;">Amount</mat-label>
-                                <input matInput type="number" min="0" value="1">
-                            </mat-form-field>
-                            <button class="orderButton" mat-button (click)="nextStep()">Order</button>
-                        </mat-action-row>
-                    </mat-card>
-
-                    <!-- third card -->
-                    <mat-card>
-                        <mat-card-title>Supreme Pizza</mat-card-title>
-                        <span style="float:left;width: 20%;">
-                            <img src="https://www.wilton.com/dw/image/v2/AAWA_PRD/on/demandware.static/-/Sites-wilton-project-master/default/dw141e010b/images/project/WLRECIP-8636/supreme-pizza-recipe.jpg?sw=800&sh=800">
-                        </span>
-
-                        <span style="width: 60%; word-wrap:break-word;">
-                            <p>
-                                mat-select> is a form control for selecting a value from a set of options, similar to the native select> element. You can read more about selects in the Material Design spec. It is designed to work inside of a mat-form-field element.
-                                To add options to the select, add mat-option> elements to the mat-select>. Each mat-option has a value property that can be used to set the value that will be selected if the user chooses this option. The content of the mat-option is what will be shown to the user.
-                                Angular Material also supports use of the native select> element inside of mat-form-field. The native control has several performance, accessibility, and usability advantages. See the documentation for form-field for more information.   
-                            </p>
-                        </span>
-
-                        <span style="float:right;width: 20%;">
-                            <h3>Price: 15.99</h3>
-                            <h4>Calories: 1750</h4>
-                        </span>
-                            
-                        <mat-action-row align="end">
-                            <mat-form-field>
-                                <mat-label style="color: white;">Amount</mat-label>
-                                <input matInput type="number" min="0" value="1">
-                            </mat-form-field>
-                            <button class="orderButton" mat-button (click)="nextStep()">Order</button>
-                        </mat-action-row>
-                    </mat-card>
-                </div>
-            </mat-expansion-panel>
-        
-            <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
-                <!-- Header for this panel -->
-                <mat-expansion-panel-header>
-                    <mat-panel-title>Wings</mat-panel-title>
-                    <mat-panel-description>Juicy boneless and bone-in wings with any sauce you want!</mat-panel-description>
-                </mat-expansion-panel-header>
-
-                <div class="holder">
-                    <!-- First card -->
-                    <mat-card>
-                        <mat-card-title>Honey BBQ Wings (8)</mat-card-title>
-                        <span style="float:left;width: 20%;">
-                            <img src="https://img.buzzfeed.com/thumbnailer-prod-us-east-1/4c41b09cf41644a7b7ca1780edbeb960/BFV8354_Honey_BBQ_Chicken_Wings-FB1080.jpg">
-                        </span>
-
-                        <span style="width: 60%; word-wrap:break-word;">
-                            <p>
-                                mat-select> is a form control for selecting a value from a set of options, similar to the native select> element. You can read more about selects in the Material Design spec. It is designed to work inside of a mat-form-field element.
-                                To add options to the select, add mat-option> elements to the mat-select>. Each mat-option has a value property that can be used to set the value that will be selected if the user chooses this option. The content of the mat-option is what will be shown to the user.
-                                Angular Material also supports use of the native select> element inside of mat-form-field. The native control has several performance, accessibility, and usability advantages. See the documentation for form-field for more information.   
-                            </p>
-                        </span>
-
-                        <span style="float:right;width: 20%;">
-                            <h3>Price: 6.99</h3>
-                            <h4>Calories: 550</h4>
-                        </span>
-                            
-                        <mat-action-row align="end">
-                            <mat-form-field>
-                                <mat-label style="color: white;">Amount</mat-label>
-                                <input matInput type="number" min="0" value="1">
-                            </mat-form-field>
-                            <button class="orderButton" mat-button (click)="nextStep()">Order</button>
-                        </mat-action-row>
-                    </mat-card>
-
-                    <!-- second card -->
-                    <mat-card>
                         <mat-card-title>Boneless Buffalo Wings (8)</mat-card-title>
-                        <span style="float:left;width: 20%;">
+                        <span style="float:left;width: 25%;">
                             <img src="https://dinnerthendessert.com/wp-content/uploads/2018/08/Boneless-Buffalo-Wings-3-688x459.jpg">
                         </span>
 
@@ -151,14 +180,12 @@
                                 To add options to the select, add mat-option> elements to the mat-select>. Each mat-option has a value property that can be used to set the value that will be selected if the user chooses this option. The content of the mat-option is what will be shown to the user.
                                 Angular Material also supports use of the native select> element inside of mat-form-field. The native control has several performance, accessibility, and usability advantages. See the documentation for form-field for more information.   
                             </p>
+
+                            <h3 style="float: left; width: 50%;">Calories: 500</h3>
+                            <h3 style="float: right; width: 50%; text-align: right;">Price: 7.99</h3>
                         </span>
 
-                        <span style="float:right;width: 20%;">
-                            <h3>Price: 7.99</h3>
-                            <h4>Calories: 500</h4>
-                        </span>
-                            
-                        <mat-action-row align="end">
+                        <mat-action-row>
                             <mat-form-field>
                                 <mat-label style="color: white;">Amount</mat-label>
                                 <input matInput type="number" min="0" value="1">
@@ -170,7 +197,7 @@
                     <!-- third card -->
                     <mat-card>
                         <mat-card-title>Boneless Hot Wings (8)</mat-card-title>
-                        <span style="float:left;width: 20%;">
+                        <span style="float:left;width: 25%;">
                             <img src="https://food.fnr.sndimg.com/content/dam/images/food/fullset/2018/9/27/0/DVSP77_Boneless-Wings-with-Sweet-Hot-Sauce_s4x3.jpg.rend.hgtvcom.826.620.suffix/1538075545805.jpeg">
                         </span>
 
@@ -180,14 +207,12 @@
                                 To add options to the select, add mat-option> elements to the mat-select>. Each mat-option has a value property that can be used to set the value that will be selected if the user chooses this option. The content of the mat-option is what will be shown to the user.
                                 Angular Material also supports use of the native select> element inside of mat-form-field. The native control has several performance, accessibility, and usability advantages. See the documentation for form-field for more information.   
                             </p>
+
+                            <h3 style="float: left; width: 50%;">Calories: 550</h3>
+                            <h3 style="float: right; width: 50%; text-align: right;">Price: 7.99</h3>
                         </span>
 
-                        <span style="float:right;width: 20%;">
-                            <h3>Price: 7.99</h3>
-                            <h4>Calories: 550</h4>
-                        </span>
-                            
-                        <mat-action-row align="end">
+                        <mat-action-row>
                             <mat-form-field>
                                 <mat-label style="color: white;">Amount</mat-label>
                                 <input matInput type="number" min="0" value="1">
@@ -198,6 +223,7 @@
                 </div>
             </mat-expansion-panel>
 
+            <!-- Drinks Panel -->
             <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
                 <!-- Header for this panel -->
                 <mat-expansion-panel-header>
@@ -209,7 +235,7 @@
                     <!-- First card -->
                     <mat-card>
                         <mat-card-title>Fountain Drink</mat-card-title>
-                        <span style="float:left;width: 20%;">
+                        <span style="float:left;width: 25%;">
                             <img src="https://woodfirekabob.com/wp-content/uploads/2018/11/fdrink-min-675x448.jpg">
                         </span>
 
@@ -219,14 +245,12 @@
                                 To add options to the select, add mat-option> elements to the mat-select>. Each mat-option has a value property that can be used to set the value that will be selected if the user chooses this option. The content of the mat-option is what will be shown to the user.
                                 Angular Material also supports use of the native select> element inside of mat-form-field. The native control has several performance, accessibility, and usability advantages. See the documentation for form-field for more information.   
                             </p>
+
+                            <h3 style="float: left; width: 50%;">Calories: 100</h3>
+                            <h3 style="float: right; width: 50%; text-align: right;">Price: 1.99</h3>
                         </span>
 
-                        <span style="float:right;width: 20%;">
-                            <h3>Price: 1.99</h3>
-                            <h4>Calories: 100</h4>
-                        </span>
-                            
-                        <mat-action-row align="end">
+                        <mat-action-row>
                             <mat-form-field>
                                 <mat-label style="color: white;">Amount</mat-label>
                                 <input matInput type="number" min="0" value="1">
@@ -238,7 +262,7 @@
                     <!-- second card -->
                     <mat-card>
                         <mat-card-title>Water</mat-card-title>
-                        <span style="float:left;width: 20%;">
+                        <span style="float:left;width: 25%;">
                             <img src="https://i.guim.co.uk/img/media/eda873838f940582d1210dcf51900efad3fa8c9b/0_469_7360_4417/master/7360.jpg?width=300&quality=85&auto=format&fit=max&s=35173220d29338bd69b0e643d09e4ce6">
                         </span>
 
@@ -248,14 +272,12 @@
                                 To add options to the select, add mat-option> elements to the mat-select>. Each mat-option has a value property that can be used to set the value that will be selected if the user chooses this option. The content of the mat-option is what will be shown to the user.
                                 Angular Material also supports use of the native select> element inside of mat-form-field. The native control has several performance, accessibility, and usability advantages. See the documentation for form-field for more information.   
                             </p>
-                        </span>
 
-                        <span style="float:right;width: 20%;">
-                            <h3>Price: .99</h3>
-                            <h4>Calories: 0</h4>
+                            <h3 style="float: left; width: 50%;">Calories: 0</h3>
+                            <h3 style="float: right; width: 50%; text-align: right;">Price: 0.99</h3>
                         </span>
                             
-                        <mat-action-row align="end">
+                        <mat-action-row>
                             <mat-form-field>
                                 <mat-label style="color: white;">Amount</mat-label>
                                 <input matInput type="number" min="0" value="1">
@@ -267,7 +289,7 @@
                     <!-- third card -->
                     <mat-card>
                         <mat-card-title>Beer</mat-card-title>
-                        <span style="float:left;width: 20%;">
+                        <span style="float:left;width: 25%;">
                             <img src="https://www.eugeneweekly.com/wp-content/uploads/2019/12/20191205news-pint-o-beer-1300x844.jpg">
                         </span>
 
@@ -277,14 +299,12 @@
                                 To add options to the select, add mat-option> elements to the mat-select>. Each mat-option has a value property that can be used to set the value that will be selected if the user chooses this option. The content of the mat-option is what will be shown to the user.
                                 Angular Material also supports use of the native select> element inside of mat-form-field. The native control has several performance, accessibility, and usability advantages. See the documentation for form-field for more information.   
                             </p>
+
+                            <h3 style="float: left; width: 50%;">Calories: 350</h3>
+                            <h3 style="float: right; width: 50%; text-align: right;">Price: 4.99</h3>
                         </span>
 
-                        <span style="float:right;width: 20%;">
-                            <h3>Price: 4.99</h3>
-                            <h4>Calories: 350</h4>
-                        </span>
-                            
-                        <mat-action-row align="end">
+                        <mat-action-row>
                             <mat-form-field>
                                 <mat-label style="color: white;">Amount</mat-label>
                                 <input matInput type="number" min="0" value="1">
@@ -297,7 +317,7 @@
         </mat-accordion>
     </div>
 
-    <mat-divider [vertical]="true"></mat-divider>
+    <!-- <mat-divider [vertical]="true"></mat-divider> -->
 
     <mat-card id="orderList">
         <h3 matLine>Order:</h3>
