@@ -16,6 +16,11 @@ export class FoodService {
     this.order = sentOrder;
     this.orderAmounts = sentAmounts;
     this.total = sentTotal;
+
+    console.log("moveOrder")
+    console.log(this.order);
+    console.log(this.orderAmounts);
+    console.log(this.total);
   }
 
   createFoodurl = "http://ec2-3-14-9-87.us-east-2.compute.amazonaws.com:9000//food";

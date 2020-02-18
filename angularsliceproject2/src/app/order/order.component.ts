@@ -36,6 +36,10 @@ export class OrderComponent implements OnInit {
 
 
   headToCheckOut(){
+    console.log("headingToCheckOut")
+    console.log(this.order);
+    console.log(this.orderAmounts);
+    console.log(this.total);
     this.foodservice.moveOrder(this.order, this.orderAmounts, this.total);
   }
 
@@ -89,7 +93,7 @@ export class OrderComponent implements OnInit {
         console.log(this.drinks);
       }
       this.fi = onfulfilled;
-      console.log(this.fi);
+      // console.log(this.fi);
       return onfulfilled;
     })
   }
