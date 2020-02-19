@@ -8,55 +8,27 @@ import { Bill } from '../../entities/Bill';
 export class BillService {
 
   constructor(private http:HttpClient) { }
-  Url = "http://ec2-3-14-9-87.us-east-2.compute.amazonaws.com:9000/Bill";
-
+ 
   getBillByid(id:number):Promise<Bill>  { 
-    return this.http.get<Bill>(this.Url,
-     {// httpOptions
-      headers: new HttpHeaders({'Content-Type':'application/json'}),
-      params: new HttpParams()
-      .set('bfiid',id.toString())
-     } 
-     ).toPromise();
+    return this.http.get<Bill>(`http://ec2-3-14-9-87.us-east-2.compute.amazonaws.com:9000//bill/${id}`).toPromise();
   }
-  creatBill(bill:any):Promise<Bill>  { 
-    return this.http.get<Bill>(this.Url,
-     {// httpOptions
-      headers: new HttpHeaders({'Content-Type':'application/json'}),
-      params: new HttpParams()
-      
-      .set('bfiid',bill.toString())
-     } 
-     ).toPromise();
+
+  creatBillUrl = "http://ec2-3-14-9-87.us-east-2.compute.amazonaws.com:9000//bill"
+  creatBill(bill:Bill):Promise<Bill>  { 
+    return this.http.post<Bill>(this.creatBillUrl, bill).toPromise();
   }
-  getAllBills(bid:number):Promise<Bill>  { 
-    return this.http.get<Bill>(this.Url,
-     {// httpOptions
-      headers: new HttpHeaders({'Content-Type':'application/json'}),
-      params: new HttpParams()
-      
-      .set('bfiid',bid.toString())
-     } 
-     ).toPromise();
+
+  getAllBillsUrl = "http://ec2-3-14-9-87.us-east-2.compute.amazonaws.com:9000//bill"
+  getAllBills():Promise<Bill>  { 
+    return this.http.get<Bill>(this.getAllBillsUrl).toPromise();
   }
-  updateBills(bid:number):Promise<Bill>  { 
-    return this.http.get<Bill>(this.Url,
-     {// httpOptions
-      headers: new HttpHeaders({'Content-Type':'application/json'}),
-      params: new HttpParams()
-      
-      .set('bfiid',bid.toString())
-     } 
-     ).toPromise();
+
+  updateBillsUrl = "http://ec2-3-14-9-87.us-east-2.compute.amazonaws.com:9000//bill"
+  updateBills(bill:Bill):Promise<Bill>  { 
+    return this.http.put<Bill>(this.updateBillsUrl, bill).toPromise();
   }
-  deleteBill(bid:number):Promise<Bill>  { 
-    return this.http.get<Bill>(this.Url,
-     {// httpOptions
-      headers: new HttpHeaders({'Content-Type':'application/json'}),
-      params: new HttpParams()
-      
-      .set('bfiid',bid.toString())
-     } 
-     ).toPromise();
+
+  deleteBill(id:number):Promise<Bill>  { 
+    return this.http.delete<Bill>(`http://ec2-3-14-9-87.us-east-2.compute.amazonaws.com:9000//bill/${id}`).toPromise();
   }
 }
