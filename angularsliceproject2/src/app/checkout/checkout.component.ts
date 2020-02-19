@@ -15,6 +15,7 @@ export class CheckoutComponent implements OnInit {
   order:Array<Fooditem> = [];
   orderAmounts:Array<number> = [];
   total:number = 0.00;
+  tax:number = 0.06;
 
   ngOnInit() {
     this.makeOrder();
@@ -23,13 +24,16 @@ export class CheckoutComponent implements OnInit {
   makeOrder(){
     this.order = this.fs.order;
     this.orderAmounts = this.fs.orderAmounts;
-    this.total = this.fs.total;
+    this.tax *= this.fs.total;
+    this.total = this.fs.total * 1.06;
     
     console.log("makeOrder");
     console.log(this.order);
     console.log(this.orderAmounts);
     console.log(this.total);
   }
+
+
 
 }
 
