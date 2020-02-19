@@ -11,7 +11,8 @@
         <mat-tab-group (selectedTabChange)="tabGroupDispatcher($event)">
 
             <mat-tab label="Food Analytics">
-                <div style="display: block;color:white;">
+                <div class="chart-container" style="
+                    position:relative; height:77vh ">
                     <canvas  style="color: white" #foodChart>{{ foodchart }} 
                     
                     <!-- [data]="doughnutChartData"
@@ -26,7 +27,8 @@
             <mat-tab label="Customer's Purchase Analytics">
                 
             
-                <div style="display: block;color:white">
+                <div class="chart-container" style="
+                position:relative; height:77vh ">
                     <canvas #customerpurchasechart>{{ customerpurchasechart }} 
                     style="color: white;"
                     <!-- [data]="doughnutChartData"
@@ -45,5 +47,6 @@
   
       </div>
 
-<br><br><br> <br><br><br> <br><br><br> <br><br><br> <br><br><br> <br><br><br> <br><br><br>
+      <br><br><br>
+
       <app-footer></app-footer>
