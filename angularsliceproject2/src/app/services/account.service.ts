@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Account } from '../entities/account';
-// import { BillService } from './bill.service';
+import { Account } from '../entities/Account';
 
 
 @Injectable({
@@ -10,49 +9,34 @@ import { Account } from '../entities/account';
 export class AccountService {
 
   constructor(private http:HttpClient){}
-  Url = "http://localhost:4200/Account";
 
-  // getAccountByid(id:number):Promise<Account>  { 
-  //   return this.http.get<Account>(`http://localhost:4200/Account/${id}`
+  getAccountByid(id:number):Promise<Account>  { 
+    return this.http.get<Account>(`http://ec2-3-14-9-87.us-east-2.compute.amazonaws.com:9000//account/${id}`).toPromise();
+  }
+
+  creatAccountUrl = "http://ec2-3-14-9-87.us-east-2.compute.amazonaws.com:9000//account";
+  creatAccount(account:Account):Promise<Account>  { 
+    return this.http.post<Account>(this.creatAccountUrl, account).toPromise();
+  }
+
+  getAllAccountUrl = "http://ec2-3-14-9-87.us-east-2.compute.amazonaws.com:9000//account";
+  getAllAccounts():Promise<Account>  { 
+    return this.http.get<Account>(this.getAllAccountUrl).toPromise();
+  }
+
+  updateAccountUrl = "http://ec2-3-14-9-87.us-east-2.compute.amazonaws.com:9000//account";
+  updateAccount(account:Account):Promise<Account>  { 
+    return this.http.put<Account>(this.updateAccountUrl, account).toPromise();
+  }
+
+  // deleteAccountUrl = "http://ec2-3-14-9-87.us-east-2.compute.amazonaws.com:9000//account";
+  // deleteAccount(aid:number):Promise<Account>  { 
+  //   return this.http.get<Account>(this.deleteAccountUrl,
   //    {
   //     headers: new HttpHeaders({'Content-Type':'application/json'}),
   //     params: new HttpParams()
-  //     .set('bfiid',id.toString())
+  //     .set('accou',account.toString())
   //    } 
-  //     ).toPromise;
+  //    ).toPromise();
   // }
-  creatAccount(Account:Account):Promise<Account>  { 
-
-    const body= new HttpParams().set('payload',JSON.stringify(Account));
-    return this.http.post<Account>(`http://localhost:4200/Account`,Account
-    
-     ).toPromise();
-  }
-  getAllAccounts(aid:number):Promise<Account>  { 
-    return this.http.get<Account>(`http://localhost:4200/Account`
-     
-     ).toPromise();
-  }
-  updateAccount(account:any):Promise<Account>  { 
-    const body= new HttpParams().set('payload',JSON.stringify(Account));
-    return this.http.post<Account>(this.Url,
-     {// httpOptions
-      headers: new HttpHeaders({'Content-Type':'application/json'}),
-      params: new HttpParams()
-      
-      .set('bfiid',account.toString())
-     } 
-     ).toPromise();
-  }
-  deleteAccount(aid:number):Promise<Account>  { 
-    return this.http.get<Account>(this.Url,
-     {// httpOptions
-      headers: new HttpHeaders({'Content-Type':'application/json'}),
-      params: new HttpParams()
-      
-      .set('bfiid',aid.toString())
-     } 
-     ).toPromise();
-  }
 }
-

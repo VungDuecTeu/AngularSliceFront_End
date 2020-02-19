@@ -26,13 +26,7 @@ export class FoodService {
   createFoodurl = "http://ec2-3-14-9-87.us-east-2.compute.amazonaws.com:9000//food";
 
   createFood(food:Fooditem): Promise<Fooditem> {
-    return this.http.post<Fooditem>(this.createFoodurl,
-        {
-          headers: new HttpHeaders({'Content-Type': 'application/json'}),
-          params: new HttpParams()
-        .set('food', food.toString())
-      }
-    ).toPromise();
+    return this.http.post<Fooditem>(this.createFoodurl, food).toPromise();
   }
 
   getAllFoodByTypeurl = "http://ec2-3-14-9-87.us-east-2.compute.amazonaws.com:9000//food/type";
@@ -48,9 +42,8 @@ export class FoodService {
   }
 
   getAllFoodurl = "http://ec2-3-14-9-87.us-east-2.compute.amazonaws.com:9000//food";
-
-  getAllFood(): Promise<any>{
-    return this.http.get<any>(this.getAllFoodurl).toPromise();
+  getAllFood(): Promise<Fooditem>{
+    return this.http.get<Fooditem>(this.getAllFoodurl).toPromise();
   }
 
   getFoodByIdurl = "http://ec2-3-14-9-87.us-east-2.compute.amazonaws.com:9000//food/id";
@@ -80,13 +73,7 @@ export class FoodService {
   updateFoodurl = "http://ec2-3-14-9-87.us-east-2.compute.amazonaws.com:9000//food";
 
   updateFood(food:Fooditem): Promise<Fooditem> {
-    return this.http.put<Fooditem>(this.updateFoodurl,
-        {
-          headers: new HttpHeaders({'Content-Type': 'application/json'}),
-          params: new HttpParams()
-        .set('food', food.toString())
-      }
-    ).toPromise();
+    return this.http.put<Fooditem>(this.updateFoodurl, food).toPromise();
   }
 
 }
