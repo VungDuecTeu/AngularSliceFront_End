@@ -35,11 +35,16 @@ export class OrderComponent implements OnInit {
   }
 
   addToOrder(food:Fooditem){
-    this.order.push(food);
     let amount = Number((<HTMLInputElement>document.getElementById("input_" + food.foodID)).value);
-    this.orderAmounts.push(amount);
-    this.orderList.push(amount + " " + food.name + "         " + food.price.toFixed(2));
-    this.total += (food.price * amount);
+    
+    if (amount >= 0){
+      this.order.push(food);
+      this.orderAmounts.push(amount);
+      this.orderList.push(amount + " " + food.name + "         " + food.price.toFixed(2));
+      this.total += (food.price * amount);
+    } else {
+      alert("Can not order a negative amount!");
+    }
   }
 
 
