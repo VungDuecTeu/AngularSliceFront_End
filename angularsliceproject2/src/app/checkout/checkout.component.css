@@ -22,3 +22,8 @@ table {
     height: 100%;
     margin-left: 1%;
   }
+
+  #holder{
+    overflow-y: scroll;
+    height: 85%;
+}
