@@ -42,7 +42,7 @@ export class FoodService {
   }
 
   getAllFoodurl = "http://ec2-3-14-9-87.us-east-2.compute.amazonaws.com:9000//food";
-  getAllFood(): Promise<Fooditem>{
+  getAllFood(): Promise<any>{
     return this.http.get<Fooditem>(this.getAllFoodurl).toPromise();
   }
 
