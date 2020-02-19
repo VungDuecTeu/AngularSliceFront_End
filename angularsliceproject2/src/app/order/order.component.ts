@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Fooditem } from 'src/app/entities/Fooditem';
 import { FoodService } from '../services/fooditemservice/food.service';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-order',
@@ -9,7 +10,8 @@ import { FoodService } from '../services/fooditemservice/food.service';
 })
 export class OrderComponent implements OnInit {
 
-  constructor(private foodservice:FoodService) { }
+  constructor(private foodservice:FoodService,
+    private data: DataService) { }
 
   fi:Fooditem = null;
   pizzas:Fooditem;
@@ -19,10 +21,16 @@ export class OrderComponent implements OnInit {
   orderList:Array<string> = [];
   total:number = 0.0;
 
+  currentbillid:number = 0;
+
   ngOnInit() {
     this.GetAllFoodByTypeService("Pizza");
     this.GetAllFoodByTypeService("Wings");
     this.GetAllFoodByTypeService("Drinks");
+
+    this.data.currentbillid.subscribe(bid => this.currentbillid = bid);
+    this.data.changeBillId(4);
+    
   }
 
   addToOrder(food:Fooditem){

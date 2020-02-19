@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../services/data.service';
 
 interface Food {
   name: string;
@@ -41,14 +42,16 @@ const FOOD: Food[] = [
   styleUrls: ['./checkout.component.css']
 })
 
-
 export class CheckoutComponent implements OnInit {
 
+  currentbillid:number = 0;
 
   foods = FOOD;
-  constructor() { }
+  constructor(private data: DataService) { }
 
   ngOnInit() {
+    this.data.currentbillid.subscribe(bid => this.currentbillid = bid);
+    console.log(this.currentbillid);
   }
 
   
