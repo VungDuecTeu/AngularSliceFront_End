@@ -43,7 +43,7 @@ export class OrderComponent implements OnInit {
       this.orderList.push(amount + " " + food.name + "         " + food.price.toFixed(2));
       this.total += (food.price * amount);
     } else {
-      alert("Can not order a negative amount!");
+      alert("Can not order 0 of an item or negative amounts! Please try again");
     }
   }
 
