@@ -11,51 +11,56 @@
 <mat-card  id="main">
  
   <h2>Your Cart</h2>
-  <table class="table table-striped">
-    
-    <thead>
-    <tr >
-      <th scope="col">Amount</th>
-      <th scope="col"></th>
-      <th scope="col">Name</th>
-      <th scope="col"></th>
-      <th scope="col"></th>
-      <th scope = "col">Price</th>
-     
-    </tr>
-    </thead>
-  
-    <tbody>
-    <tr *ngFor="let fooditem of order; index as i" >
-      <th scope="row">{{orderAmounts[i]}}</th>
+  <div id="holder">
+    <table class="table table-striped">
       
-      <td>
-        <img src={{fooditem.url}} style="width: 100px; height: 100px;">
-      
-      </td>
-      <td> <h5> {{fooditem.name}} <h6>Calories: {{fooditem.calories}}</h6> </h5></td>
-      <td><h5></h5> </td>
-      <td></td>
-      <td> <h6>{{fooditem.price}}</h6> </td>
-    </tr>
-    </tbody>
-    <tfoot>
+      <thead>
       <tr >
-        <th scope="col" ><button type="button" class="btn btn-dark btn-lg">CheckOut</button></th>
+        <th scope="col">Amount</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
         <th scope="col"></th>
         <th scope="col"></th>
-        <th scope="col"></th>
-       
-        <th scope="col"></th>
-        <th scope = "col"><h4 matLine>Total: ${{total | currency:[USD]}}</h4></th>
-       
+        <th scope = "col">Price</th>
+      
       </tr>
-      </tfoot> 
-  </table>
+      </thead>
+    
+      <tbody>
+      <tr *ngFor="let fooditem of order; index as i" >
+        <th scope="row">{{orderAmounts[i]}}</th>
+        
+        <td>
+          <img src={{fooditem.url}} style="width: 100px; height: 100px;">
+        
+        </td>
+        <td> <h5> {{fooditem.name}} <h6>Calories: {{fooditem.calories}}</h6> </h5></td>
+        <td><h5></h5> </td>
+        <td></td>
+        <td> <h6>{{fooditem.price}}</h6> </td>
+      </tr>
+      </tbody>
+      <!-- <tfoot>
+        <tr >
+          <th scope="col" ></th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+        
+          <th scope="col"></th>
+          <th scope = "col"></th>
+        
+        </tr>
+        </tfoot>  -->
+    </table>
+  </div>
+  <h4 matLine style="float: right; margin: 25px;">Total: ${{total | currency:[USD]}}</h4>
 </mat-card>
 
 <mat-card >
   <mat-list-item role="listitem"><img src="https://assets.secure.checkout.visa.com/wallet-services-web/xo/button.png?width=218&amp;height=47&cobrand=false&svg=true&legacy=false" alt=""></mat-list-item>
+  <h6>Tax  ={{tax | currency}}</h6>
+  <h6>After tax ={{total | currency}}</h6>
   <mat-list-item role="listitem"> <button mat-raised-button color="primary">CheckOut</button></mat-list-item>
 </mat-card>
 
