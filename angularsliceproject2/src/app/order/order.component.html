@@ -33,7 +33,7 @@
                                 <mat-label style="color: white;">Amount</mat-label>
                                 <input id="input_{{fooditem.foodID}}" matInput type="number" min="0" value="1">
                             </mat-form-field>
-                            <button class="orderButton" mat-button (click)="addToOrder(fooditem)">Order</button>
+                            <button id="orderButton" mat-button (click)="addToOrder(fooditem)">Order</button>
                         </mat-action-row>
                     </mat-card>
                 </div>
@@ -69,7 +69,7 @@
                                 <mat-label style="color: white;">Amount</mat-label>
                                 <input id="input_{{fooditem.foodID}}" matInput type="number" min="0" value="1">
                             </mat-form-field>
-                            <button class="orderButton" mat-button (click)="addToOrder(fooditem)">Order</button>
+                            <button id="orderButton" mat-button (click)="addToOrder(fooditem)">Order</button>
                         </mat-action-row>
                     </mat-card>
                 </div>
@@ -105,7 +105,7 @@
                                 <mat-label style="color: white;">Amount</mat-label>
                                 <input id="input_{{fooditem.foodID}}" matInput type="number" min="0" value="1">
                             </mat-form-field>
-                            <button class="orderButton" mat-button (click)="addToOrder(fooditem)">Order</button>
+                            <button id="orderButton" mat-button (click)="addToOrder(fooditem)">Order</button>
                         </mat-action-row>
                     </mat-card>
                 </div>
@@ -118,11 +118,13 @@
     <!-- <mat-divider [vertical]="true"></mat-divider> -->
 
     <mat-card id="orderList">
-        <h3 matLine>Order:</h3>
+        <h3 matLine style="color:white">Order:</h3>
         <mat-list id="orderItems">
-            <mat-list-item *ngFor = "let string of orderList">-{{string}}</mat-list-item>
+            <mat-list-item style="color:white" *ngFor = "let string of orderList">-{{string}}</mat-list-item>
         </mat-list>
-        <h3 matLine>Total: ${{total.toFixed(2)}}</h3>
+        <h3 matLine style="color:white">Total: ${{total.toFixed(2)}}</h3>
+        <h6 matLine style="color:white; font-size: 7px;">*before tax</h6>
+        <button id="checkOutButton" mat-button (click)="headToCheckOut()" class = "links" routerLinkActive #rla2="routerLinkActive" routerLink="/checkout">Check Out</button>
     </mat-card>
 </div>
 
