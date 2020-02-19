@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { Account } from '../entities/account';
+// import { BillService } from './bill.service';
 
-import { Account } from '../entities/Account';
-import { BillService } from './bill.service';
 
 @Injectable({
   providedIn: 'root'

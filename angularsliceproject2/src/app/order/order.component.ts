@@ -18,6 +18,7 @@ export class OrderComponent implements OnInit {
   wings:Fooditem;
   drinks:Fooditem;
   order:Array<Fooditem> = [];
+  orderAmounts:Array<number> = [];
   orderList:Array<string> = [];
   total:number = 0.0;
 
@@ -36,8 +37,18 @@ export class OrderComponent implements OnInit {
   addToOrder(food:Fooditem){
     this.order.push(food);
     let amount = Number((<HTMLInputElement>document.getElementById("input_" + food.foodID)).value);
-    this.orderList.push(amount + " " + food.name);
+    this.orderAmounts.push(amount);
+    this.orderList.push(amount + " " + food.name + "         " + food.price.toFixed(2));
     this.total += (food.price * amount);
+  }
+
+
+  headToCheckOut(){
+    console.log("headingToCheckOut")
+    console.log(this.order);
+    console.log(this.orderAmounts);
+    console.log(this.total);
+    this.foodservice.moveOrder(this.order, this.orderAmounts, this.total);
   }
 
   async CreateFoodService(food:Fooditem){
@@ -90,7 +101,7 @@ export class OrderComponent implements OnInit {
         console.log(this.drinks);
       }
       this.fi = onfulfilled;
-      console.log(this.fi);
+      // console.log(this.fi);
       return onfulfilled;
     })
   }

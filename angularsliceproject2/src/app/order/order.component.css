@@ -2,9 +2,9 @@
     display: flex; 
     width:100%; 
     height:78%;
-    /* justify-content: center;  */
-    margin-left: 10%;
-    margin-right: 10%;
+    justify-content: center;
+    /* margin-left: 10%;
+    margin-right: 10%; */
     margin-bottom: 2%;
     margin-top: 2%;
 }
@@ -13,7 +13,7 @@
     overflow-y: scroll;
     height: 420px;
 }
-.orderButton{
+#orderButton, #checkOutButton{
     float: right; 
     font-size: 18pt;
     background-color:whitesmoke;
@@ -33,7 +33,7 @@
 
 #orderItems{
     overflow-y: scroll;
-    height:85%;
+    height:70%;
 }
 
 #segment{
