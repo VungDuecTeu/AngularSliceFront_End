@@ -17,6 +17,8 @@ import { FooterComponent } from './footer/footer.component';
 import { CheckouttableComponent } from './checkout/checkouttable/checkouttable.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
+import { ChartComponent } from './charts/chart.component';
+import { ConfirmationboxComponent } from './helpercomponents/confirmationbox/confirmationbox.component';
 //import { RouterModule, Routes } from '@angular/router';
 
 @NgModule({
@@ -30,7 +32,9 @@ import { LoginComponent } from './login/login.component';
     FooterComponent,
     CheckoutComponent,
     CheckouttableComponent,
-    LoginComponent
+    LoginComponent,
+    ChartComponent,
+    ConfirmationboxComponent
         
   ],
   imports: [

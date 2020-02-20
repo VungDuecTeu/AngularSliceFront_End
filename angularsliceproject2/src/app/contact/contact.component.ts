@@ -1,5 +1,7 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
 import {} from 'googlemaps';
+import { MatDialog } from '@angular/material';
+import { ConfirmDialogModel, ConfirmationboxComponent } from '../helpercomponents/confirmationbox/confirmationbox.component';
 
 @Component({
   selector: 'app-contact',
@@ -9,14 +11,18 @@ import {} from 'googlemaps';
 
 export class ContactComponent implements OnInit {
 
-  constructor() { }
-
   @ViewChild('mapContainer', {static: false}) gmap: ElementRef;
   map: google.maps.Map;
   
   panelOpenState = [false,false,false,false,false];
-
   indexexpand: number = -1;
+  confirmationtitle = "test";
+  confirmationcontent = "confirmationcontent";
+  showconfirmationbox = false;
+
+  constructor() {
+
+  }
 
   coordinates = [
     new google.maps.LatLng(35.22,  -80.84),
@@ -51,6 +57,7 @@ export class ContactComponent implements OnInit {
   }
 
   changelocation(i:number){
+
     this.indexexpand = i == this.indexexpand ? -1 : i;
     this.map.setCenter(this.coordinates[i]);
   }
