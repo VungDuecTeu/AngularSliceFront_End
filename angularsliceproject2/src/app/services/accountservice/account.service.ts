@@ -22,25 +22,27 @@ export class AccountService {
       ).toPromise();
   }
 
-  getAccountByUsername(username:string):Promise<Account>  { 
-    return this.http.get<Account>(`http://ec2-3-14-9-87.us-east-2.compute.amazonaws.com:9000/Account/${username}`,
-     {// httpOptions
-      headers: new HttpHeaders({'Content-Type':'application/json'}),
-      params: new HttpParams()
-      .set('username', username.toString())
-     } 
-      ).toPromise();
+  getAccountByUsername(name:string, pass:string):Promise<Account>  { 
+    // let object = {
+    //   username:name,
+    //   password:pass
+    // }
+    let account = new Account(0, "tao", "password","aada","sada","asdasfsa",false);
+    // const body = new HttpParams().set('account',JSON.stringify(account));
+    // console.log(body);
+    console.log(account);
+    return this.http.post<Account>(`http://ec2-3-14-9-87.us-east-2.compute.amazonaws.com:9000//account/login`, account).toPromise();
   }
 
   creatAccount(Account:Account):Promise<Account>  { 
 
     const body= new HttpParams().set('payload',JSON.stringify(Account));
-    return this.http.post<Account>(`http://ec2-3-14-9-87.us-east-2.compute.amazonaws.com:9000/Account`,Account
+    return this.http.post<Account>(`http://ec2-3-14-9-87.us-east-2.compute.amazonaws.com:9000/account`,Account
     
      ).toPromise();
   }
   getAllAccounts():Promise<Account>  { 
-    return this.http.get<Account>(`http://ec2-3-14-9-87.us-east-2.compute.amazonaws.com:9000/Account`
+    return this.http.get<Account>(`http://ec2-3-14-9-87.us-east-2.compute.amazonaws.com:9000/account`
      
      ).toPromise();
   }
