@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { FoodService } from '../services/fooditemservice/food.service';
 
 @Component({
   selector: 'app-home',
@@ -27,20 +28,33 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 })
 export class HomeComponent implements OnInit {
 
-  listofurls = ["https://images.contentstack.io/v3/assets/blt068dbc54bf4fc7ed/bltf70df0a3f7b98d04/5db5c829e9effa6ba52972ea/Triple_Cheese_Pizza_v2.jpg",
-    "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fcdn-image.myrecipes.com%2Fsites%2Fdefault%2Ffiles%2Fstyles%2Fmedium_2x%2Fpublic%2Fimage%2Frecipes%2Fck%2Fgluten-free-cookbook%2Fpepperoni-pizza-ck-x.jpg%3Fitok%3DNWreajsZ&w=450&c=sc&poi=face&q=85",
-    "https://www.wilton.com/dw/image/v2/AAWA_PRD/on/demandware.static/-/Sites-wilton-project-master/default/dw141e010b/images/project/WLRECIP-8636/supreme-pizza-recipe.jpg?sw=800&sh=800"]
+  listofpicurls = ["https://images.contentstack.io/v3/assets/blt068dbc54bf4fc7ed/bltf70df0a3f7b98d04/5db5c829e9effa6ba52972ea/Triple_Cheese_Pizza_v2.jpg"]
   currentindex: number = 0;
 
   isOpen = true;
+
+  async GetAllFoodService() {
+
+    let special: any = await this.foodservice.getAllFood()
+      .then((onfulfilled) => {
+        // this.foodlabels = onfulfilled;
+
+        for (let i: number = 0; i < onfulfilled.length; i++) {
+          this.listofpicurls.push(onfulfilled[i].url);
+          console.log(onfulfilled[i].url);
+        }
+
+        return onfulfilled;
+      })
+  }
 
   fadesleep = (milliseconds) => {
     return new Promise(resolve => setTimeout(resolve, milliseconds))
   }
 
   async fade() { // 1 = enemy, 2 = player, 3 = tie
-    if (this.currentindex >= this.listofurls.length - 1)
-    this.currentindex = 0;
+    if (this.currentindex >= this.listofpicurls.length - 1)
+    this.currentindex = 1;
   else
     this.currentindex++;
 
@@ -52,7 +66,7 @@ export class HomeComponent implements OnInit {
     this.fade();
   }
 
-  constructor() { }
+  constructor(private foodservice:FoodService) { }
 
   homeBool: boolean = false;
   menuBool: boolean = false;
@@ -63,6 +77,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.fade();
+    this.GetAllFoodService();
   }
 
   showHome() {

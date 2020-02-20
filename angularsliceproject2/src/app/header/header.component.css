@@ -3,10 +3,6 @@
     background-color: rgb(148, 24, 14); 
 }
 
-.image{
-    background-image: url(src\assets\img\AngularSliceLogo.jpg);
-}
-
 .login{
     position: absolute; 
     right: 0%;
