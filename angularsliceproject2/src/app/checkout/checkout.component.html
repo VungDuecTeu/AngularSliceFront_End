@@ -46,8 +46,8 @@
   <h4 matLine style="float: right; margin: 25px;">Total: ${{total | currency:[USD]}}</h4>
 </mat-card>
 
-<mat-card >
-  <mat-card>
+<mat-card  >
+  <mat-card style="background: rgb(151, 151, 151);">
   <mat-list-item role="listitem"><h3>Payment Detail</h3><img src="http://i76.imgup.net/accepted_c22e0.png" alt=""></mat-list-item>
   <h6>Card Number</h6>
   <input type="number">
@@ -57,7 +57,8 @@
   <mat-card>
   <h6>Tax  ={{tax | currency}}</h6>
   <h6>After tax ={{total | currency}}</h6>
-  <button  (click)="popUpFunc()">Order</button>
+ 
+  <button class="button" style="vertical-align:middle" (click)='popUpFunc()'><span>Order</span></button>
 </mat-card>
 
 
