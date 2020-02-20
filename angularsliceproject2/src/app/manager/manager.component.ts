@@ -60,14 +60,15 @@ export class ManagerComponent implements OnInit {
           for (let j: number = 0; j < onfulfilled.length; j++) {
             if (this.foods[i].foodID === onfulfilled[j].food.foodID) {
               this.foodsmap.set(this.foods[i].name,
-                this.foodsmap.get(this.foods[i].name) + 1)
-              console.log(onfulfilled[j].fooditem);
-            }
-            else {
-              console.log(this.foods[i].foodID + " " + onfulfilled[j].food.foodID);
+                this.foodsmap.get(this.foods[i].name) + (onfulfilled[j].amount * this.foods[i].price));
             }
           }
         }
+
+        // for (let i:number = 0; i < this.foodsmap.values.length; i++){
+        //   this.foodsmap[i].values += "$";
+        // }
+
         return onfulfilled;
       })
   }
@@ -100,8 +101,6 @@ export class ManagerComponent implements OnInit {
 
   createFoodChart() {
 
-
-
     this.customerpurchasechart = null;
     this.foodchart = new Chart(this.foodchartRef.nativeElement, {
       type: 'bar',
@@ -123,6 +122,10 @@ export class ManagerComponent implements OnInit {
       options: {
         responsive: true,
         maintainAspectRatio: false,
+        title: {
+          display: true,
+          text: 'Food Gross profit in $'
+        },
         legend: {
           display: false,
         },
@@ -138,8 +141,11 @@ export class ManagerComponent implements OnInit {
             display: true,
             ticks: {
               beginAtZero: true,
-              fontSize: 20
-            }
+              fontSize: 20,
+              callback: function(value, index, values) {
+                  return '$' + value;
+                }
+            },
           }],
         }
       }
@@ -168,6 +174,10 @@ export class ManagerComponent implements OnInit {
       options: {
         responsive: true,
         maintainAspectRatio: false,
+        title: {
+          display: true,
+          text: 'Customer Spending in $'
+        },
         legend: {
           display: false,
         },
