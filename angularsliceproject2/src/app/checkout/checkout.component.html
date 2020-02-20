@@ -40,28 +40,28 @@
         <td> <h6>{{fooditem.price}}</h6> </td>
       </tr>
       </tbody>
-      <!-- <tfoot>
-        <tr >
-          <th scope="col" ></th>
-          <th scope="col"></th>
-          <th scope="col"></th>
-          <th scope="col"></th>
-        
-          <th scope="col"></th>
-          <th scope = "col"></th>
-        
-        </tr>
-        </tfoot>  -->
+    
     </table>
   </div>
   <h4 matLine style="float: right; margin: 25px;">Total: ${{total | currency:[USD]}}</h4>
 </mat-card>
 
-<mat-card >
-  <mat-list-item role="listitem"><img src="https://assets.secure.checkout.visa.com/wallet-services-web/xo/button.png?width=218&amp;height=47&cobrand=false&svg=true&legacy=false" alt=""></mat-list-item>
+<mat-card  >
+  <mat-card style="background: rgb(151, 151, 151);">
+  <mat-list-item role="listitem"><h3>Payment Detail</h3><img src="http://i76.imgup.net/accepted_c22e0.png" alt=""></mat-list-item>
+  <h6>Card Number</h6>
+  <input type="number">
+  <h6>Expiration Date</h6>      
+  <h5><input type="date">CVS<input type="number" min="1" max="3"></h5>
+  </mat-card>
+  <mat-card>
   <h6>Tax  ={{tax | currency}}</h6>
   <h6>After tax ={{total | currency}}</h6>
-  <mat-list-item role="listitem"> <button mat-raised-button color="primary">CheckOut</button></mat-list-item>
+ 
+  <button class="button" style="vertical-align:middle" (click)='popUpFunc()'><span>Order</span></button>
+</mat-card>
+
+
 </mat-card>
 
 
