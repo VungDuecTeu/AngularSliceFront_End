@@ -1,7 +1,70 @@
+
 .header{
     background-color: rgb(148, 24, 14); 
 }
 
-.image{
-    background-image: url(src\assets\img\AngularSliceLogo.jpg);
+.login{
+    position: absolute; 
+    right: 0%;
+    left: 1650px;
+    top: 0;
 }
+
+.button{
+    width: 1000px;
+}
+
+.menu{
+    width: 6000px;
+}
+
+.links{
+    color:white;
+
+}
+
+#nav_bar a.active-page
+{
+  color:yellow;
+}
+
+
+
+.mat-tab-link {
+    opacity: 1;
+  }
+  
+  ::ng-deep .mat-menu-content{
+    background-color:rgb(184, 23, 23);;
+  }
+  
+  button.mat-menu-item{
+      background-color: rgb(184, 23, 23);
+  }
+  
+  button.mat-menu-item:hover {
+      background-color: rgb(155, 24, 24) ;
+  }
+
+
+  .mat-tab-link-active,
+.mat-tab-label-active {
+    
+    color: white;
+    font-weight: bold;
+    border-bottom: none;
+    font-size: 25px;
+}
+
+/* .mat-tab-link,
+.mat-tab-label {
+    line-height: 30px !important;
+    height: 30px !important;
+    min-width: 100px !important;
+    border: 1px solid #7e7e7e;
+} */
+
+/* .tabContentContainer {
+    border: 1px solid #aaaaaa;
+    background: #ffffff 50% 50% repeat-x;
+} */

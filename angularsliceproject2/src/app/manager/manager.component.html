@@ -1,1 +1,52 @@
-<p>manager works!</p>
+<header>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  </header>
+  
+  <app-header></app-header>
+  <br><br><br><br><br>
+
+      <div>
+
+        <mat-tab-group (selectedTabChange)="tabGroupDispatcher($event)">
+
+            <mat-tab label="Food Analytics">
+                <div class="chart-container" style="
+                    position:relative; height:77vh ">
+                    <canvas  style="color: white" #foodChart>{{ foodchart }} 
+                    
+                    <!-- [data]="doughnutChartData"
+                    [labels]="doughnutChartLabels"
+                    [chartType]="doughnutChartType"> -->
+                    </canvas>
+                  </div>
+            
+            
+                  
+            </mat-tab>
+            <mat-tab label="Customer's Purchase Analytics">
+                
+            
+                <div class="chart-container" style="
+                position:relative; height:77vh ">
+                    <canvas #customerpurchasechart>{{ customerpurchasechart }} 
+                    style="color: white;"
+                    <!-- [data]="doughnutChartData"
+                    [labels]="doughnutChartLabels"
+                    [chartType]="doughnutChartType"> -->
+                    </canvas>
+                  </div>
+            
+            
+            
+            
+            </mat-tab>
+            <mat-tab label="Customer's Purchase History"> Content 2 </mat-tab>
+            <mat-tab label="Create Food item"> Content 3 </mat-tab>
+          </mat-tab-group>
+  
+      </div>
+
+      <br><br><br>
+
+      <app-footer></app-footer>
