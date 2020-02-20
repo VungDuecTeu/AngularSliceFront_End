@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Cinzel+Decorative&display=swap');
 
 .header{
     background-color: rgb(148, 24, 14); 
@@ -20,7 +21,7 @@
 
 .links{
     color:white;
-
+    font-family: Cinzel Decorative;
 }
 
 #nav_bar a.active-page
