@@ -14,9 +14,12 @@ export class OrderComponent implements OnInit {
     private data: DataService) { }
 
   fi:Fooditem = null;
+  deals:Fooditem;
   pizzas:Fooditem;
   wings:Fooditem;
+  sides:Fooditem;
   drinks:Fooditem;
+  desserts:Fooditem;
   order:Array<Fooditem> = [];
   orderAmounts:Array<number> = [];
   orderList:Array<string> = [];
@@ -25,9 +28,12 @@ export class OrderComponent implements OnInit {
   currentbillid:number = 0;
 
   ngOnInit() {
+    this.GetAllFoodByTypeService("Deals");
     this.GetAllFoodByTypeService("Pizza");
     this.GetAllFoodByTypeService("Wings");
     this.GetAllFoodByTypeService("Drinks");
+    this.GetAllFoodByTypeService("Desserts");
+    this.GetAllFoodByTypeService("Sides");
 
     this.data.currentbillid.subscribe(bid => this.currentbillid = bid);
     this.data.changeBillId(4);
@@ -104,7 +110,17 @@ export class OrderComponent implements OnInit {
       } else if(type == "Drinks"){
         this.drinks = onfulfilled;
         console.log(this.drinks);
-      }
+      } else if(type == "Deals"){
+        this.deals = onfulfilled;
+        console.log(this.deals);
+      } else if(type == "Sides"){
+        this.sides = onfulfilled;
+        console.log(this.sides);
+      } else if(type == "Desserts"){
+        this.desserts = onfulfilled;
+        console.log(this.desserts);
+      } 
+      
       this.fi = onfulfilled;
       // console.log(this.fi);
       return onfulfilled;
