@@ -21,10 +21,9 @@ export class LoginComponent implements OnInit {
 
   async login(){
     
-
-    this.data = await this.account.getAccountByUsername(this.username, this.password)
+    await this.account.getAccountByUsername(this.username, this.password)
     .then((onfulfilled)=>{
-      if(this.data != null){
+      if(onfulfilled != null){
         this.hide = true;
         this.dataserv.changeAccount(onfulfilled);
         this.router.navigate(['/home']);
@@ -33,6 +32,10 @@ export class LoginComponent implements OnInit {
       }else{
         this.hide = false;
       }
+    })
+    .then((unfulfilled) =>{
+      // make alert or something
+      console.log("login error");
     });  
    
   }

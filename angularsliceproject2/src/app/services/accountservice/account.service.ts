@@ -10,12 +10,12 @@ import { BillService } from '../billservice/bill.service';
 export class AccountService {
 
   constructor(private http:HttpClient){}
-  Url = "http://ec2-3-14-9-87.us-east-2.compute.amazonaws.com:9000/Account";
+  Url = "http://ec2-3-14-9-87.us-east-2.compute.amazonaws.com:9000/account";
 
   getAccountByid(id:number):Promise<Account>  { 
     return this.http.get<Account>(`http://ec2-3-14-9-87.us-east-2.compute.amazonaws.com:9000/Account/${id}`,
      {// httpOptions
-      headers: new HttpHeaders({'Content-Type':'application/json'}),
+      headers: new HttpHeaders({'Content-Type':'application/x-www-form-urlencoded'}),
       params: new HttpParams()
       .set('id',id.toString())
      } 
@@ -23,15 +23,15 @@ export class AccountService {
   }
 
   getAccountByUsername(name:string, pass:string):Promise<Account>  { 
-    // let object = {
-    //   username:name,
-    //   password:pass
-    // }
-    let account = new Account(0, "tao", "password","aada","sada","asdasfsa",false);
-    // const body = new HttpParams().set('account',JSON.stringify(account));
-    // console.log(body);
-    console.log(account);
-    return this.http.post<Account>(`http://ec2-3-14-9-87.us-east-2.compute.amazonaws.com:9000//account/login`, account).toPromise();
+    let account = new Account(0, name,pass, ""
+    ,"","", -1);
+
+    return this.http.post<Account>
+    (this.Url + "/login", account,
+    {
+      headers: new HttpHeaders()
+        .set('Content-Type', 'application/json')
+    }).toPromise();
   }
 
   creatAccount(Account:Account):Promise<Account>  { 

@@ -6,10 +6,10 @@ export class Account{
     email: string;
     fname: string;
     lname: string;
-    isManager: boolean;
+    isManager: number;
 
     constructor (id:number, username:string, password:string, email:string, f_name:string, 
-        l_name:string, isManager:boolean){
+        l_name:string, isManager:number){
             this.aid = id;
             this.username = username;
             this.password = password;

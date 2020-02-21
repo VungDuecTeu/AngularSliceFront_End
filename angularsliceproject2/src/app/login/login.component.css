@@ -12,6 +12,7 @@
 }
 
 #user{
+    font-family: Arial, Helvetica, sans-serif;
     position: absolute;
     top: 400px;
     left: 850px;
@@ -28,6 +29,7 @@
 }
 
 #pass{
+    font-family: Arial, Helvetica, sans-serif;
     position: absolute;
     top: 470px;
     left: 850px;
