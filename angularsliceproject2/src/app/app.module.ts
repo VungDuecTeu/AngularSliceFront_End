@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ManagerComponent } from './manager/manager.component';
+import { ManagerComponent, DialogContentExampleDialog } from './manager/manager.component';
 import { OrderComponent } from './order/order.component';
 import { HomeComponent } from './home/home.component';
 import { ContactComponent } from './contact/contact.component';
@@ -18,7 +18,9 @@ import { CheckouttableComponent } from './checkout/checkouttable/checkouttable.c
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { ChartComponent } from './charts/chart.component';
-import { ConfirmationboxComponent, ConfirmationDialogBox } from './helpercomponents/confirmationbox/confirmationbox.component';
+import { ConfirmationboxComponent, ConfirmationboxDialog } from './helpercomponents/confirmationbox/confirmationbox.component';
+import { MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA } from '@angular/material'
 //import { RouterModule, Routes } from '@angular/router';
 
 @NgModule({
@@ -34,8 +36,8 @@ import { ConfirmationboxComponent, ConfirmationDialogBox } from './helpercompone
     CheckouttableComponent,
     LoginComponent,
     ChartComponent,
-    ConfirmationboxComponent
-        
+    ConfirmationboxComponent,
+    ConfirmationboxDialog     
   ],
   imports: [
     BrowserModule,
@@ -45,10 +47,11 @@ import { ConfirmationboxComponent, ConfirmationDialogBox } from './helpercompone
     MaterialModule,
     HttpClientModule,
     FormsModule
-
   ],
-  providers: [],
+
+  providers: [ { provide: MAT_DIALOG_DATA, useValue: [] } ],
+
   bootstrap: [AppComponent],
-  entryComponents:[]
+  entryComponents:[ConfirmationboxDialog]
 })
 export class AppModule { }
