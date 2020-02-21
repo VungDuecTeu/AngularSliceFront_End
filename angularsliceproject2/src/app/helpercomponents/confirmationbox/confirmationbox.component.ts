@@ -14,26 +14,8 @@ export class ConfirmationboxComponent implements OnInit {
 
   constructor(public dialog: MatDialog) { }
 
-  // openDialog() {
-  //   this.dialogRef = this.dialog.open(ConfirmDialogModel);
-
-  //   this.dialogRef.afterClosed().subscribe(result => {
-  //     console.log(`Dialog result: ${result}`);
-  //   });
-  // }
-
-  // onConfirm(): void {
-  //   // Close the dialog, return true
-  //   this.dialogRef.close(true);
-  // }
- 
-  // onDismiss(): void {
-  //   // Close the dialog, return false
-  //   this.dialogRef.close(false);
-  // }
-
   openDialog() {
-    const dialogRef = this.dialog.open(DialogContentExampleDialog);
+    const dialogRef = this.dialog.open(ConfirmationDialogBox);
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
@@ -41,30 +23,9 @@ export class ConfirmationboxComponent implements OnInit {
   }
 
   ngOnInit() {
-
     // this.openDialog();
   }
   
-//   title: string = "";
-//   message: string = "";
- 
-//   constructor(public dialogRef: MatDialogRef<ConfirmationboxComponent>,
-//     @Inject(MAT_DIALOG_DATA) public data: ConfirmDialogModel) {
-//     // Update view with given values
-//     this.title = data.title;
-//     this.message = data.message;
-//   }
-  
-//   onConfirm(): void {
-//     // Close the dialog, return true
-//     this.dialogRef.close(true);
-//   }
- 
-//   onDismiss(): void {
-//     // Close the dialog, return false
-//     this.dialogRef.close(false);
-//   }
-// }
 }
 
-export class DialogContentExampleDialog {}
+export class ConfirmationDialogBox {}

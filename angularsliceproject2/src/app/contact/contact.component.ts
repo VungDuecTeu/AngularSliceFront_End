@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
 import {} from 'googlemaps';
 import { MatDialog } from '@angular/material';
-import { ConfirmDialogModel, ConfirmationboxComponent } from '../helpercomponents/confirmationbox/confirmationbox.component';
+// import { ConfirmDialogModel, ConfirmationboxComponent } from '../helpercomponents/confirmationbox/confirmationbox.component';
 
 @Component({
   selector: 'app-contact',
@@ -16,9 +16,6 @@ export class ContactComponent implements OnInit {
   
   panelOpenState = [false,false,false,false,false];
   indexexpand: number = -1;
-  confirmationtitle = "test";
-  confirmationcontent = "confirmationcontent";
-  showconfirmationbox = false;
 
   constructor() {
 

@@ -18,7 +18,7 @@ import { CheckouttableComponent } from './checkout/checkouttable/checkouttable.c
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { ChartComponent } from './charts/chart.component';
-import { ConfirmationboxComponent } from './helpercomponents/confirmationbox/confirmationbox.component';
+import { ConfirmationboxComponent, ConfirmationDialogBox } from './helpercomponents/confirmationbox/confirmationbox.component';
 //import { RouterModule, Routes } from '@angular/router';
 
 @NgModule({
@@ -48,6 +48,7 @@ import { ConfirmationboxComponent } from './helpercomponents/confirmationbox/con
 
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[]
 })
 export class AppModule { }

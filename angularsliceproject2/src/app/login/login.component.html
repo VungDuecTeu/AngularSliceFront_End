@@ -1,15 +1,15 @@
 <app-header></app-header>
 
-<div>
+<div >
 
    <p id = "error" hidden = "hide">The username or password were incorrect!</p>
 
-   <p>Username</p>
-   <input type = "text" [(ngModel)] = "username">
-   <p>Password</p>
-   <input type = "text" [(ngModel)] = "password">
+   <p id = "userTitle">Username</p>
+   <input id = "user" type = "text" [(ngModel)] = "username">
+   <p id = "passTitle">Password</p>
+   <input id = "pass" type = "text" [(ngModel)] = "password">
 
-   <button (click) = "login()">Login</button>
+   <button id = "button" (click) = "login()">Login</button>
 
 </div>
 
