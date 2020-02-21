@@ -5,6 +5,8 @@ import { FoodService } from '../services/fooditemservice/food.service';
 import { Fooditem } from '../entities/Fooditem';
 import { BillService } from '../services/billservice/bill.service';
 import { BillFooditemService } from '../services/billfooditemservice/Bill_Fooditem.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmationboxComponent } from '../helpercomponents/confirmationbox/confirmationbox.component';
 
 @Component({
   selector: 'app-manager',
@@ -15,7 +17,11 @@ export class ManagerComponent implements OnInit {
 
   constructor(private foodservice: FoodService,
     private billservice: BillService,
-    private billfooditemservice: BillFooditemService) { }
+    private billfooditemservice: BillFooditemService,
+    public dialog: MatDialog) { }
+
+  title = "no";
+  content ="hey";
 
   //foodlabels = [];
   foods = [];
@@ -25,15 +31,15 @@ export class ManagerComponent implements OnInit {
   customerlabels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
   customerpurchasequantities = [1, 2, 3, 4, 5, 6];
 
-
   @ViewChild('foodChart', { static: true })
   private foodchartRef;
   @ViewChild('customerpurchasechart', { static: true })
   private customerpurchaseRef;
-
+  @ViewChild(ConfirmationboxComponent, {static: true}) private myChild: ConfirmationboxComponent;
+  
   foodchart: any;
   customerpurchasechart: any;
-
+  
   ngOnInit() {
     this.GetAllFoodService();
     this.getAllBillFoodAmounts();
@@ -47,9 +53,17 @@ export class ManagerComponent implements OnInit {
       case 1: this.createCustomerPurchaseChart();
         break;
 
-      case 2: this.createFoodChart();
+      case 2: 
+      this.myChild.openDialog();
+
+        break;
       case 3: this.createFoodChart();
+        break;
     }
+  }
+
+  emittedValueDialogBox(){
+    console.log(this.myChild.result); 
   }
 
   async getAllBillFoodAmounts() {
@@ -202,3 +216,4 @@ export class ManagerComponent implements OnInit {
   }
 
 }
+export class DialogContentExampleDialog {}
