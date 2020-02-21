@@ -5,14 +5,18 @@
 
 <div > -->
    <div>
-      <mat-card class = "rounded">
-         <p id = "error" hidden = "hide">The username or password were incorrect!</p>
-         <p id = "userTitle">Username</p>
-         <input id = "user" type = "text" [(ngModel)] = "username">
-         <p id = "passTitle">Password</p>
-         <input id = "pass" type = "text" [(ngModel)] = "password">
-
-         <button id = "button" (click) = "login()">Login</button>
+      <mat-card class = "rounded"  id = "card">
+         <mat-card-content>
+            <p id = "error" hidden = "hide">The username or password were incorrect!</p>
+            <p id = "userTitle">Username</p>
+            <input id = "user" type = "text" [(ngModel)] = "username">
+            <p></p>
+            <p id = "passTitle">Password</p>
+            <input id = "pass" type = "text" [(ngModel)] = "password">
+            <!-- <p></p> -->
+            <button id = "button" (click) = "login()">Login</button>
+         </mat-card-content>
+         
       </mat-card>
    </div>
 
