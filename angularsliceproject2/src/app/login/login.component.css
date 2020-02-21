@@ -1,0 +1,44 @@
+.page{
+    height: 2000px;
+    width: 2000px;
+}
+
+#userTitle{
+    position: absolute;
+    top: 370px;
+    left: 850px;
+    width: 250px;
+    height: 30px;
+}
+
+#user{
+    position: absolute;
+    top: 400px;
+    left: 850px;
+    width: 250px;
+    height: 30px;
+}
+
+#passTitle{
+    position: absolute;
+    top: 440px;
+    left: 850px;
+    width: 250px;
+    height: 30px;
+}
+
+#pass{
+    position: absolute;
+    top: 470px;
+    left: 850px;
+    width: 250px;
+    height: 30px;
+}
+
+#button{
+    position: absolute;
+    top: 520px;
+    left: 850px;
+    width: 250px;
+    height: 30px;
+}

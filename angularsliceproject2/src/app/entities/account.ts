@@ -1,7 +1,7 @@
 export class Account{
 
     aid: number;
-    Username: string;
+    username: string;
     password: string;
     email: string;
     fname: string;
@@ -11,7 +11,7 @@ export class Account{
     constructor (id:number, username:string, password:string, email:string, f_name:string, 
         l_name:string, isManager:boolean){
             this.aid = id;
-            this.Username = username;
+            this.username = username;
             this.password = password;
             this.email = email;
             this.fname = f_name;
