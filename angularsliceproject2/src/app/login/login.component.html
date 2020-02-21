@@ -4,17 +4,24 @@
 
 
 <div > -->
+   <div>
+      <mat-card class = "rounded">
+         <p id = "error" hidden = "hide">The username or password were incorrect!</p>
+         <p id = "userTitle">Username</p>
+         <input id = "user" type = "text" [(ngModel)] = "username">
+         <p id = "passTitle">Password</p>
+         <input id = "pass" type = "text" [(ngModel)] = "password">
 
-   <p id = "error" hidden = "hide">The username or password were incorrect!</p>
+         <button id = "button" (click) = "login()">Login</button>
+      </mat-card>
+   </div>
 
-   <p id = "userTitle">Username</p>
-   <input id = "user" type = "text" [(ngModel)] = "username">
-   <p id = "passTitle">Password</p>
-   <input id = "pass" type = "text" [(ngModel)] = "password">
+   <!-- <img src = "https://cdn.hswstatic.com/gif/tossing-a-pizza-1.jpg" id = "pizza"> -->
 
-   <button id = "button" (click) = "login()">Login</button>
+   <img src = "https://cms.qz.com/wp-content/uploads/2014/08/pizza.jpg?quality=75&strip=all&w=1100&h=620" id = "bckrnd">
 
 </div>
+
 <div class = "bottom">
    <app-footer></app-footer>
 </div>
