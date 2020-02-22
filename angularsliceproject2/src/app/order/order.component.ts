@@ -37,7 +37,7 @@ export class OrderComponent implements OnInit {
 
     this.data.currentbillid.subscribe(bid => this.currentbillid = bid);
     this.data.changeBillId(4);
-    
+    console.log(this.currentbillid);
   }
 
   addToOrder(food:Fooditem){

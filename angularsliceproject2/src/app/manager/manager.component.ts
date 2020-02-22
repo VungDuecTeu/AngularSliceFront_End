@@ -20,6 +20,7 @@ export class ManagerComponent implements OnInit {
     private billfooditemservice: BillFooditemService,
     public dialog: MatDialog) { }
 
+    //inputs for dialog box
   title = "no";
   content ="hey";
 
@@ -35,14 +36,18 @@ export class ManagerComponent implements OnInit {
   private foodchartRef;
   @ViewChild('customerpurchasechart', { static: true })
   private customerpurchaseRef;
+  //get child reference for dialog box
   @ViewChild(ConfirmationboxComponent, {static: true}) private myChild: ConfirmationboxComponent;
   
   foodchart: any;
   customerpurchasechart: any;
-  
+
   ngOnInit() {
     this.GetAllFoodService();
     this.getAllBillFoodAmounts();
+    setTimeout(() => {
+      this.createFoodChart();
+    }, 1000);
   }
 
   tabGroupDispatcher($event) {
@@ -62,6 +67,8 @@ export class ManagerComponent implements OnInit {
     }
   }
 
+
+  // after clicking accept or decline on dialog box, call this function
   emittedValueDialogBox(){
     console.log(this.myChild.result); 
   }
@@ -108,7 +115,7 @@ export class ManagerComponent implements OnInit {
           this.foodsmap.set(onfulfilled[i].name, 0);
           console.log(onfulfilled[i].name);
         }
-
+        
         return onfulfilled;
       })
   }
@@ -216,4 +223,3 @@ export class ManagerComponent implements OnInit {
   }
 
 }
-export class DialogContentExampleDialog {}
