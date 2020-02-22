@@ -23,6 +23,9 @@ export class HeaderComponent implements OnInit {
   login(){
     this.router.navigateByUrl('/login');
   }
+  signUp(){
+    this.router.navigateByUrl('/create');
+  }
 
   // openMyMenu() {
   //   this.matMenuTrigger.openMenu();
