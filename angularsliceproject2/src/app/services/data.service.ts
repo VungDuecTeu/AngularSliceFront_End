@@ -12,11 +12,11 @@ export class DataService {
   private billidsource = new BehaviorSubject<number>(-1);
   currentbillid = this.billidsource.asObservable();
 
-  changeAccount(account: Account){
+  changeAccount(account: Account):void{
     this.userAccount.next(account);
   }
 
-  changeBillId(billid: number){
+  changeBillId(billid: number):void{
     this.billidsource.next(billid);
   }
 
