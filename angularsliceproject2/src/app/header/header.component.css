@@ -57,6 +57,13 @@
     font-size: 25px;
 }
 
+#logpage{
+    position: absolute;
+    left: 1400px;
+    top: 15px;
+    
+}
+
 /* .mat-tab-link,
 .mat-tab-label {
     line-height: 30px !important;
