@@ -68,10 +68,10 @@ export class ManagerComponent implements OnInit {
         break;
 
       case 2: 
-      this.myChild.openDialog();
-
+      this.createFoodChart();
         break;
-      case 3: this.createFoodChart();
+      case 3: 
+      this.myChild.openDialog();
         break;
     }
   }
@@ -97,9 +97,21 @@ export class ManagerComponent implements OnInit {
           }
         }
 
-        // for (let i:number = 0; i < this.foodsmap.values.length; i++){
-        //   this.foodsmap[i].values += "$";
-        // }
+        return onfulfilled;
+      })
+  }
+
+  async getAllBillFoodAmountsConsumer() {
+    let special: any = await this.billfooditemservice.getAllBillFooditems()
+      .then((onfulfilled) => {
+
+        for (let i: number = 0; i < this.foods.length; i++) {
+          for (let j: number = 0; j < onfulfilled.length; j++) {
+            if (this.foods[i].foodID === onfulfilled[j].food.foodID) {
+
+            }
+          }
+        }
 
         return onfulfilled;
       })
@@ -172,7 +184,7 @@ export class ManagerComponent implements OnInit {
         maintainAspectRatio: false,
         title: {
           display: true,
-          text: 'Food Gross profit ($' + (this.grossprofit) + ')'
+          text: 'Food Revenue ($' + (this.grossprofit) + ')'
         },
         legend: {
           display: false,
