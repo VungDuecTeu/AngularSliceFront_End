@@ -27,7 +27,6 @@ export class LoginComponent implements OnInit {
         this.hide = true;
         this.dataserv.changeAccount(onfulfilled);
         this.router.navigate(['/home']);
-
         return onfulfilled;
       }else{
         this.hide = false;

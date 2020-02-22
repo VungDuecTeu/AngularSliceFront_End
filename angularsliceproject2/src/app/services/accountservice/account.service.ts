@@ -12,7 +12,7 @@ export class AccountService {
   constructor(private http:HttpClient){}
   Url = "http://ec2-3-14-9-87.us-east-2.compute.amazonaws.com:9000/account";
 
-  getAccountByid(id:number):Promise<Account>  { 
+  getAccountByid(id:number):Promise<any>  { 
     return this.http.get<Account>(`http://ec2-3-14-9-87.us-east-2.compute.amazonaws.com:9000/Account/${id}`,
      {// httpOptions
       headers: new HttpHeaders({'Content-Type':'application/x-www-form-urlencoded'}),
@@ -34,14 +34,14 @@ export class AccountService {
     }).toPromise();
   }
 
-  creatAccount(Account:Account):Promise<Account>  { 
+  creatAccount(Account:Account):Promise<any>  { 
 
     const body= new HttpParams().set('payload',JSON.stringify(Account));
     return this.http.post<Account>(`http://ec2-3-14-9-87.us-east-2.compute.amazonaws.com:9000/account`,Account
     
      ).toPromise();
   }
-  getAllAccounts():Promise<Account>  { 
+  getAllAccounts():Promise<any>  { 
     return this.http.get<Account>(`http://ec2-3-14-9-87.us-east-2.compute.amazonaws.com:9000/account`
      
      ).toPromise();
