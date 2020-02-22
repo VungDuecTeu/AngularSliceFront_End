@@ -43,14 +43,14 @@
 
 <div id="whole">
     <div id="segment">
-        <mat-accordion class="example-headers-align" *ngFor = "let x of customerlabels; index as i" >
+        <mat-accordion class="example-headers-align" *ngFor="let customer of getKeys(customersmap); index as i" >
             <!--Deals panel-->
             <mat-expansion-panel [expanded]="true" (opened)="setStep(0)" id = "panel0"
             (afterExpand)="open('panel0')" hideToggle>
                 <!-- Header for this panel -->
                 <mat-expansion-panel-header>
-                    <mat-panel-title>Deals</mat-panel-title>
-                    <mat-panel-description>Our deals on combo and box orders!</mat-panel-description>
+                    <mat-panel-title>Username: {{customer}}</mat-panel-title>
+                    <mat-panel-description>Name: {{customers[i].fname}} {{customers[i].lname}} </mat-panel-description>
                 </mat-expansion-panel-header>
 
                 <div class="holder" >
