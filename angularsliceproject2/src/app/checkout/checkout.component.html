@@ -37,13 +37,17 @@
         <td> <h5> {{fooditem.name}} <h6>Calories: {{fooditem.calories}}</h6> </h5></td>
         <td><h5></h5> </td>
         <td></td>
+
         <td> <h6>{{fooditem.price | currency}}</h6> </td>
+
       </tr>
       </tbody>
     
     </table>
   </div>
-  <h4 matLine style="float: right; margin: 25px;">Total: ${{total | currency:[USD]}}</h4>
+
+  <h4 matLine style="float: right; margin-right: 50px;">Total: ${{total | currency:[USD]}}</h4>
+
 </mat-card>
 
 <mat-card  >
@@ -55,10 +59,24 @@
   <h5><input type="date">CVS<input type="number" min="1" max="3"></h5>
   </mat-card>
   <mat-card>
-  <h6>Tax  ={{tax | currency}}</h6>
-  <h6>After tax ={{total | currency}}</h6>
+ <div>
+    <label class="container">Pick Up
+      <input type="checkbox" checked="checked">
+      <span class="checkmark"></span>
+    </label>
+    <label class="container">Delivery
+      <input type="checkbox">
+      <span class="checkmark"></span>
+    </label>
+  </div>
+</mat-card>
+  <mat-card>
+    <br><br>
+  <h6 style="font-size: 25px;">Tax  ={{tax | currency}}</h6>
+  <h6 style="font-size: 25px;">After tax ={{total | currency}}</h6>
  
   <button class="button" style="vertical-align:middle" (click)='popUpFunc()'><span>Order</span></button>
+
 </mat-card>
 
 

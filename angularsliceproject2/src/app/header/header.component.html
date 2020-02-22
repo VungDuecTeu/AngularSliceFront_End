@@ -51,6 +51,8 @@
     <div style="width:100%; display: inline-block; text-align: center;height:6%">
       <img src="https://i.imgur.com/MtVj8wa.png" style="width:35%; height:50px">
 
+     
+
       <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" style="outline: none;color:white;right:0vmax ;position: absolute; top: 0px;">
         <mat-icon >more_vert</mat-icon>
       </button>
@@ -59,10 +61,11 @@
           <mat-icon style="color: white;">account_box</mat-icon>
           <span style="color: white;">Login</span>
         </button>
-        <button mat-menu-item style="outline: none;">
+        <button mat-menu-item style="outline: none;" class="open-button" (click)="signUp()">
           <mat-icon style="color: white;">account_circle</mat-icon>
           <span style="color: white;">Create Account</span>
         </button>
+
       </mat-menu>
     </div>
 
@@ -75,6 +78,19 @@
       <a  [active]="rla3.isActive" class = "links" routerLinkActive #rla3="routerLinkActive" mat-tab-link routerLink="/contact"> Contact </a>
     </nav>
     
+    
+    <div>
+      <mat-card class = "rounded" id = "logpage">
+        <mat-card-content>
+          <span>
+          <mat-icon style="float:left; color: white;">person</mat-icon>
+          <p style="color:white; font-size: 1.2vmax;">You are logged in as:</p>
+        </span>
+          <p style="color:white; font-size: 1.2vmax;">{{loginInfo}}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
     </div>
 
     <!-- <mat-tab-group style="float:right">
@@ -83,7 +99,7 @@
       <mat-tab label="Third"></mat-tab>
     </mat-tab-group> -->
 
-
+  
 
   <!-- <div style="position:absolute; top: 0;">
     <button mat-button [matMenuTriggerFor]="menu">Menu</button>

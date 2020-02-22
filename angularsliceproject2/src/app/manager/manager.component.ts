@@ -7,6 +7,7 @@ import { BillService } from '../services/billservice/bill.service';
 import { BillFooditemService } from '../services/billfooditemservice/Bill_Fooditem.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationboxComponent } from '../helpercomponents/confirmationbox/confirmationbox.component';
+import { AccountService } from '../services/accountservice/account.service';
 
 @Component({
   selector: 'app-manager',
@@ -18,31 +19,44 @@ export class ManagerComponent implements OnInit {
   constructor(private foodservice: FoodService,
     private billservice: BillService,
     private billfooditemservice: BillFooditemService,
-    public dialog: MatDialog) { }
+    public dialog: MatDialog,
+    private accountservice:AccountService) { }
 
+    //inputs for dialog box
   title = "no";
   content ="hey";
 
   //foodlabels = [];
   foods = [];
+  grossprofit:number = 0;
   foodsquantities = [1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6];
   foodsmap = new Map();
 
-  customerlabels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
+  customerlabels = [];
   customerpurchasequantities = [1, 2, 3, 4, 5, 6];
+  customersmap = new Map();
 
   @ViewChild('foodChart', { static: true })
   private foodchartRef;
   @ViewChild('customerpurchasechart', { static: true })
   private customerpurchaseRef;
+  //get child reference for dialog box
   @ViewChild(ConfirmationboxComponent, {static: true}) private myChild: ConfirmationboxComponent;
   
   foodchart: any;
   customerpurchasechart: any;
-  
+
   ngOnInit() {
     this.GetAllFoodService();
-    this.getAllBillFoodAmounts();
+    this.getAllAccounts();
+
+    setTimeout(() => {
+      this.getAllBillFoodAmounts();
+    }, 500);
+
+    setTimeout(() => {
+      this.createFoodChart();
+    }, 1000);
   }
 
   tabGroupDispatcher($event) {
@@ -54,14 +68,16 @@ export class ManagerComponent implements OnInit {
         break;
 
       case 2: 
-      this.myChild.openDialog();
-
+      this.createFoodChart();
         break;
-      case 3: this.createFoodChart();
+      case 3: 
+      this.myChild.openDialog();
         break;
     }
   }
 
+
+  // after clicking accept or decline on dialog box, call this function
   emittedValueDialogBox(){
     console.log(this.myChild.result); 
   }
@@ -75,13 +91,27 @@ export class ManagerComponent implements OnInit {
             if (this.foods[i].foodID === onfulfilled[j].food.foodID) {
               this.foodsmap.set(this.foods[i].name,
                 this.foodsmap.get(this.foods[i].name) + (onfulfilled[j].amount * this.foods[i].price));
+                this.grossprofit += (onfulfilled[j].amount * this.foods[i].price);
+                console.log(onfulfilled[j].amount * this.foods[i].price);
             }
           }
         }
 
-        // for (let i:number = 0; i < this.foodsmap.values.length; i++){
-        //   this.foodsmap[i].values += "$";
-        // }
+        return onfulfilled;
+      })
+  }
+
+  async getAllBillFoodAmountsConsumer() {
+    let special: any = await this.billfooditemservice.getAllBillFooditems()
+      .then((onfulfilled) => {
+
+        for (let i: number = 0; i < this.foods.length; i++) {
+          for (let j: number = 0; j < onfulfilled.length; j++) {
+            if (this.foods[i].foodID === onfulfilled[j].food.foodID) {
+
+            }
+          }
+        }
 
         return onfulfilled;
       })
@@ -108,7 +138,23 @@ export class ManagerComponent implements OnInit {
           this.foodsmap.set(onfulfilled[i].name, 0);
           console.log(onfulfilled[i].name);
         }
+        
+        return onfulfilled;
+      })
+  }
 
+  async getAllAccounts() {
+
+    let special: any = await this.accountservice.getAllAccounts()
+      .then((onfulfilled) => {
+        // this.foodlabels = onfulfilled;
+
+        for (let i: number = 0; i < onfulfilled.length; i++) {
+          //this.customerlabels.push(onfulfilled[i].na);
+          this.customersmap.set(onfulfilled[i].username, 0);
+          console.log(onfulfilled[i].username);
+        }
+        
         return onfulfilled;
       })
   }
@@ -138,7 +184,7 @@ export class ManagerComponent implements OnInit {
         maintainAspectRatio: false,
         title: {
           display: true,
-          text: 'Food Gross profit in $'
+          text: 'Food Revenue ($' + (this.grossprofit) + ')'
         },
         legend: {
           display: false,
@@ -171,7 +217,7 @@ export class ManagerComponent implements OnInit {
     this.customerpurchasechart = new Chart(this.customerpurchaseRef.nativeElement, {
       type: 'bar',
       data: {
-        labels: this.customerlabels,
+        labels: Array.from(this.customersmap.keys()),
 
         datasets: [
           {
@@ -216,4 +262,3 @@ export class ManagerComponent implements OnInit {
   }
 
 }
-export class DialogContentExampleDialog {}

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CheckouttableComponent } from './checkouttable.component';
+import { CreateAcctComponent } from './create-acct.component';
 
-describe('CheckouttableComponent', () => {
-  let component: CheckouttableComponent;
-  let fixture: ComponentFixture<CheckouttableComponent>;
+describe('CreateAcctComponent', () => {
+  let component: CreateAcctComponent;
+  let fixture: ComponentFixture<CreateAcctComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CheckouttableComponent ]
+      declarations: [ CreateAcctComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CheckouttableComponent);
+    fixture = TestBed.createComponent(CreateAcctComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
