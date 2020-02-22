@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ManagerComponent, DialogContentExampleDialog } from './manager/manager.component';
+import { ManagerComponent } from './manager/manager.component';
 import { OrderComponent } from './order/order.component';
 import { HomeComponent } from './home/home.component';
 import { ContactComponent } from './contact/contact.component';
@@ -33,7 +33,6 @@ import { MAT_DIALOG_DATA } from '@angular/material'
     FooterComponent,
     CheckoutComponent,
 
-    CheckouttableComponent,
     LoginComponent,
     ChartComponent,
     ConfirmationboxComponent,
