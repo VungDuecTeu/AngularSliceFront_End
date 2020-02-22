@@ -47,7 +47,7 @@
 
 .bottom{
     position: absolute;
-    top: 1025px;
+    bottom: 0;
     width: 100%;
 }
 
