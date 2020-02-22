@@ -3,6 +3,7 @@ import { Fooditem } from 'src/app/entities/Fooditem';
 import { FoodService } from '../services/fooditemservice/food.service';
 import { DataService } from '../services/data.service';
 import { Account } from '../entities/Account';
+import { MatExpansionPanel } from '@angular/material';
 
 @Component({
   selector: 'app-order',
@@ -43,7 +44,13 @@ export class OrderComponent implements OnInit {
     this.data.currentuserid.subscribe(user => this.accountId = user.aid);
     console.log("Current user id: " + this.accountId)
   }
+  panels = [];
 
+  open(id: string) {
+    let element = document.getElementById(id);
+    element.scrollIntoView({behavior: 'smooth'});
+  }
+  
   addToOrder(food:Fooditem){
     let amount = Number((<HTMLInputElement>document.getElementById("input_" + food.foodID)).value);
 

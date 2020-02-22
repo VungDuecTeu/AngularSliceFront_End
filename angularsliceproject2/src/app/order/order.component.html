@@ -4,7 +4,8 @@
     <div id="segment">
         <mat-accordion class="example-headers-align">
             <!--Deals panel-->
-            <mat-expansion-panel [expanded]="true" (opened)="setStep(0)" hideToggle>
+            <mat-expansion-panel [expanded]="true" (opened)="setStep(0)" id = "panel0"
+            (afterExpand)="open('panel0')" hideToggle>
                 <!-- Header for this panel -->
                 <mat-expansion-panel-header>
                     <mat-panel-title>Deals</mat-panel-title>
@@ -51,7 +52,8 @@
             </mat-expansion-panel>
 
             <!--Pizza panel-->
-            <mat-expansion-panel [expanded]="false" (opened)="setStep(1)" hideToggle>
+            <mat-expansion-panel [expanded]="false" (opened)="setStep(1)" id = "panel1"
+            (afterExpand)="open('panel1')" hideToggle>
                 <!-- Header for this panel -->
                 <mat-expansion-panel-header>
                     <mat-panel-title>Pizzas</mat-panel-title>
@@ -99,7 +101,8 @@
             </mat-expansion-panel>
 
             <!--Wings panel-->
-            <mat-expansion-panel [expanded]="false" (opened)="setStep(2)" hideToggle>
+            <mat-expansion-panel [expanded]="false" (opened)="setStep(2)" id = "panel2"
+            (afterExpand)="open('panel2')" hideToggle>
                 <!-- Header for this panel -->
                 <mat-expansion-panel-header>
                     <mat-panel-title>Wings</mat-panel-title>
@@ -146,7 +149,8 @@
             </mat-expansion-panel>
 
             <!--Sides panel-->
-            <mat-expansion-panel [expanded]="false" (opened)="setStep(3)" hideToggle>
+            <mat-expansion-panel [expanded]="false" (opened)="setStep(3)" id = "panel3"
+            (afterExpand)="open('panel3')" hideToggle>
                 <!-- Header for this panel -->
                 <mat-expansion-panel-header>
                     <mat-panel-title>Sides</mat-panel-title>
@@ -193,7 +197,8 @@
             </mat-expansion-panel>
 
             <!--Drinks panel-->
-            <mat-expansion-panel [expanded]="false" (opened)="setStep(4)" hideToggle>
+            <mat-expansion-panel [expanded]="false" (opened)="setStep(4)" id = "panel4"
+            (afterExpand)="open('panel4')" hideToggle>
                 <!-- Header for this panel -->
                 <mat-expansion-panel-header>
                     <mat-panel-title>Drinks</mat-panel-title>
@@ -240,7 +245,8 @@
             </mat-expansion-panel>
 
             <!--Desserts panel-->
-            <mat-expansion-panel [expanded]="false" (opened)="setStep(5)" hideToggle>
+            <mat-expansion-panel [expanded]="false" (opened)="setStep(5)" id = "panel5"
+            (afterExpand)="open('panel5')" hideToggle>
                 <!-- Header for this panel -->
                 <mat-expansion-panel-header>
                     <mat-panel-title>Desserts</mat-panel-title>

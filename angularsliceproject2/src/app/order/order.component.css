@@ -1,7 +1,7 @@
 #whole{
     display: flex; 
     width:100%; 
-    height:78%;
+    height:max-content;
     justify-content: center;
     /* margin-left: 10%;
     margin-right: 10%; */
@@ -12,7 +12,7 @@
 
 .holder{
     overflow-y: scroll;
-    height: 420px;
+    height: 33vmax;
 }
 #orderButton, #checkOutButton{
     float: right; 
