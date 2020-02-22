@@ -37,13 +37,17 @@
         <td> <h5> {{fooditem.name}} <h6>Calories: {{fooditem.calories}}</h6> </h5></td>
         <td><h5></h5> </td>
         <td></td>
+
         <td> <h6>{{fooditem.price | currency}}</h6> </td>
+
       </tr>
       </tbody>
     
     </table>
   </div>
+
   <h4 matLine style="float: right; margin-right: 50px;">Total: ${{total | currency:[USD]}}</h4>
+
 </mat-card>
 
 <mat-card  >
@@ -60,6 +64,7 @@
   <h6 style="font-size: 25px;">After tax ={{total | currency}}</h6>
  
   <button class="button" style="vertical-align:middle" (click)='popUpFunc()'><span>Order</span></button>
+
 </mat-card>
 
 

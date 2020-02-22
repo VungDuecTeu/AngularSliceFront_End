@@ -11,7 +11,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 
 export class CheckoutComponent implements OnInit {
   
-  constructor(private fs:FoodService) { }
+  constructor(private fs:FoodService,public dialog: MatDialog) { }
 
   order:Array<Fooditem> = [];
   orderAmounts:Array<number> = [];
@@ -37,8 +37,6 @@ export class CheckoutComponent implements OnInit {
     console.log(this.orderAmounts);
     console.log(this.total);
   }
-
-
 
 
 
