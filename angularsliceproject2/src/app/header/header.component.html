@@ -82,8 +82,11 @@
     <div>
       <mat-card class = "rounded" id = "logpage">
         <mat-card-content>
-          <p>You are logged in as:</p>
-          <p>{{loginInfo}}</p>
+          <span>
+          <mat-icon style="float:left; color: white;">person</mat-icon>
+          <p style="color:white; font-size: 1.2vmax;">You are logged in as:</p>
+        </span>
+          <p style="color:white; font-size: 1.2vmax;">{{loginInfo}}</p>
         </mat-card-content>
       </mat-card>
     </div>
