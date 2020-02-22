@@ -1,4 +1,4 @@
-<header class="header" style="height:12.5%; position: absolute; top:0; width:100%">
+<header class="header" style="height:14%; position: absolute; top:0; width:100%">
   <div class="image"></div>
 
   <!-- 
@@ -48,14 +48,14 @@
     </div> -->
 
   
-    <div style="width:100%; display: inline-block;height:6%">
-      <p style="color:white; text-align: center; font-size: 25px; margin:10px">Angular Slice!</p>
+    <div style="width:100%; display: inline-block; text-align: center;height:6%">
+      <img src="https://i.imgur.com/MtVj8wa.png" style="width:35%; height:50px">
 
-      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" style="outline: none;color:white;right:0vmax ;position: absolute; top:0;">
+      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" style="outline: none;color:white;right:0vmax ;position: absolute; top: 0px;">
         <mat-icon >more_vert</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
-        <button mat-menu-item style="outline: none;">
+        <button mat-menu-item style="outline: none;" (click) = "login()">
           <mat-icon style="color: white;">account_box</mat-icon>
           <span style="color: white;">Login</span>
         </button>
@@ -67,7 +67,7 @@
       </mat-menu>
     </div>
 
-    <div style="width:100%; display: inline-block; height:6%"  class="row d-flex justify-content-center" >
+    <div style="width:100%; display: inline-block; height:6%; margin:1.3vmax"  class="row d-flex justify-content-center" >
 
     <nav mat-tab-nav-bar id="nav_bar">
       <a  [active]="rla.isActive" class = "links" routerLinkActive #rla="routerLinkActive" mat-tab-link routerLink="/home"> Home </a>

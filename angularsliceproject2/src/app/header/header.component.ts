@@ -15,6 +15,12 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
 
+
+  }
+  login(){
+    this.router.navigateByUrl('/login');
+  }
+
   // openMyMenu() {
   //   this.matMenuTrigger.openMenu();
 

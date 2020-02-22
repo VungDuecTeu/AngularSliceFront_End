@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ManagerComponent } from './manager/manager.component';
+import { ManagerComponent, DialogContentExampleDialog } from './manager/manager.component';
 import { OrderComponent } from './order/order.component';
 import { HomeComponent } from './home/home.component';
 import { ContactComponent } from './contact/contact.component';
@@ -16,6 +16,10 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
+import { ChartComponent } from './charts/chart.component';
+import { ConfirmationboxComponent, ConfirmationboxDialog } from './helpercomponents/confirmationbox/confirmationbox.component';
+import { MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA } from '@angular/material'
 //import { RouterModule, Routes } from '@angular/router';
 
 @NgModule({
@@ -28,8 +32,12 @@ import { LoginComponent } from './login/login.component';
     HeaderComponent,
     FooterComponent,
     CheckoutComponent,
-    LoginComponent
-        
+
+    CheckouttableComponent,
+    LoginComponent,
+    ChartComponent,
+    ConfirmationboxComponent,
+    ConfirmationboxDialog     
   ],
   imports: [
     BrowserModule,
@@ -39,9 +47,11 @@ import { LoginComponent } from './login/login.component';
     MaterialModule,
     HttpClientModule,
     FormsModule
-
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+
+  providers: [ { provide: MAT_DIALOG_DATA, useValue: [] } ],
+
+  bootstrap: [AppComponent],
+  entryComponents:[ConfirmationboxDialog]
 })
 export class AppModule { }
