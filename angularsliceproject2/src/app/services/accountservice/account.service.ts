@@ -34,10 +34,10 @@ export class AccountService {
     }).toPromise();
   }
 
-  creatAccount(Account:Account):Promise<any>  { 
+  creatAccount(account:Account):Promise<any>  { 
 
     const body= new HttpParams().set('payload',JSON.stringify(Account));
-    return this.http.post<Account>(`http://ec2-3-14-9-87.us-east-2.compute.amazonaws.com:9000/account`,Account
+    return this.http.post<Account>(`http://ec2-3-14-9-87.us-east-2.compute.amazonaws.com:9000/account`,account
     
      ).toPromise();
   }

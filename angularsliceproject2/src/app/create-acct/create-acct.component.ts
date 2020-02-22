@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {Account} from '../entities/account';
+import { DataService} from '../services/data.service';
+import { Router } from '@angular/router';
+import { AccountService } from '../services/accountservice/account.service';
 
 @Component({
   selector: 'app-create-acct',
@@ -7,10 +11,45 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateAcctComponent implements OnInit {
 
-  Roles: any = ['Admin', 'Author', 'Reader'];
-  constructor() { }
+  hide:boolean = true;
+  data:any;
+  aid:number =0;
+  username:string = "";
+  password:string = "";
+  email: string = "Optional@gmail.com";
+  fname: string = "Optional";
+  lname: string = "Optional";
+  isManager:number=0;
+  constructor(private account:AccountService, private dataserv: DataService, private router:Router) { }
 
   ngOnInit() {
   }
+ 
+ 
 
+   async signUp(){
+     console.log(this.username, "  ", this.password)
+    if (this.username!=""&&this.password!="") {
+      
+      let Newaccount= new Account( this.aid,this.username,this.password, this.email,this.fname,this.lname, this.isManager);
+      console.log(Newaccount);
+      await this.account.creatAccount(Newaccount).then((onfulfilled)=>{
+        if(onfulfilled != null){
+          this.hide = true;
+          this.dataserv.changeAccount(onfulfilled);
+          this.router.navigate(['/home']);
+          return onfulfilled;
+        }else{ 
+          this.hide = false;
+        } 
+      }) 
+    }else {
+      alert("Please fill in the required fields!!!!")
+    }
+   
+   }
+
+   home(){
+    this.router.navigate(['/home']);
+   }
 }
