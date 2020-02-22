@@ -41,7 +41,7 @@ export class OrderComponent implements OnInit {
     this.data.changeBillId(4);
     
     this.data.currentuserid.subscribe(user => this.accountId = user.aid);
-    
+    console.log("Current user id: " + this.accountId)
   }
 
   addToOrder(food:Fooditem){
