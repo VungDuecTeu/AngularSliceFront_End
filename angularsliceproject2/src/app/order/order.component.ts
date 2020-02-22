@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Fooditem } from 'src/app/entities/Fooditem';
 import { FoodService } from '../services/fooditemservice/food.service';
 import { DataService } from '../services/data.service';
+import { Account } from '../entities/Account';
 
 @Component({
   selector: 'app-order',
@@ -26,6 +27,7 @@ export class OrderComponent implements OnInit {
   total:number = 0.0;
 
   currentbillid:number = 0;
+  accountId:number = 0;
 
   ngOnInit() {
     this.GetAllFoodByTypeService("Deals");
@@ -37,19 +39,21 @@ export class OrderComponent implements OnInit {
 
     this.data.currentbillid.subscribe(bid => this.currentbillid = bid);
     this.data.changeBillId(4);
-    console.log(this.currentbillid);
+    
+    this.data.currentuserid.subscribe(user => this.accountId = user.aid);
+    
   }
 
   addToOrder(food:Fooditem){
     let amount = Number((<HTMLInputElement>document.getElementById("input_" + food.foodID)).value);
-    
-    if (amount > 0){
+
+    if (this.accountId > 0){
       this.order.push(food);
       this.orderAmounts.push(amount);
-      this.orderList.push(amount + " " + food.name + "         " + food.price.toFixed(2));
+      this.orderList.push(amount + " " + food.name + "    $" + food.price.toFixed(2));
       this.total += (food.price * amount);
     } else {
-      alert("Can not order 0 of an item or negative amounts! Please try again");
+      alert("Must be Logged In to order!");
     }
   }
 
