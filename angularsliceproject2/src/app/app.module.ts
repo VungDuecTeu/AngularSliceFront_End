@@ -33,7 +33,6 @@ import { MAT_DIALOG_DATA } from '@angular/material'
     FooterComponent,
     CheckoutComponent,
 
-    CheckouttableComponent,
     LoginComponent,
     ChartComponent,
     ConfirmationboxComponent,

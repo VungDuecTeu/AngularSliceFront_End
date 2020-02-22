@@ -28,5 +28,5 @@ export class HeaderComponent implements OnInit {
   // closeMyMenu() {
   //   this.matMenuTrigger.closeMenu();
   // }
-}
+
 }
