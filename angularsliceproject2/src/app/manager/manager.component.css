@@ -1,0 +1,90 @@
+#whole{
+    display: flex; 
+    width:100%; 
+    height:max-content;
+    justify-content: center;
+    /* margin-left: 10%;
+    margin-right: 10%; */
+    margin-bottom: 2%;
+    margin-top: 2%;
+    
+}
+
+.holder{
+    overflow-y: scroll;
+    height: 33vmax;
+}
+#orderButton, #checkOutButton{
+    float: right; 
+    font-size: 18pt;
+    background-color:whitesmoke;
+    border: none;
+    padding: 8px 4px;
+    text-align: center;
+    margin: 1px 1px;
+}
+
+#orderList{
+    border: 1px black solid;
+    margin-left: 1%;
+    width: 25%;
+    height: 100%;
+    background-color:rgb(148, 24, 14, 0.8);
+}
+
+#orderItems{
+    overflow-y: scroll;
+    height:70%;
+}
+
+#segment{
+    margin-right: 1%; 
+    width:55%; 
+    height:100%; 
+    overflow-y: scroll;
+}
+
+#segment::-webkit-scrollbar { 
+    width: 0 !important
+ }
+
+ img{
+    width: 150px; 
+    height: 150px;
+    float:left;
+    margin: 4px 10px 0px 0px; 
+    border: 1px solid #000000;
+ }
+
+ .descriptionHolder{
+    width: 60%; 
+    word-wrap:break-word;
+ }
+
+ .fooddescription{
+     font-size: 16pt;
+ }
+
+ input{
+     color:white;
+     align-self: center;
+     font-size: 16pt;
+ }
+
+ mat-action-row{
+    background-color: rgb(148, 24, 14, 0.8);
+    min-width: 60%;
+    place-content: space-between;
+ }
+
+ mat-expansion-panel{
+    background-color:rgb(148, 24, 14, 0.8);
+ }
+ mat-panel-title, mat-panel-description{
+     color: white;
+ }
+
+ mat-card{
+    background-color:white; 
+    margin:1px;
+ }

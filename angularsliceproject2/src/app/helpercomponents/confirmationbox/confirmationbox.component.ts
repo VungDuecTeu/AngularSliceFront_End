@@ -5,6 +5,9 @@ import { MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 export interface DialogData {
   dialogTitle: "",
   dialogText: ""
+  dialogCancel: "",
+  dialogAccept: "",
+  dialogShowCancel: "true"
 }
 
 @Component({
@@ -17,6 +20,10 @@ export class ConfirmationboxComponent implements OnInit {
 
   @Input('title') title:any;
   @Input('content') content:any = "Content";
+  @Input('cancel') cancel:any = "Cancel";
+  @Input('accept') accept:any = "Accept";
+  @Input('showcancel') showcancel:any = "true" // true or false
+
   result:number = -1; // -1 default
   // 1 = decline
   // 2 = accept
@@ -32,7 +39,11 @@ export class ConfirmationboxComponent implements OnInit {
      const dialogRef = this.dialog.open(ConfirmationboxDialog, {
       data: {
         dialogTitle: this.title,
-          dialogContent: this.content}     
+        dialogContent: this.content,
+        dialogCancel: this.cancel,
+        dialogAccept: this.accept,
+        dialogShowCancel: this.showcancel
+        }     
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result == false)
