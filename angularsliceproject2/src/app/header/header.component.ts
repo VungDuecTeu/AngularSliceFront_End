@@ -14,8 +14,7 @@ export class HeaderComponent implements OnInit {
   public selectedIndex: number = 0;
 
   ngOnInit() {
-
-
+    this.loginInfo = "";
   }
 
   
