@@ -19,7 +19,8 @@ import { LoginComponent } from './login/login.component';
 import { ChartComponent } from './charts/chart.component';
 import { ConfirmationboxComponent, ConfirmationboxDialog } from './helpercomponents/confirmationbox/confirmationbox.component';
 import { MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule } from '@angular/material/dialog';
-import { MAT_DIALOG_DATA } from '@angular/material'
+import { MAT_DIALOG_DATA } from '@angular/material';
+import { CreateAcctComponent } from './create-acct/create-acct.component'
 //import { RouterModule, Routes } from '@angular/router';
 
 @NgModule({
@@ -36,7 +37,8 @@ import { MAT_DIALOG_DATA } from '@angular/material'
     LoginComponent,
     ChartComponent,
     ConfirmationboxComponent,
-    ConfirmationboxDialog     
+    ConfirmationboxDialog,
+    CreateAcctComponent     
   ],
   imports: [
     BrowserModule,
