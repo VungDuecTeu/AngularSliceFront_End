@@ -9,14 +9,21 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
   
   //@ViewChild(MatMenuTrigger) matMenuTrigger: MatMenuTrigger;
-
+  loginInfo:string;
   constructor(private router: Router) { }
   public selectedIndex: number = 0;
 
   ngOnInit() {
+<<<<<<< HEAD
+    this.loginInfo = "";
+=======
 
 
+>>>>>>> 791d57e4dea5bc3ba873dc34a60710a813f22207
   }
+
+  
+
   login(){
     this.router.navigateByUrl('/login');
   }
