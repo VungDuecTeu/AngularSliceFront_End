@@ -11,25 +11,31 @@ import { AccountService } from '../services/accountservice/account.service';
 })
 export class LoginComponent implements OnInit {
   hide:boolean = true;
-  username:string;
-  password:string;
-  constructor(private account:AccountService, private datas: DataService, private router:Router) { }
+  data:any;
+  username:string = "";
+  password:string = "";
+  constructor(private account:AccountService, private dataserv: DataService, private router:Router) { }
 
   ngOnInit() {
   }
 
   async login(){
     
-
-    let data:Account = await this.account.getAccountByUsername(this.username);
-    if(data != null){
-      this.hide = true;
-      this.datas.changeUserId(data.aid);
-      this.router.navigate(['/home']);
-
-
-    }else{
-      this.hide = false;
-    }
+    await this.account.getAccountByUsername(this.username, this.password)
+    .then((onfulfilled)=>{
+      if(onfulfilled != null){
+        this.hide = true;
+        this.dataserv.changeAccount(onfulfilled);
+        this.router.navigate(['/home']);
+        return onfulfilled;
+      }else{
+        this.hide = false;
+      }
+    })
+    .then((unfulfilled) =>{
+      // make alert or something
+      console.log("login error");
+    });  
+   
   }
 }

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Fooditem } from 'src/app/entities/Fooditem';
 import { FoodService } from '../services/fooditemservice/food.service';
 import { DataService } from '../services/data.service';
+import { Account } from '../entities/Account';
+import { MatExpansionPanel } from '@angular/material';
 
 @Component({
   selector: 'app-order',
@@ -14,36 +16,51 @@ export class OrderComponent implements OnInit {
     private data: DataService) { }
 
   fi:Fooditem = null;
+  deals:Fooditem;
   pizzas:Fooditem;
   wings:Fooditem;
+  sides:Fooditem;
   drinks:Fooditem;
+  desserts:Fooditem;
   order:Array<Fooditem> = [];
   orderAmounts:Array<number> = [];
   orderList:Array<string> = [];
   total:number = 0.0;
 
   currentbillid:number = 0;
+  accountId:number = 0;
 
   ngOnInit() {
+    this.GetAllFoodByTypeService("Deals");
     this.GetAllFoodByTypeService("Pizza");
     this.GetAllFoodByTypeService("Wings");
     this.GetAllFoodByTypeService("Drinks");
+    this.GetAllFoodByTypeService("Desserts");
+    this.GetAllFoodByTypeService("Sides");
 
     this.data.currentbillid.subscribe(bid => this.currentbillid = bid);
     this.data.changeBillId(4);
     
+    this.data.currentuserid.subscribe(user => this.accountId = user.aid);
+    console.log("Current user id: " + this.accountId)
   }
+  panels = [];
 
+  open(id: string) {
+    let element = document.getElementById(id);
+    element.scrollIntoView({behavior: 'smooth'});
+  }
+  
   addToOrder(food:Fooditem){
     let amount = Number((<HTMLInputElement>document.getElementById("input_" + food.foodID)).value);
-    
-    if (amount > 0){
+
+    if (this.accountId > 0){
       this.order.push(food);
       this.orderAmounts.push(amount);
-      this.orderList.push(amount + " " + food.name + "         " + food.price.toFixed(2));
+      this.orderList.push(amount + " " + food.name + "    $" + food.price.toFixed(2));
       this.total += (food.price * amount);
     } else {
-      alert("Can not order 0 of an item or negative amounts! Please try again");
+      alert("Must be Logged In to order!");
     }
   }
 
@@ -104,7 +121,17 @@ export class OrderComponent implements OnInit {
       } else if(type == "Drinks"){
         this.drinks = onfulfilled;
         console.log(this.drinks);
-      }
+      } else if(type == "Deals"){
+        this.deals = onfulfilled;
+        console.log(this.deals);
+      } else if(type == "Sides"){
+        this.sides = onfulfilled;
+        console.log(this.sides);
+      } else if(type == "Desserts"){
+        this.desserts = onfulfilled;
+        console.log(this.desserts);
+      } 
+      
       this.fi = onfulfilled;
       // console.log(this.fi);
       return onfulfilled;

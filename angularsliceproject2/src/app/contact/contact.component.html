@@ -5,33 +5,32 @@
 
 <app-header></app-header>
 
-<body style="width:100%; height:87%">
+<body style="width:100%; height:100%">
 <br><br><br><br>
   <h1 class="border-bottom my-3" style="width: 100%; text-align: center;">Our Locations: </h1>
-  <br>
-
-  <span class="row d-flex justify-content-center" style=" width:100%">
-    <div class="row d-flex justify-content-center; width:20%">
-      <mat-accordion *ngFor = "let x of citylabels; index as i">
+   
+  <span class="row d-flex justify-content-center" style=" width:100%;">
+    <div class="row d-flex justify-content-center" style="width: 100%;">
+      <mat-accordion *ngFor = "let x of citylabels; index as i" > 
       <mat-expansion-panel [expanded]="indexexpand === i" hideToggle="true" (click)="changelocation(i)" 
-      style="background-color: rgb(184, 23, 23); opacity: 0.8; ">
-        <mat-expansion-panel-header >
+      style="background-color: rgb(184, 23, 23); opacity: 0.8;">
+        <mat-expansion-panel-header>
           <mat-panel-title style="color:white; text-align: center;">
             {{citylabels[i]}} Location: 
           </mat-panel-title>
         </mat-expansion-panel-header>
-        <p style="color:white; text-align:center;"> {{names[i]}} <br> Business Inquiries: {{emails[i]}} <br> {{addresses[i]}}  <br> {{phonenumbers[i]}} </p>
+        <p style="color:white; text-align:center;"> {{names[i]}} <br> Business Inquiries: {{emails[i]}} <br> {{addresses[i]}}  <br> {{phonenumbers[i]}} <br> 10am-10pm </p>
       </mat-expansion-panel>
 
     </mat-accordion>
   </div>
 
-  <br><br> <br><br><br>  <br><br><br>  
+  <br><br> <br><br><br>  <br><br><br> <br> 
 
-    <div #mapContainer id="map" style="width: 35%;"></div>
+    <div #mapContainer id="map" style="width: 60%;"></div>
 
   </span>
 </body>
 
-<br><br><br> <br><br><br> <br><br><br> <br><br><br> <br><br><br>
+
   <app-footer></app-footer>

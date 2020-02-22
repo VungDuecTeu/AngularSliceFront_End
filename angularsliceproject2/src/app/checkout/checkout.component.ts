@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FoodService } from '../services/fooditemservice/food.service';
 import { Fooditem } from 'src/app/entities/Fooditem';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-checkout',
@@ -10,16 +11,20 @@ import { Fooditem } from 'src/app/entities/Fooditem';
 
 export class CheckoutComponent implements OnInit {
   
-  constructor(private fs:FoodService) { }
+  constructor(private fs:FoodService,public dialog: MatDialog) { }
 
   order:Array<Fooditem> = [];
   orderAmounts:Array<number> = [];
   total:number = 0.00;
   tax:number = 0.06;
+  animal: string;
+  name: string;
 
   ngOnInit() {
     this.makeOrder();
   }
+ 
+
 
   makeOrder(){
     this.order = this.fs.order;
@@ -35,5 +40,7 @@ export class CheckoutComponent implements OnInit {
 
 
 
+  popUpFunc() {
+    alert(" Thanks for Your Buissness Enjoy!!!");
+  }
 }
-

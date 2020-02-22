@@ -10,37 +10,39 @@ import { BillService } from '../billservice/bill.service';
 export class AccountService {
 
   constructor(private http:HttpClient){}
-  Url = "http://ec2-3-14-9-87.us-east-2.compute.amazonaws.com:9000/Account";
+  Url = "http://ec2-3-14-9-87.us-east-2.compute.amazonaws.com:9000/account";
 
-  getAccountByid(id:number):Promise<Account>  { 
+  getAccountByid(id:number):Promise<any>  { 
     return this.http.get<Account>(`http://ec2-3-14-9-87.us-east-2.compute.amazonaws.com:9000/Account/${id}`,
      {// httpOptions
-      headers: new HttpHeaders({'Content-Type':'application/json'}),
+      headers: new HttpHeaders({'Content-Type':'application/x-www-form-urlencoded'}),
       params: new HttpParams()
       .set('id',id.toString())
      } 
       ).toPromise();
   }
 
-  getAccountByUsername(username:string):Promise<Account>  { 
-    return this.http.get<Account>(`http://ec2-3-14-9-87.us-east-2.compute.amazonaws.com:9000/Account/${username}`,
-     {// httpOptions
-      headers: new HttpHeaders({'Content-Type':'application/json'}),
-      params: new HttpParams()
-      .set('username', username.toString())
-     } 
-      ).toPromise();
+  getAccountByUsername(name:string, pass:string):Promise<Account>  { 
+    let account = new Account(0, name,pass, ""
+    ,"","", -1);
+
+    return this.http.post<Account>
+    (this.Url + "/login", account,
+    {
+      headers: new HttpHeaders()
+        .set('Content-Type', 'application/json')
+    }).toPromise();
   }
 
-  creatAccount(Account:Account):Promise<Account>  { 
+  creatAccount(Account:Account):Promise<any>  { 
 
     const body= new HttpParams().set('payload',JSON.stringify(Account));
-    return this.http.post<Account>(`http://ec2-3-14-9-87.us-east-2.compute.amazonaws.com:9000/Account`,Account
+    return this.http.post<Account>(`http://ec2-3-14-9-87.us-east-2.compute.amazonaws.com:9000/account`,Account
     
      ).toPromise();
   }
-  getAllAccounts():Promise<Account>  { 
-    return this.http.get<Account>(`http://ec2-3-14-9-87.us-east-2.compute.amazonaws.com:9000/Account`
+  getAllAccounts():Promise<any>  { 
+    return this.http.get<Account>(`http://ec2-3-14-9-87.us-east-2.compute.amazonaws.com:9000/account`
      
      ).toPromise();
   }
