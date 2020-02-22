@@ -32,7 +32,7 @@ export class ManagerComponent implements OnInit {
   foodsquantities = [1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6];
   foodsmap = new Map();
 
-  customerlabels = [];
+  customers = [];
   customerpurchasequantities = [1, 2, 3, 4, 5, 6];
   customersmap = new Map();
 
@@ -150,7 +150,7 @@ export class ManagerComponent implements OnInit {
         // this.foodlabels = onfulfilled;
 
         for (let i: number = 0; i < onfulfilled.length; i++) {
-          //this.customerlabels.push(onfulfilled[i].na);
+          this.customers.push(onfulfilled[i]);
           this.customersmap.set(onfulfilled[i].username, 0);
           console.log(onfulfilled[i].username);
         }
@@ -158,6 +158,10 @@ export class ManagerComponent implements OnInit {
         return onfulfilled;
       })
   }
+
+  getKeys(map){
+    return Array.from(map.keys());
+}
 
   createFoodChart() {
 
