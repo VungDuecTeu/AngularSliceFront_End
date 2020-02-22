@@ -3,6 +3,7 @@ import { Fooditem } from 'src/app/entities/Fooditem';
 import { FoodService } from '../services/fooditemservice/food.service';
 import { DataService } from '../services/data.service';
 import { Account } from '../entities/Account';
+import { MatExpansionPanel } from '@angular/material';
 
 @Component({
   selector: 'app-order',
@@ -24,6 +25,7 @@ export class OrderComponent implements OnInit {
   order:Array<Fooditem> = [];
   orderAmounts:Array<number> = [];
   orderList:Array<string> = [];
+  orderListPrice:Array<string> = [];
   total:number = 0.0;
 
   currentbillid:number = 0;
@@ -43,14 +45,21 @@ export class OrderComponent implements OnInit {
     this.data.currentuserid.subscribe(user => this.accountId = user.aid);
     console.log("Current user id: " + this.accountId)
   }
+  panels = [];
 
+  open(id: string) {
+    let element = document.getElementById(id);
+    element.scrollIntoView({behavior: 'smooth'});
+  }
+  
   addToOrder(food:Fooditem){
     let amount = Number((<HTMLInputElement>document.getElementById("input_" + food.foodID)).value);
 
     if (this.accountId > 0){
       this.order.push(food);
       this.orderAmounts.push(amount);
-      this.orderList.push(amount + " " + food.name + "    $" + food.price.toFixed(2));
+      this.orderList.push(amount + " " + food.name);
+      this.orderListPrice.push("$" + food.price.toFixed(2));
       this.total += (food.price * amount);
     } else {
       alert("Must be Logged In to order!");
