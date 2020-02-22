@@ -15,8 +15,6 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
 
-  }
-
   // openMyMenu() {
   //   this.matMenuTrigger.openMenu();
 
@@ -24,4 +22,5 @@ export class HeaderComponent implements OnInit {
   // closeMyMenu() {
   //   this.matMenuTrigger.closeMenu();
   // }
+}
 }
