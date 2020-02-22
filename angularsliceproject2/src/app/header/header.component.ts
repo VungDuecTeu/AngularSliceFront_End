@@ -9,14 +9,16 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
   
   //@ViewChild(MatMenuTrigger) matMenuTrigger: MatMenuTrigger;
-
+  loginInfo:string;
   constructor(private router: Router) { }
   public selectedIndex: number = 0;
 
   ngOnInit() {
-
-
+    this.loginInfo = "";
   }
+
+  
+
   login(){
     this.router.navigateByUrl('/login');
   }
@@ -31,6 +33,6 @@ export class HeaderComponent implements OnInit {
   // closeMyMenu() {
   //   this.matMenuTrigger.closeMenu();
   // }
+
+
 }
-
-

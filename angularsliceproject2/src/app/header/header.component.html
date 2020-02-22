@@ -78,6 +78,19 @@
       <a  [active]="rla3.isActive" class = "links" routerLinkActive #rla3="routerLinkActive" mat-tab-link routerLink="/contact"> Contact </a>
     </nav>
     
+    
+    <div>
+      <mat-card class = "rounded" id = "logpage">
+        <mat-card-content>
+          <span>
+          <mat-icon style="float:left; color: white;">person</mat-icon>
+          <p style="color:white; font-size: 1.2vmax;">You are logged in as:</p>
+        </span>
+          <p style="color:white; font-size: 1.2vmax;">{{loginInfo}}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
     </div>
 
     <!-- <mat-tab-group style="float:right">
@@ -86,7 +99,7 @@
       <mat-tab label="Third"></mat-tab>
     </mat-tab-group> -->
 
-
+  
 
   <!-- <div style="position:absolute; top: 0;">
     <button mat-button [matMenuTriggerFor]="menu">Menu</button>

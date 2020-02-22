@@ -32,7 +32,7 @@ export class ManagerComponent implements OnInit {
   foodsquantities = [1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6];
   foodsmap = new Map();
 
-  customerlabels = [];
+  customers = [];
   customerpurchasequantities = [1, 2, 3, 4, 5, 6];
   customersmap = new Map();
 
@@ -68,10 +68,10 @@ export class ManagerComponent implements OnInit {
         break;
 
       case 2: 
-      this.myChild.openDialog();
-
+      this.createFoodChart();
         break;
-      case 3: this.createFoodChart();
+      case 3: 
+      this.myChild.openDialog();
         break;
     }
   }
@@ -97,9 +97,21 @@ export class ManagerComponent implements OnInit {
           }
         }
 
-        // for (let i:number = 0; i < this.foodsmap.values.length; i++){
-        //   this.foodsmap[i].values += "$";
-        // }
+        return onfulfilled;
+      })
+  }
+
+  async getAllBillFoodAmountsConsumer() {
+    let special: any = await this.billfooditemservice.getAllBillFooditems()
+      .then((onfulfilled) => {
+
+        for (let i: number = 0; i < this.foods.length; i++) {
+          for (let j: number = 0; j < onfulfilled.length; j++) {
+            if (this.foods[i].foodID === onfulfilled[j].food.foodID) {
+
+            }
+          }
+        }
 
         return onfulfilled;
       })
@@ -138,7 +150,7 @@ export class ManagerComponent implements OnInit {
         // this.foodlabels = onfulfilled;
 
         for (let i: number = 0; i < onfulfilled.length; i++) {
-          //this.customerlabels.push(onfulfilled[i].na);
+          this.customers.push(onfulfilled[i]);
           this.customersmap.set(onfulfilled[i].username, 0);
           console.log(onfulfilled[i].username);
         }
@@ -146,6 +158,10 @@ export class ManagerComponent implements OnInit {
         return onfulfilled;
       })
   }
+
+  getKeys(map){
+    return Array.from(map.keys());
+}
 
   createFoodChart() {
 
@@ -172,7 +188,7 @@ export class ManagerComponent implements OnInit {
         maintainAspectRatio: false,
         title: {
           display: true,
-          text: 'Food Gross profit ($' + (this.grossprofit) + ')'
+          text: 'Food Revenue ($' + (this.grossprofit) + ')'
         },
         legend: {
           display: false,
