@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css?family=Cinzel+Decorative&display=swap');
+
+.header{
+    background-color: black;
+    opacity: 0.8;
+}
+
+.login{
+    position: absolute; 
+    right: 0%;
+    left: 1650px;
+    top: 0;
+}
+
+.button{
+    width: 1000px;
+}
+
+.menu{
+    width: 6000px;
+}
+
+.links{
+    color:white;
+    font-family: Cinzel Decorative;
+}
+
+#nav_bar a.active-page
+{
+  color:yellow;
+}
+
+
+
+.mat-tab-link {
+    opacity: 1;
+  }
+  
+  ::ng-deep .mat-menu-content{
+    background-color: black;
+    opacity: 0.8;
+  }
+  
+  button.mat-menu-item{
+    background-color: black;
+    opacity: 0.8;
+  }
+  
+  button.mat-menu-item:hover {
+    background-color: black;
+    opacity: 0.6;
+  }
+
+
+  .mat-tab-link-active,
+.mat-tab-label-active {
+    
+    color: white;
+    font-weight: bold;
+    border-bottom: none;
+    font-size: 25px;
+}
+
+#logpage{
+    position: absolute;
+    left: 1400px;
+    top: 15px;
+    
+}
+
+/* .mat-tab-link,
+.mat-tab-label {
+    line-height: 30px !important;
+    height: 30px !important;
+    min-width: 100px !important;
+    border: 1px solid #7e7e7e;
+} */
+
+/* .tabContentContainer {
+    border: 1px solid #aaaaaa;
+    background: #ffffff 50% 50% repeat-x;
+} */
+
