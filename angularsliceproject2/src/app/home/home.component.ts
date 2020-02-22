@@ -38,7 +38,6 @@ export class HomeComponent implements OnInit {
     let special: any = await this.foodservice.getAllFood()
       .then((onfulfilled) => {
         // this.foodlabels = onfulfilled;
-
         for (let i: number = 0; i < onfulfilled.length; i++) {
           this.listofpicurls.push(onfulfilled[i].url);
           console.log(onfulfilled[i].url);
