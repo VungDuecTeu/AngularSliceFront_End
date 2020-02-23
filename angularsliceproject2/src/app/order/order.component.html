@@ -14,7 +14,7 @@
 
                 <div class="holder" >
                     <!-- initial card -->
-                    <mat-card *ngFor = "let fooditem of deals">
+                    <mat-card *ngFor = "let fooditem of deals" id="card{{fooditem.foodID}}">
                         <mat-card-title>{{fooditem.name}}</mat-card-title>
                         <span style="float:left;width: 25%;">
                             <img src={{fooditem.url}}>
@@ -62,7 +62,7 @@
 
                 <div class="holder" >
                     <!-- initial card -->
-                    <mat-card *ngFor = "let fooditem of pizzas">
+                    <mat-card *ngFor = "let fooditem of pizzas" id="card{{fooditem.foodID}}">
                         <mat-card-title>{{fooditem.name}}</mat-card-title>
                         <span style="float:left;width: 25%;">
                             <img src={{fooditem.url}}>
@@ -111,7 +111,7 @@
 
                 <div class="holder" >
                     <!-- initial card -->
-                    <mat-card *ngFor = "let fooditem of wings">
+                    <mat-card *ngFor = "let fooditem of wings" id="card{{fooditem.foodID}}">
                         <mat-card-title>{{fooditem.name}}</mat-card-title>
                         <span style="float:left;width: 25%;">
                             <img src={{fooditem.url}}>
@@ -159,7 +159,7 @@
 
                 <div class="holder" >
                     <!-- initial card -->
-                    <mat-card *ngFor = "let fooditem of sides">
+                    <mat-card *ngFor = "let fooditem of sides" id="card{{fooditem.foodID}}">
                         <mat-card-title>{{fooditem.name}}</mat-card-title>
                         <span style="float:left;width: 25%;">
                             <img src={{fooditem.url}}>
@@ -207,7 +207,7 @@
 
                 <div class="holder" >
                     <!-- initial card -->
-                    <mat-card *ngFor = "let fooditem of drinks">
+                    <mat-card *ngFor = "let fooditem of drinks" id="card{{fooditem.foodID}}">
                         <mat-card-title>{{fooditem.name}}</mat-card-title>
                         <span style="float:left;width: 25%;">
                             <img src={{fooditem.url}}>
@@ -255,7 +255,7 @@
 
                 <div class="holder" >
                     <!-- initial card -->
-                    <mat-card *ngFor = "let fooditem of desserts">
+                    <mat-card *ngFor = "let fooditem of desserts" id="card{{fooditem.foodID}}">
                         <mat-card-title>{{fooditem.name}}</mat-card-title>
                         <span style="float:left;width: 25%;">
                             <img src={{fooditem.url}}>

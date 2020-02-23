@@ -1,3 +1,4 @@
+// import { protractor } from "protractor/built/ptor";
 // import {browser, element, by} from 'protractor'; //gives you intellisense, comment out when running tests
 
 browser.ignoreSynchronization = true; //allows you to use protractor on non-angular webpages
@@ -45,4 +46,54 @@ describe("Angular Slice Order Page", ()=>{
         browser.sleep(1000);
     });
 
+    it("Should go to order page", ()=>{
+        let orderBtn = element(by.xpath('//*[@id="nav_bar"]/div[2]/div/div/a[2]'));
+        orderBtn.click();
+        browser.sleep(1000);
+    });
+
+    it("Should try to click first order button",  ()=>{
+        let orderBtn = element(by.name("orderBtn24"));
+        orderBtn.click();
+        browser.sleep(1000);
+    });
+
+    it("Should open Pizza Panel and order 2 pizzas",  ()=>{
+        let panelBtn = element(by.id("panel1"));
+        panelBtn.click();
+        browser.sleep(1000);
+
+
+        let amountSelect = element(by.id("input_1"));
+        amountSelect.click();
+        browser.sleep(1000);
+
+        let amountOption = element.all(by.xpath('//*[@id="input_1"]/option[2]'));
+        amountOption.click();
+        browser.sleep(1000);
+
+        let orderBtn = element(by.name("orderBtn1"));
+        orderBtn.click();
+        browser.sleep(1000);
+    });
+
+    it("Should open Desserts panel and scroll to bottom and order", ()=>{
+        let panelBtn = element(by.id("panel5"));
+        panelBtn.click();
+        browser.sleep(1000);
+
+        let card = element(by.id("card38"));
+        browser.executeScript('arguments[0].scrollIntoView()', card.getWebElement());
+        browser.sleep(1000);
+
+        let orderBtn = element(by.name("orderBtn38"));
+        orderBtn.click();
+        browser.sleep(1000);
+    });
+
+    it("Should click Checkout button and go to checkout page", ()=>{
+        let checkOutBtn = element(by.id("checkOutButton"));
+        checkOutBtn.click();
+        browser.sleep(1000);
+    });
 });
