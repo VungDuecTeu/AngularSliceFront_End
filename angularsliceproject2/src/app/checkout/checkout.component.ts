@@ -3,9 +3,11 @@ import { FoodService } from '../services/fooditemservice/food.service';
 import { Fooditem } from 'src/app/entities/Fooditem';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { Bill } from '../entities/Bill';
-import {Account} from '../entities/account';
+import { Account } from '../entities/account';
 import { BillService } from '../services/billservice/bill.service';
-import { Router } from '@angular/router';
+import { DataService } from '../services/data.service';
+import { AccountService } from '../services/accountservice/account.service';
+import { getLocaleDateTimeFormat } from '@angular/common';
 
 @Component({
   selector: 'app-checkout',
@@ -18,7 +20,11 @@ export class CheckoutComponent implements OnInit {
   dataserv: any;
   
   
-  constructor(public fs:FoodService,public dialog: MatDialog, public account:Account,private router:Router, private bill:BillService) { }
+  constructor(public fs:FoodService,
+    public dialog: MatDialog, 
+    private data: DataService, 
+    private accountservice: AccountService,
+    private bill:BillService) { }
 
   order:Array<Fooditem> = [];
   orderAmounts:Array<number> = [];
@@ -27,10 +33,15 @@ export class CheckoutComponent implements OnInit {
   animal: string;
   name: string;
   id:number= 0;
-  orderDate:String="00/00/000";
+  date: Date = new Date();
+  orderDate:String;
+  accountId:number = 0;
+  userAccount: Account = new Account(0,"","","","","",0);
 
   ngOnInit() {
+    console.log("opened checkout page")
     this.makeOrder();
+    this.data.currentuserid.subscribe(user => this.accountId = user.aid);
   }
  
   makeOrder(){
@@ -46,17 +57,18 @@ export class CheckoutComponent implements OnInit {
   }
 
   async newbill(){
-    if (this.total!=0.00) {
-      
-      let Newbill= new Bill(this.id,this.account,this.total,this.orderDate);
-      
-        await this.bill.creatBill(Newbill).then((onfulfilled)=>{
-          if(onfulfilled != null){
-            // this.hide = true;
-            //  this.dataserv.changeAccount(onfulfilled);
-            //  this.router.navigate(['/home']);
-            return onfulfilled;
-          }
+    if (this.total!=0.00 && this.accountId != 0 ) {
+      this.orderDate = this.date.toString();
+      this.userAccount = await this.accountservice.getAccountByid(this.accountId);
+      let Newbill= new Bill(this.id,this.userAccount,this.total,this.orderDate);
+      console.log(Newbill);
+      await this.bill.creatBill(Newbill).then((onfulfilled)=>{
+        if(onfulfilled != null){
+          // this.hide = true;
+          //  this.dataserv.changeAccount(onfulfilled);
+          //  this.router.navigate(['/home']);
+          return onfulfilled;
+        }
       }) 
     }else {
       alert("Order Something Pleas !!")
