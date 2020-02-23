@@ -34,7 +34,8 @@ export class CheckoutComponent implements OnInit {
   orderAmounts:Array<number> = [];
   total:number = 0.00;
   tax:number = 0.06;
-  animal: string;
+  deliveryfee:number = 3;
+  isdeliver:number = 0;
   name: string;
   id:number= 0;
   date:string;
@@ -52,12 +53,20 @@ export class CheckoutComponent implements OnInit {
     this.order = this.fs.order;
     this.orderAmounts = this.fs.orderAmounts;
     this.tax *= this.fs.total;
+
     this.total = this.fs.total * 1.06;
     
     console.log("makeOrder");
     console.log(this.order);
     console.log(this.orderAmounts);
     console.log(this.total);
+  }
+
+  changeTotal(){
+    if (this.isdeliver == 1)
+    this.total = this.fs.total * 1.06 + this.deliveryfee;
+    else
+    this.total = this.fs.total * 1.06;
   }
 
   setDateTime(dateTime) {
