@@ -300,7 +300,7 @@
     <mat-card id="orderList">
         <h3 matLine style="color:white">Order:</h3>
         <mat-list id="orderItems">
-            <mat-list-item style="color:white" *ngFor = "let string of orderList">-{{string}}</mat-list-item>
+            <mat-list-item style="color:white" *ngFor = "let string of orderList">+ {{string}}</mat-list-item>
         </mat-list>
         <h3 matLine style="color:white">Total: {{total | currency}}</h3>
         <h6 matLine style="color:white; font-size: 7px;">*before tax</h6>
