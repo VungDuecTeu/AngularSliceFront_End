@@ -23,9 +23,6 @@ export class ManagerComponent implements OnInit {
     private accountservice:AccountService) { }
 
     //inputs for dialog box
-  title = "no";
-  content ="hey";
-
   //foodlabels = [];
   foods = [];
   grossprofit:number = 0;
@@ -35,6 +32,9 @@ export class ManagerComponent implements OnInit {
   customers = [];
   customerpurchasequantities = [1, 2, 3, 4, 5, 6];
   customersmap = new Map();
+  allpreviouscurrentcustomerbills = [];
+  allbills = [];
+  allbillfoodamountscurrentcustomer = [];
 
   @ViewChild('foodChart', { static: true })
   private foodchartRef;
@@ -49,6 +49,7 @@ export class ManagerComponent implements OnInit {
   ngOnInit() {
     this.GetAllFoodService();
     this.getAllAccounts();
+    this.getAllBills();
 
     setTimeout(() => {
       this.getAllBillFoodAmounts();
@@ -76,6 +77,19 @@ export class ManagerComponent implements OnInit {
     }
   }
 
+  opencustomerpanel(id: string) {
+    this.allpreviouscurrentcustomerbills = [];
+
+    let element = document.getElementById("panel" + id);
+    element.scrollIntoView({behavior: 'smooth'});
+
+    for (let i:number = 0; i < this.allbills.length; i++){
+      if (this.allbills[i].account.aid == this.customers[id].aid){
+        this.allpreviouscurrentcustomerbills.push(this.allbills[i]);
+      }
+    }
+
+  }
 
   // after clicking accept or decline on dialog box, call this function
   emittedValueDialogBox(){
@@ -120,9 +134,7 @@ export class ManagerComponent implements OnInit {
   async getAllBills() {
     let special: any = await this.billservice.getAllBills()
       .then((onfulfilled) => {
-
-
-
+        this.allbills = onfulfilled;
         return onfulfilled;
       })
   }
