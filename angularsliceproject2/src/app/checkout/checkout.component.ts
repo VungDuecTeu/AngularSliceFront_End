@@ -23,8 +23,6 @@ export class CheckoutComponent implements OnInit {
   ngOnInit() {
     this.makeOrder();
   }
- 
-
 
   makeOrder(){
     this.order = this.fs.order;

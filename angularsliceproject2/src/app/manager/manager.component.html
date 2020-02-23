@@ -60,8 +60,8 @@
                      (opened)="openCustomerFoodsPanel(bill, x)" hideToggle class="border border-light"> 
                         <!-- Header for this panel -->
                         <mat-expansion-panel-header>
-                            <mat-panel-title>{{bill.orderDate}}</mat-panel-title>
-                            <mat-panel-description>{{bill.total}} </mat-panel-description>
+                            <mat-panel-title>Date Purchased</mat-panel-title>
+                            <mat-panel-description>{{bill.orderDate}} </mat-panel-description>
                         </mat-expansion-panel-header>
         
 
@@ -114,7 +114,9 @@
 
             </mat-tab>
             <mat-tab label="Create Food item"> 
-              <app-confirmationbox (myEvent)="emittedValueDialogBox($event)" [showcancel] = "'true'" [accept]="'Accept'" [cancel]="'Cancel'" [title]="'title'" [content]="'content'"></app-confirmationbox>
+              <!-- <app-confirmationbox (myEvent)="emittedValueDialogBox($event)" [showcancel] = "'true'" [accept]="'Accept'" [cancel]="'Cancel'" [title]="'title'" [content]="'content'"></app-confirmationbox> -->
+              <br><br>
+              <app-createfood></app-createfood>
             </mat-tab>
           </mat-tab-group>
   

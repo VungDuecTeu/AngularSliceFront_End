@@ -51,7 +51,12 @@ export class ManagerComponent implements OnInit {
   ngOnInit() {
     this.GetAllFoodService();
     this.getAllAccounts();
-    this.getAllBills();
+
+
+    setTimeout(() => {
+      this.getAllBills();
+    }, 250);
+
 
     setTimeout(() => {
       this.getAllBillFoodAmounts();
@@ -64,17 +69,24 @@ export class ManagerComponent implements OnInit {
 
   tabGroupDispatcher($event) {
     switch ($event.index) {
-      case 0: this.createFoodChart();
+      case 0: 
+      this.GetAllFoodService(); // always first
+      this.getAllBillFoodAmounts(); // always second
+      this.createFoodChart();
         break;
 
-      case 1: this.createCustomerPurchaseChart();
+      case 1: 
+      this.getAllAccounts();
+      this.getAllBills();
+      this.getAllBillFoodAmounts();
+      this.createCustomerPurchaseChart();
         break;
 
       case 2: 
-      this.createFoodChart();
+      // this.createFoodChart();
         break;
       case 3: 
-      this.myChild.openDialog();
+      // this.myChild.openDialog();
         break;
     }
   }
@@ -106,8 +118,10 @@ export class ManagerComponent implements OnInit {
   }
 
   async getAllBillFoodAmounts() {
+
     let special: any = await this.billfooditemservice.getAllBillFooditems()
       .then((onfulfilled) => {
+        this.grossprofit = 0;
 
         for (let i: number = 0; i < this.foods.length; i++) {
           for (let j: number = 0; j < onfulfilled.length; j++) {
@@ -115,7 +129,6 @@ export class ManagerComponent implements OnInit {
               this.foodsmap.set(this.foods[i].name,
                 this.foodsmap.get(this.foods[i].name) + (onfulfilled[j].amount * this.foods[i].price));
                 this.grossprofit += (onfulfilled[j].amount * this.foods[i].price);
-                console.log(onfulfilled[j].amount * this.foods[i].price);
             }
           }
         }
@@ -125,10 +138,9 @@ export class ManagerComponent implements OnInit {
   }
 
   async getAllBillFoodAmountsConsumer(bill:Bill) {
-    this.allbillfoodamountscurrentcustomer = [];
-
     let special: any = await this.billfooditemservice.getAllBillFooditems()
       .then((onfulfilled) => {
+        this.allbillfoodamountscurrentcustomer = [];
 
         for (let i: number = 0; i < this.foods.length; i++) {
           for (let j: number = 0; j < onfulfilled.length; j++) {
@@ -147,18 +159,27 @@ export class ManagerComponent implements OnInit {
   }
 
   async getAllBills() {
+
     let special: any = await this.billservice.getAllBills()
       .then((onfulfilled) => {
         this.allbills = onfulfilled;
+        for (let x:number = 0; x < onfulfilled.length; x++){
+          if (this.customersmap.has(onfulfilled[x].account.username)){
+            console.log(onfulfilled[x].account.username);
+            this.customersmap.set(onfulfilled[x].account.username,
+              this.customersmap.get(onfulfilled[x].account.username) +
+            onfulfilled[x].total);
+          }
+        }
         return onfulfilled;
       })
   }
 
   async GetAllFoodService() {
-
     let special: any = await this.foodservice.getAllFood()
       .then((onfulfilled) => {
         // this.foodlabels = onfulfilled;
+        this.foods = [];
 
         for (let i: number = 0; i < onfulfilled.length; i++) {
           this.foods.push(onfulfilled[i]);
@@ -171,17 +192,16 @@ export class ManagerComponent implements OnInit {
   }
 
   async getAllAccounts() {
-
     let special: any = await this.accountservice.getAllAccounts()
       .then((onfulfilled) => {
         // this.foodlabels = onfulfilled;
+        this.customers = [];
 
         for (let i: number = 0; i < onfulfilled.length; i++) {
           this.customers.push(onfulfilled[i]);
           this.customersmap.set(onfulfilled[i].username, 0);
-          console.log(onfulfilled[i].username);
         }
-        
+
         return onfulfilled;
       })
   }
@@ -254,7 +274,7 @@ export class ManagerComponent implements OnInit {
         datasets: [
           {
 
-            data: this.customerpurchasequantities,
+            data: Array.from(this.customersmap.values()),
             borderColor: 'white',
             backgroundColor: ["red", "blue", "green", "orange", "yellow", "pink", "purple", "violet", "gold",
               "aqua", "lime", "coral", "teal", "brown"],
@@ -285,7 +305,10 @@ export class ManagerComponent implements OnInit {
             display: true,
             ticks: {
               beginAtZero: true,
-              fontSize: 40
+              fontSize: 40,
+              callback: function(value, index, values) {
+                return '$' + value;
+              }
             }
           }],
         }
