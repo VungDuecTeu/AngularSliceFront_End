@@ -10,7 +10,7 @@
 
         <mat-tab-group (selectedTabChange)="tabGroupDispatcher($event)">
 
-            <mat-tab label="Food Analytics">
+            <mat-tab class = "statlabels" label="Food Analytics">
                 <div class="chart-container" style="
                     position:relative; height:77vh ">
                     <canvas  style="color: white" #foodChart>{{ foodchart }} 
@@ -45,27 +45,49 @@
     <div id="segment">
         <mat-accordion class="example-headers-align" *ngFor="let customer of getKeys(customersmap); index as i" >
             <!--Deals panel-->
-            <mat-expansion-panel [expanded]="false" (opened)="setStep(i)" id = "{{'panel' + i}}"
-            (afterExpand)="opencustomerpanel(i)" hideToggle>
+            <mat-expansion-panel [expanded]="step === i"  id = "{{'panel' + i}}"
+            (afterExpand)="openCustomerPanel(i)" (opened)="step = i" hideToggle class="border border-light">
                 <!-- Header for this panel -->
                 <mat-expansion-panel-header>
                     <mat-panel-title>Username: {{customer}}</mat-panel-title>
                     <mat-panel-description>Name: {{customers[i].fname}} {{customers[i].lname}} </mat-panel-description>
                 </mat-expansion-panel-header>
 
-                <div class="holder" >
+                <div class="holder" *ngFor = "let bill of allpreviouscurrentcustomerbills; index as x;">
                     <!-- initial card -->
-                    <mat-card *ngFor = "let bills of allpreviouscurrentcustomerbills">
-                        <mat-card-title>{{bills.orderDate}}</mat-card-title>
-                        <span style="float:left;width: 25%;">
-                            <!-- <img src={{fooditem.url}}> -->
-                        </span>
 
-                        <div style="min-width: 60%; height: 80%;" *ngFor = "let bills of allbillfoodamountscurrentcustomer">
-                            <h3 style="float: left; width: 30%;">  </h3>
-                            <h3 style="float: right; width: 30%; text-align: right;"></h3>
+                    <mat-expansion-panel [expanded]="stepfood === x" id = "{{'panelfood' + x}}"
+                     (opened)="openCustomerFoodsPanel(bill, x)" hideToggle class="border border-light"> 
+                        <!-- Header for this panel -->
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>{{bill.orderDate}}</mat-panel-title>
+                            <mat-panel-description>{{bill.total}} </mat-panel-description>
+                        </mat-expansion-panel-header>
+        
+
+
+
+                        <div>
+                          <mat-card style="height:100px" *ngFor = "let foods of allbillfoodamountscurrentcustomer">
+                            <mat-card-title>{{foods.name}}</mat-card-title> 
+                            <span style="min-width: 60%; height: 80%; word-wrap:break-word;">
+                                <h3 style=" width: 30%; float:right">Price: {{foods.price | currency}}</h3>
+                            </span>
+
+                        </mat-card>
+                        <br><br>
+    
+                          <p style="font-size:35px; color:black; float:right;">Total: ${{bill.total}}</p>
                           </div>
-                    </mat-card>
+            
+
+                </mat-expansion-panel>
+
+
+
+
+
+
                 </div>
             </mat-expansion-panel>
         </mat-accordion>

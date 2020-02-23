@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { Bill_Fooditem } from 'src/app/entities/Bill_Fooditem';
 import * as Chart from 'chart.js';
 import { FoodService } from '../services/fooditemservice/food.service';
@@ -8,6 +8,7 @@ import { BillFooditemService } from '../services/billfooditemservice/Bill_Foodit
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationboxComponent } from '../helpercomponents/confirmationbox/confirmationbox.component';
 import { AccountService } from '../services/accountservice/account.service';
+import { Bill } from '../entities/Bill';
 
 @Component({
   selector: 'app-manager',
@@ -45,7 +46,8 @@ export class ManagerComponent implements OnInit {
   
   foodchart: any;
   customerpurchasechart: any;
-
+  stepfood:number = -1;
+  
   ngOnInit() {
     this.GetAllFoodService();
     this.getAllAccounts();
@@ -77,11 +79,11 @@ export class ManagerComponent implements OnInit {
     }
   }
 
-  opencustomerpanel(id: string) {
+  openCustomerPanel(id: string) {
     this.allpreviouscurrentcustomerbills = [];
 
     let element = document.getElementById("panel" + id);
-    element.scrollIntoView({behavior: 'smooth'});
+    element.scrollIntoView({behavior: 'smooth', block: "nearest", inline: "nearest"});
 
     for (let i:number = 0; i < this.allbills.length; i++){
       if (this.allbills[i].account.aid == this.customers[id].aid){
@@ -89,6 +91,13 @@ export class ManagerComponent implements OnInit {
       }
     }
 
+  }
+
+  openCustomerFoodsPanel(bill: Bill, x:number) {
+    if (this.stepfood != x){
+      this.stepfood = x;
+      this.getAllBillFoodAmountsConsumer(bill);
+    }
   }
 
   // after clicking accept or decline on dialog box, call this function
@@ -115,14 +124,20 @@ export class ManagerComponent implements OnInit {
       })
   }
 
-  async getAllBillFoodAmountsConsumer() {
+  async getAllBillFoodAmountsConsumer(bill:Bill) {
+    this.allbillfoodamountscurrentcustomer = [];
+
     let special: any = await this.billfooditemservice.getAllBillFooditems()
       .then((onfulfilled) => {
 
         for (let i: number = 0; i < this.foods.length; i++) {
           for (let j: number = 0; j < onfulfilled.length; j++) {
             if (this.foods[i].foodID === onfulfilled[j].food.foodID) {
-
+              if (onfulfilled[j].bill.bId == bill.bId)
+              {
+                this.allbillfoodamountscurrentcustomer.push(this.foods[i]);
+              }
+             
             }
           }
         }
@@ -173,6 +188,7 @@ export class ManagerComponent implements OnInit {
 
   getKeys(map){
     return Array.from(map.keys());
+
 }
 
   createFoodChart() {
