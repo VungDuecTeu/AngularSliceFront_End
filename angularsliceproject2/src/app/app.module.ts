@@ -21,7 +21,7 @@ import { ConfirmationboxComponent, ConfirmationboxDialog } from './helpercompone
 import { MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule } from '@angular/material/dialog';
 import { MAT_DIALOG_DATA } from '@angular/material';
 import { CreateAcctComponent } from './create-acct/create-acct.component'
-//import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -33,7 +33,6 @@ import { CreateAcctComponent } from './create-acct/create-acct.component'
     HeaderComponent,
     FooterComponent,
     CheckoutComponent,
-
     LoginComponent,
     ChartComponent,
     ConfirmationboxComponent,
