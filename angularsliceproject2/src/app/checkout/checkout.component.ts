@@ -103,10 +103,4 @@ export class CheckoutComponent implements OnInit {
     }
     
   }
-  
-  
-
-  popUpFunc() {
-    alert(" Thanks for Your Buissness Enjoy!!!");
-  }
 }
