@@ -8,6 +8,7 @@ import { BillService } from '../services/billservice/bill.service';
 import { DataService } from '../services/data.service';
 import { AccountService } from '../services/accountservice/account.service';
 import { getLocaleDateTimeFormat, DatePipe } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-checkout',
@@ -18,13 +19,16 @@ import { getLocaleDateTimeFormat, DatePipe } from '@angular/common';
 export class CheckoutComponent implements OnInit {
   hide: boolean;
   dataserv: any;
+
   
   
   constructor(public fs:FoodService,
     public dialog: MatDialog, 
     private data: DataService, 
     private accountservice: AccountService,
-    private bill:BillService) { }
+    private bill:BillService,
+    private router:Router
+    ) { }
 
   order:Array<Fooditem> = [];
   orderAmounts:Array<number> = [];
@@ -76,9 +80,9 @@ export class CheckoutComponent implements OnInit {
       console.log(Newbill);
       await this.bill.creatBill(Newbill).then((onfulfilled)=>{
         if(onfulfilled != null){
-          // this.hide = true;
-          //  this.dataserv.changeAccount(onfulfilled);
-          //  this.router.navigate(['/home']);
+          alert(" Thanks for Your Buissness Enjoy!!!");
+          this.dataserv.changeAccount(onfulfilled);
+            this.router.navigate(['/home']);
           console.log(onfulfilled);
 
           return onfulfilled;
