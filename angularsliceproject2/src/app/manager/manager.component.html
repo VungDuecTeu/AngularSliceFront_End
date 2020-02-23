@@ -10,7 +10,7 @@
 
         <mat-tab-group (selectedTabChange)="tabGroupDispatcher($event)">
 
-            <mat-tab label="Food Analytics">
+            <mat-tab class = "statlabels" label="Food Analytics">
                 <div class="chart-container" style="
                     position:relative; height:77vh ">
                     <canvas  style="color: white" #foodChart>{{ foodchart }} 
@@ -45,50 +45,49 @@
     <div id="segment">
         <mat-accordion class="example-headers-align" *ngFor="let customer of getKeys(customersmap); index as i" >
             <!--Deals panel-->
-            <mat-expansion-panel [expanded]="true" (opened)="setStep(0)" id = "panel0"
-            (afterExpand)="open('panel0')" hideToggle>
+            <mat-expansion-panel [expanded]="step === i"  id = "{{'panel' + i}}"
+            (afterExpand)="openCustomerPanel(i)" (opened)="step = i" hideToggle class="border border-light">
                 <!-- Header for this panel -->
                 <mat-expansion-panel-header>
                     <mat-panel-title>Username: {{customer}}</mat-panel-title>
                     <mat-panel-description>Name: {{customers[i].fname}} {{customers[i].lname}} </mat-panel-description>
                 </mat-expansion-panel-header>
 
-                <div class="holder" >
+                <div class="holder" *ngFor = "let bill of allpreviouscurrentcustomerbills; index as x;">
                     <!-- initial card -->
-                    <mat-card *ngFor = "let fooditem of deals">
-                        <mat-card-title>{{fooditem.name}}</mat-card-title>
-                        <span style="float:left;width: 25%;">
-                            <img src={{fooditem.url}}>
-                        </span>
 
-                        <span style="min-width: 60%; height: 80%; word-wrap:break-word;">
-                            <p class = "fooddescription" style="min-height: 50%;">
-                                {{fooditem.description}}
-                            </p>
-                            
-                            <h3 style="float: left; width: 30%;">Calories: {{fooditem.calories}}</h3>
-                            <h3 style="float: right; width: 30%; text-align: right;">Price: {{fooditem.price | currency}}</h3>
-                        </span>
+                    <mat-expansion-panel [expanded]="stepfood === x" id = "{{'panelfood' + x}}"
+                     (opened)="openCustomerFoodsPanel(bill, x)" hideToggle class="border border-light"> 
+                        <!-- Header for this panel -->
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>{{bill.orderDate}}</mat-panel-title>
+                            <mat-panel-description>{{bill.total}} </mat-panel-description>
+                        </mat-expansion-panel-header>
+        
 
-                        <mat-action-row>
-                            <mat-form-field>
-                                <mat-label style="color: white;">Amount</mat-label>
-                                <select matNativeControl required id="input_{{fooditem.foodID}}"  style="color: white; background-color:transparent;">
-                                    <option style="color: white; background-color:rgb(148, 24, 14, 0.8);" [value]=1>1</option>
-                                    <option style="color: white; background-color:rgb(148, 24, 14, 0.8);" [value]=2>2</option>
-                                    <option style="color: white; background-color:rgb(148, 24, 14, 0.8);" [value]=3>3</option>
-                                    <option style="color: white; background-color:rgb(148, 24, 14, 0.8);" [value]=4>4</option>
-                                    <option style="color: white; background-color:rgb(148, 24, 14, 0.8);" [value]=5>5</option>
-                                    <option style="color: white; background-color:rgb(148, 24, 14, 0.8);" [value]=6>6</option>
-                                    <option style="color: white; background-color:rgb(148, 24, 14, 0.8);" [value]=7>7</option>
-                                    <option style="color: white; background-color:rgb(148, 24, 14, 0.8);" [value]=8>8</option>
-                                    <option style="color: white; background-color:rgb(148, 24, 14, 0.8);" [value]=9>9</option>
-                                    <option style="color: white; background-color:rgb(148, 24, 14, 0.8);" [value]=10>10</option>
-                                </select>
-                            </mat-form-field>
-                            <button name="orderBtn{{fooditem.foodID}}" id="orderButton" mat-button (click)="addToOrder(fooditem)">Order</button>
-                        </mat-action-row>
-                    </mat-card>
+
+
+                        <div>
+                          <mat-card style="height:100px" *ngFor = "let foods of allbillfoodamountscurrentcustomer">
+                            <mat-card-title>{{foods.name}}</mat-card-title> 
+                            <span style="min-width: 60%; height: 80%; word-wrap:break-word;">
+                                <h3 style=" width: 30%; float:right">Price: {{foods.price | currency}}</h3>
+                            </span>
+
+                        </mat-card>
+                        <br><br>
+    
+                          <p style="font-size:35px; color:black; float:right;">Total: ${{bill.total}}</p>
+                          </div>
+            
+
+                </mat-expansion-panel>
+
+
+
+
+
+
                 </div>
             </mat-expansion-panel>
         </mat-accordion>
