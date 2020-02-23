@@ -11,7 +11,7 @@ import { AccountService } from '../services/accountservice/account.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  hide:boolean = true;
+ 
   data:any;
   username:string = "";
   password:string = "";
@@ -25,18 +25,20 @@ export class LoginComponent implements OnInit {
     await this.account.getAccountByUsername(this.username, this.password)
     .then((onfulfilled)=>{
       if(onfulfilled != null){
-        this.hide = true;
+        
         this.dataserv.changeAccount(onfulfilled);
         this.router.navigate(['/home']);
         return onfulfilled;
       }else{
-        this.hide = false;
+        alert("The username or password were incorrect!");
       }
-    })
-    .then((unfulfilled) =>{
-      // make alert or something
-      console.log("login error");
-    });  
+    });
+    // .then((unfulfilled) =>{
+    //   // make alert or something
+      
+    //   console.log("login error");
+      
+    // });  
    
   }
 }
