@@ -11,8 +11,7 @@
 }
 
 .holder{
-    overflow-y: scroll;
-    height: 33vmax;
+    height: max-content;
 }
 #orderButton, #checkOutButton{
     float: right; 
@@ -29,7 +28,7 @@
     margin-left: 1%;
     width: 25%;
     height: 100%;
-    background-color:rgb(148, 24, 14, 0.8);
+    /* background-color:rgb(148, 24, 14, 0.8); */
 }
 
 #orderItems{
@@ -39,7 +38,7 @@
 
 #segment{
     margin-right: 1%; 
-    width:55%; 
+    width:70%; 
     height:100%; 
     overflow-y: scroll;
 }
@@ -72,19 +71,33 @@
  }
 
  mat-action-row{
-    background-color: rgb(148, 24, 14, 0.8);
+    background-color: lightblue;
     min-width: 60%;
     place-content: space-between;
  }
 
  mat-expansion-panel{
-    background-color:rgb(148, 24, 14, 0.8);
+    background-color: rgb(231, 176, 176);
+    border-radius: 5px;
  }
  mat-panel-title, mat-panel-description{
-     color: white;
+     color: black;
+     font-size: 1.3vmax;
  }
 
  mat-card{
-    background-color:white; 
+    background-color: rgb(216, 193, 193);
     margin:1px;
  }
+
+ ::ng-deep.mat-tab-label.mat-tab-label-active {
+    font-size: 1.5vmax;
+    font-weight: bold;
+    color: black;
+  }
+
+  ::ng-deep.mat-tab-label.mat-tab-label {
+    font-size: 1.2vmax;
+    color: black;
+  }
+ 
