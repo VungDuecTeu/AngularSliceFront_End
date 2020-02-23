@@ -1,8 +1,8 @@
-import {browser, element, by} from 'protractor'; //gives you intellisense
+// import {browser, element, by} from 'protractor'; //gives you intellisense, comment out when running tests
 
 browser.ignoreSynchronization = true; //allows you to use protractor on non-angular webpages
 
-//tells brief description of the suite of tests you are writting
+//Order Page Describe
 describe("Angular Slice Order Page", ()=>{
 
     //every it() is a test. first parameter is the name of the test.
@@ -13,23 +13,36 @@ describe("Angular Slice Order Page", ()=>{
     });
 
     it("Should try to click first order button and make alert",  ()=>{
+        let orderBtn = element(by.name("orderBtn24"));
+        orderBtn.click();
+        browser.sleep(1000);
+    });
 
-        // let searchBar = element(by.name("query"));
-        // searchBar.sendKeys("Google Pixel 4");
-        // browser.sleep(1000);
+    it("Should close alert popup", ()=>{
+        browser.switchTo().alert().dismiss();
+        browser.sleep(1000);
+    });
 
-        // let num =  0;
-        // while(num == 0 || (num > 9 && numb < 21)){
-        //     num = Math.floor(Math.random() * (39 - 1 + 1)) + 1;
-        // }
+    it("Should click login button", ()=>{
+        let pullDownBtn = element(by.className("mat-menu-trigger mat-icon-button mat-button-base"));
+        pullDownBtn.click();
+        browser.sleep(1000);
 
-        // let orderBtn = element(by.className("orderBtn" + num));
-        // searchBtn.click();
+        let logInBtn = element(by.className("mat-menu-item"));
+        logInBtn.click();
+        browser.sleep(1000);
+    });
 
-        // browser.sleep(1000);
+    it("Should type in login info and login", ()=>{
+        let usernameBar = element(by.id("user"));
+        usernameBar.sendKeys("test2");
+        let passwordBar = element(by.id("pass"));
+        passwordBar.sendKeys("pass2");
+        browser.sleep(1000);
 
-        // //expect and to be are your assertions
-        // expect(browser.get);
+        let loginBtn = element(by.id("button"));
+        loginBtn.click();
+        browser.sleep(1000);
     });
 
 });
