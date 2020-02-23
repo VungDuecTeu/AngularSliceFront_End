@@ -34,13 +34,13 @@ export class CreateAcctComponent implements OnInit {
       let Newaccount= new Account( this.aid,this.username,this.password, this.email,this.fname,this.lname, this.isManager);
       console.log(Newaccount);
       await this.account.creatAccount(Newaccount).then((onfulfilled)=>{
+        console.log("This is the returned account: ", onfulfilled);
         if(onfulfilled != null){
-          this.hide = true;
           this.dataserv.changeAccount(onfulfilled);
           this.router.navigate(['/home']);
           return onfulfilled;
         }else{ 
-          this.hide = false;
+          alert("That username is already in use, please use a different one!")
         } 
       }) 
     }else {
