@@ -40,7 +40,6 @@ export class HeaderComponent implements OnInit {
     this.router.navigateByUrl('/create');
   }
   logout(){
-    this.router.navigateByUrl('/home');
     window.location.reload();
   }
 

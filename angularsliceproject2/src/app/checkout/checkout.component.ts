@@ -81,9 +81,10 @@ export class CheckoutComponent implements OnInit {
       await this.bill.creatBill(Newbill).then((onfulfilled)=>{
         if(onfulfilled != null){
           alert(" Thanks for Your Buissness Enjoy!!!");
-          this.dataserv.changeAccount(onfulfilled);
-            this.router.navigate(['/home']);
-          console.log(onfulfilled);
+         // this.dataserv.changeAccount(onfulfilled);
+            
+            window.location.reload();
+          //console.log(onfulfilled);
 
           return onfulfilled;
         }
