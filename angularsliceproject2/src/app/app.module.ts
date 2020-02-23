@@ -23,6 +23,7 @@ import { MAT_DIALOG_DATA } from '@angular/material';
 import { CreateAcctComponent } from './create-acct/create-acct.component'
 import { CreatefoodComponent } from './manager/createfood/createfood.component';
 //import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
 @NgModule({
   declarations: [
