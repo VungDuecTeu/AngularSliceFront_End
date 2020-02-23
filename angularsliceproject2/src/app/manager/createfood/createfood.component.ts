@@ -10,26 +10,26 @@ import { FoodService } from 'src/app/services/fooditemservice/food.service';
 
 export class CreatefoodComponent implements OnInit {
 
-  foodname:string;
-  foodtype:string;
-  foodurl:string;
-  fooddescription:string;
-  foodcalories:number;
-  foodprice:number;
+  public foodname:string = null;
+  public foodtype:string = null;
+  public foodurl:string;
+  public fooddescription:string;
+  public foodcalories:number;
+  public foodprice:number;
 
   constructor(private foodservice:FoodService) { }
 
   async createFoodItem(){
+
     let newfood = new Fooditem(0,this.foodtype, this.foodname,
       this.fooddescription, this.foodprice, this.foodcalories,
       this.foodurl);
-
+    
     let special:any = await this.foodservice.createFood(newfood).then(
       (onfulfilled) => {
-        alert("Successfully made a fooditem: " + newfood);
+        alert("Successfully made a fooditem: " + newfood.name);
       }
     )
-
 
   }
 
