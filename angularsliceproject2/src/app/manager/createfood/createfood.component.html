@@ -1,0 +1,49 @@
+<form class="mainform" >
+
+    <table class="full-width" cellspacing="0"><tr>
+      <td><mat-form-field class="half-width">
+        <mat-label>Food name</mat-label>
+        <input matInput ([ngModel]) = "foodname">
+      </mat-form-field></td>
+    </tr></table>
+
+    <table class="full-width" cellspacing="0"><tr>
+        <td><mat-form-field class="half-width">
+          <mat-label >Food type</mat-label>
+          <input matInput ([ngModel]) = "foodtype">
+        </mat-form-field></td>
+      </tr></table>
+
+      
+    <table class="full-width" cellspacing="0"><tr>
+        <td><mat-form-field class="half-width">
+          <mat-label>Food description</mat-label>
+          <input matInput ([ngModel]) = "fooddescription">
+        </mat-form-field></td>
+      </tr></table>
+
+      
+    <table class="full-width" cellspacing="0"><tr>
+        <td><mat-form-field class="half-width">
+          <mat-label>Food price</mat-label>
+          <input matInput ([ngModel]) = "foodprice">
+        </mat-form-field></td>
+      </tr></table>
+
+      
+    <table class="full-width" cellspacing="0"><tr>
+        <td><mat-form-field class="half-width">
+          <mat-label>Food calories</mat-label>
+          <input matInput ([ngModel]) = "foodcalories">
+        </mat-form-field></td>
+      </tr></table>
+
+      <table class="full-width" cellspacing="0"><tr>
+        <td><mat-form-field class="half-width">
+          <mat-label>Food url</mat-label>
+          <input matInput ([ngModel]) = "foodurl">
+        </mat-form-field></td>
+      </tr></table>
+
+      <button mat-flat-button color="primary" (click) = "createFoodItem()" >Create</button>
+  </form>
