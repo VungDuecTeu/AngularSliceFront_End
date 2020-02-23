@@ -59,7 +59,11 @@
       <mat-menu #menu="matMenu">
         <button mat-menu-item style="outline: none;" (click) = "login()">
           <mat-icon style="color: white;">account_box</mat-icon>
-          <span style="color: white;">Login</span>
+          <span style="color: rgb(155, 223, 183);">Login</span>
+        </button>
+        <button mat-menu-item style="outline: none;" (click) = "logout()">
+          <mat-icon style="color: white;">account_box</mat-icon>
+          <span style="color: rgb(170, 155, 155);">Logout</span>
         </button>
         <button mat-menu-item style="outline: none;" class="open-button" (click)="signUp()">
           <mat-icon style="color: white;">account_circle</mat-icon>

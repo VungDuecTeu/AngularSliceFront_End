@@ -39,6 +39,9 @@ export class HeaderComponent implements OnInit {
   signUp(){
     this.router.navigateByUrl('/create');
   }
+  logout(){
+    window.location.reload();
+  }
 
   // openMyMenu() {
   //   this.matMenuTrigger.openMenu();
