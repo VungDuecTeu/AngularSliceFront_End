@@ -19,7 +19,7 @@ export class BillService {
   }
 
   getAllBillsUrl = "http://ec2-3-14-9-87.us-east-2.compute.amazonaws.com:9000//bill"
-  getAllBills():Promise<Bill>  { 
+  getAllBills():Promise<any>  { 
     return this.http.get<Bill>(this.getAllBillsUrl).toPromise();
   }
 
