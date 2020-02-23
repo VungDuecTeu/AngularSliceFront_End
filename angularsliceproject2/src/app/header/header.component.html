@@ -53,11 +53,11 @@
 
      
 
-      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" style="outline: none;color:white;right:0vmax ;position: absolute; top: 0px;">
+      <button id = "loginMenu" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" style="outline: none;color:white;right:0vmax ;position: absolute; top: 0px;">
         <mat-icon >more_vert</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
-        <button mat-menu-item style="outline: none;" (click) = "login()">
+        <button id = "loginButton" mat-menu-item style="outline: none;" (click) = "login()">
           <mat-icon style="color: white;">account_box</mat-icon>
           <span style="color: rgb(155, 223, 183);">Login</span>
         </button>
@@ -65,7 +65,7 @@
           <mat-icon style="color: white;">home</mat-icon>
           <span style="color: rgb(170, 155, 155);">Logout</span>
         </button>
-        <button mat-menu-item style="outline: none;" class="open-button" (click)="signUp()">
+        <button id = "createActBtn" mat-menu-item style="outline: none;" class="open-button" (click)="signUp()">
           <mat-icon style="color: white;">account_circle</mat-icon>
           <span style="color: white;">Create Account</span>
         </button>
