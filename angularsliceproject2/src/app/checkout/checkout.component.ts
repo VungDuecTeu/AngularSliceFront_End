@@ -7,7 +7,7 @@ import { Account } from '../entities/account';
 import { BillService } from '../services/billservice/bill.service';
 import { DataService } from '../services/data.service';
 import { AccountService } from '../services/accountservice/account.service';
-import { getLocaleDateTimeFormat } from '@angular/common';
+import { getLocaleDateTimeFormat, DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-checkout',
@@ -33,7 +33,7 @@ export class CheckoutComponent implements OnInit {
   animal: string;
   name: string;
   id:number= 0;
-  date: Date = new Date();
+  date:string;
   orderDate:String;
   accountId:number = 0;
   userAccount: Account = new Account(0,"","","","","",0);
@@ -56,17 +56,31 @@ export class CheckoutComponent implements OnInit {
     console.log(this.total);
   }
 
+  setDateTime(dateTime) {
+    let pipe = new DatePipe('en-US');
+
+    const time = pipe.transform(dateTime, 'H:mm:ss');
+
+    const date = pipe.transform(dateTime, 'yyyy-MM-dd');
+
+    return date + ' ' + time;
+  }
+
   async newbill(){
     if (this.total!=0.00 && this.accountId != 0 ) {
-      this.orderDate = this.date.toString();
+
+      this.orderDate = this.setDateTime(Date.now());
+
       this.userAccount = await this.accountservice.getAccountByid(this.accountId);
-      let Newbill= new Bill(this.id,this.userAccount,this.total,this.orderDate);
+      let Newbill= new Bill(this.id,this.userAccount,this.total, this.orderDate);
       console.log(Newbill);
       await this.bill.creatBill(Newbill).then((onfulfilled)=>{
         if(onfulfilled != null){
           // this.hide = true;
           //  this.dataserv.changeAccount(onfulfilled);
           //  this.router.navigate(['/home']);
+          console.log(onfulfilled);
+
           return onfulfilled;
         }
       }) 
