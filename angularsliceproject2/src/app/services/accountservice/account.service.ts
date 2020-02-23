@@ -12,8 +12,8 @@ export class AccountService {
   constructor(private http:HttpClient){}
   Url = "http://ec2-3-14-9-87.us-east-2.compute.amazonaws.com:9000/account";
 
-  getAccountByid(id:number):Promise<any>  { 
-    return this.http.get<Account>(`http://ec2-3-14-9-87.us-east-2.compute.amazonaws.com:9000/Account/${id}`,
+  getAccountByid(id:number):Promise<Account>  { 
+    return this.http.get<Account>(`http://ec2-3-14-9-87.us-east-2.compute.amazonaws.com:9000/account/${id}`,
      {// httpOptions
       headers: new HttpHeaders({'Content-Type':'application/x-www-form-urlencoded'}),
       params: new HttpParams()

@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { ChartsModule } from 'ng2-charts';
 import { FormsModule } from '@angular/forms';
 
-import { CheckoutComponent } from './checkout/checkout.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ManagerComponent } from './manager/manager.component';
@@ -21,7 +20,10 @@ import { ConfirmationboxComponent, ConfirmationboxDialog } from './helpercompone
 import { MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule } from '@angular/material/dialog';
 import { MAT_DIALOG_DATA } from '@angular/material';
 import { CreateAcctComponent } from './create-acct/create-acct.component'
+import { CreatefoodComponent } from './manager/createfood/createfood.component';
 //import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,7 @@ import { CreateAcctComponent } from './create-acct/create-acct.component'
     HeaderComponent,
     FooterComponent,
     CheckoutComponent,
+    CreatefoodComponent,
 
     LoginComponent,
     ChartComponent,
