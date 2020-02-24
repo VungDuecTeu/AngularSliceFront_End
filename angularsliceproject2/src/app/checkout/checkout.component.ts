@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FoodService } from '../services/fooditemservice/food.service';
-import { Fooditem } from 'src/app/entities/Fooditem';
+import { Food } from 'src/app/entities/Food';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { Bill } from '../entities/Bill';
 import { Account } from '../entities/account';
@@ -33,7 +33,7 @@ export class CheckoutComponent implements OnInit {
     private billfoodservice:BillFooditemService
     ) { }
 
-  order:Array<Fooditem> = [];
+  order:Array<Food> = [];
   orderAmounts:Array<number> = [];
   total:number = 0.00;
   tax:number = 0.06;
@@ -85,12 +85,12 @@ export class CheckoutComponent implements OnInit {
     return date + ' ' + time;
   }
 
-  async newBillFood(bill:Bill, quantity:any, food:any){
+  async newBillFood(bill:Bill, quantity:any, food:Food){
     let billfood = new Bill_Fooditem(0, bill, quantity, food);  
-    console.log(food);
+    console.log(billfood);
 
     await this.billfoodservice.createBillFooditem(billfood).then((onfulfilled)=>{
-      // console.log(onfulfilled);
+      console.log(onfulfilled);
     });
   }
 
