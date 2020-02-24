@@ -56,8 +56,8 @@
   <mat-card>
  <div style="height: 0.5vmax; width: max-content;">
 <mat-radio-group aria-label="Select an option" [(ngModel)]="isdeliver">
-  <mat-radio-button [value]="1" style="width: 55%;" (click)="changeTotal()">Pick up</mat-radio-button>
-  <mat-radio-button [value]="2" style="width: 45%;" (click)="changeTotal()">Delivery</mat-radio-button>
+  <mat-radio-button [value]="1" style="width: 55%;" (click)="changeTotal(1)">Pick up</mat-radio-button>
+  <mat-radio-button [value]="2" style="width: 45%;" (click)="changeTotal(2)">Delivery</mat-radio-button>
 </mat-radio-group>
 </div>
 </mat-card>
