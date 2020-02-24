@@ -9,6 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationboxComponent } from '../helpercomponents/confirmationbox/confirmationbox.component';
 import { AccountService } from '../services/accountservice/account.service';
 import { Bill } from '../entities/Bill';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-manager',
@@ -21,7 +22,8 @@ export class ManagerComponent implements OnInit {
     private billservice: BillService,
     private billfooditemservice: BillFooditemService,
     public dialog: MatDialog,
-    private accountservice:AccountService) { }
+    private accountservice:AccountService,
+    private data: DataService) { }
 
     //inputs for dialog box
   //foodlabels = [];

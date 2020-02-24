@@ -13,11 +13,13 @@ export class HeaderComponent implements OnInit {
   
   //@ViewChild(MatMenuTrigger) matMenuTrigger: MatMenuTrigger;
   loginInfo:boolean;
+  managerInfo: boolean = false;
   
   constructor(private router: Router,private data: DataService) { }
   public selectedIndex: number = 0;
   public accountName:string = "";
   public accountId:number = 0;
+  public isManager:number = 0;
 
   ngOnInit() {
     this.loginInfo = false;
@@ -25,8 +27,13 @@ export class HeaderComponent implements OnInit {
     console.log("Current user's Username: " + this.accountName)
     this.data.currentuserid.subscribe(user => this.accountId = user.aid);
     console.log("Current user's ID: " + this.accountId)
+    this.data.currentuserid.subscribe(user => this.isManager = user.isManager);
+    console.log("Current user's manager Code: " + this.isManager)
     if(this.accountId != 0){
       this.loginInfo = true;
+    }
+    if(this.isManager == 1){
+      this.managerInfo = true;
     }
     
   }
@@ -40,6 +47,11 @@ export class HeaderComponent implements OnInit {
     this.router.navigateByUrl('/create');
   }
   logout(){
+    // this.loginInfo = false;
+    // this.managerInfo = false;
+    // this.accountId = 0;
+    // this.accountName= "";
+    // this.router.navigateByUrl('/home');
     window.location.reload();
   }
 
