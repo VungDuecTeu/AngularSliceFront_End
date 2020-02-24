@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Fooditem } from 'src/app/entities/Fooditem';
+import { Food } from 'src/app/entities/Food';
 import { FoodService } from 'src/app/services/fooditemservice/food.service';
 
 @Component({
@@ -21,7 +21,7 @@ export class CreatefoodComponent implements OnInit {
 
   async createFoodItem(){
 
-    let newfood = new Fooditem(0,this.foodtype, this.foodname,
+    let newfood = new Food(0,this.foodtype, this.foodname,
       this.fooddescription, this.foodprice, this.foodcalories,
       this.foodurl);
     

@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { Bill_Fooditem } from 'src/app/entities/Bill_Fooditem';
 import * as Chart from 'chart.js';
 import { FoodService } from '../services/fooditemservice/food.service';
-import { Fooditem } from '../entities/Fooditem';
+import { Food } from '../entities/Food';
 import { BillService } from '../services/billservice/bill.service';
 import { BillFooditemService } from '../services/billfooditemservice/Bill_Fooditem.service';
 import { MatDialog } from '@angular/material/dialog';

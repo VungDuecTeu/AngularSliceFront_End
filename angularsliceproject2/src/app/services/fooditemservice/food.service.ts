@@ -1,18 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Fooditem } from 'src/app/entities/Fooditem';
+import { Food } from 'src/app/entities/Food';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FoodService {
-  order:Array<Fooditem> = [];
+  order:Array<Food> = [];
   orderAmounts:Array<number> = [];
   total:number;
 
   constructor(private http:HttpClient) { }
 
-  moveOrder(sentOrder:Array<Fooditem>, sentAmounts:Array<number>, sentTotal:number){
+  moveOrder(sentOrder:Array<Food>, sentAmounts:Array<number>, sentTotal:number){
     this.order = sentOrder;
     this.orderAmounts = sentAmounts;
     this.total = sentTotal;
@@ -25,14 +25,14 @@ export class FoodService {
 
   createFoodurl = "http://ec2-3-14-9-87.us-east-2.compute.amazonaws.com:9000//food";
 
-  createFood(food:Fooditem): Promise<Fooditem> {
-    return this.http.post<Fooditem>(this.createFoodurl, food).toPromise();
+  createFood(food:Food): Promise<Food> {
+    return this.http.post<Food>(this.createFoodurl, food).toPromise();
   }
 
   getAllFoodByTypeurl = "http://ec2-3-14-9-87.us-east-2.compute.amazonaws.com:9000//food/type";
 
-  getAllFoodByType(type:string): Promise<Fooditem> {
-    return this.http.get<Fooditem>(this.getAllFoodByTypeurl,
+  getAllFoodByType(type:string): Promise<Food> {
+    return this.http.get<Food>(this.getAllFoodByTypeurl,
         {
           headers: new HttpHeaders({'Content-Type': 'application/json'}),
           params: new HttpParams()
@@ -43,13 +43,13 @@ export class FoodService {
 
   getAllFoodurl = "http://ec2-3-14-9-87.us-east-2.compute.amazonaws.com:9000//food";
   getAllFood(): Promise<any>{
-    return this.http.get<Fooditem>(this.getAllFoodurl).toPromise();
+    return this.http.get<Food>(this.getAllFoodurl).toPromise();
   }
 
   getFoodByIdurl = "http://ec2-3-14-9-87.us-east-2.compute.amazonaws.com:9000//food/id";
 
-  getFoodById(id:number): Promise<Fooditem> {
-    return this.http.get<Fooditem>(this.getFoodByIdurl,
+  getFoodById(id:number): Promise<Food> {
+    return this.http.get<Food>(this.getFoodByIdurl,
         {
           headers: new HttpHeaders({'Content-Type': 'application/json'}),
           params: new HttpParams()
@@ -60,8 +60,8 @@ export class FoodService {
 
   getFoodByNameurl = "http://ec2-3-14-9-87.us-east-2.compute.amazonaws.com:9000//food/name";
 
-  getFoodByName(name:string): Promise<Fooditem> {
-    return this.http.get<Fooditem>(this.getFoodByNameurl,
+  getFoodByName(name:string): Promise<Food> {
+    return this.http.get<Food>(this.getFoodByNameurl,
         {
           headers: new HttpHeaders({'Content-Type': 'application/json'}),
           params: new HttpParams()
@@ -72,8 +72,8 @@ export class FoodService {
 
   updateFoodurl = "http://ec2-3-14-9-87.us-east-2.compute.amazonaws.com:9000//food";
 
-  updateFood(food:Fooditem): Promise<Fooditem> {
-    return this.http.put<Fooditem>(this.updateFoodurl, food).toPromise();
+  updateFood(food:Food): Promise<Food> {
+    return this.http.put<Food>(this.updateFoodurl, food).toPromise();
   }
 
 }
