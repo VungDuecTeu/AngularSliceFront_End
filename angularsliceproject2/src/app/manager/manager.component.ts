@@ -22,13 +22,13 @@ export class ManagerComponent implements OnInit {
     private billservice: BillService,
     private billfooditemservice: BillFooditemService,
     public dialog: MatDialog,
-    private accountservice:AccountService,
+    private accountservice: AccountService,
     private data: DataService) { }
 
-    //inputs for dialog box
+  //inputs for dialog box
   //foodlabels = [];
   foods = [];
-  grossprofit:number = 0;
+  grossprofit: number = 0;
   foodsquantities = [1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6];
   foodsmap = new Map();
 
@@ -44,12 +44,12 @@ export class ManagerComponent implements OnInit {
   @ViewChild('customerpurchasechart', { static: true })
   private customerpurchaseRef;
   //get child reference for dialog box
-  @ViewChild(ConfirmationboxComponent, {static: true}) private myChild: ConfirmationboxComponent;
-  
+  @ViewChild(ConfirmationboxComponent, { static: true }) private myChild: ConfirmationboxComponent;
+
   foodchart: any;
   customerpurchasechart: any;
-  stepfood:number = -1;
-  groupdispacher:number = -1;
+  stepfood: number = -1;
+  groupdispacher: number = -1;
 
   ngOnInit() {
     this.GetAllFoodService();
@@ -61,7 +61,10 @@ export class ManagerComponent implements OnInit {
     }, 250);
 
 
+    this.automaticUpdateData();
+
     setTimeout(() => {
+      this.automaticUpdateGraphs();
       this.getAllBillFoodAmounts();
     }, 500);
 
@@ -70,28 +73,22 @@ export class ManagerComponent implements OnInit {
     }, 1000);
   }
 
-  automaticUpdateGraphs(){  
-  
-    if (this.groupdispacher == 1){
+  automaticUpdateData() {
+    if (this.groupdispacher == 1) {
       setTimeout(() => {
         this.GetAllFoodService()
       }, 1000);
-  
+
       setTimeout(() => {
         this.getAllBillFoodAmounts()
       }, 1000);
 
-      setTimeout(() => {
-        this.createFoodChart()
-        this.automaticUpdateGraphs();
-      }, 8000);
     }
-    else if (this.groupdispacher == 2)
-    {
+    else if (this.groupdispacher == 2) {
       setTimeout(() => {
         this.getAllAccounts();
       }, 1000);
-  
+
       setTimeout(() => {
         this.getAllBills();
       }, 1000);
@@ -99,38 +96,48 @@ export class ManagerComponent implements OnInit {
       setTimeout(() => {
         this.getAllBillFoodAmounts();
       }, 1000);
+    }
+  }
 
+  automaticUpdateGraphs() {
+
+    if (this.groupdispacher == 1) {
+      setTimeout(() => {
+        this.createFoodChart()
+        this.automaticUpdateGraphs();
+      }, 15000);
+    }
+    else {
       setTimeout(() => {
         this.createCustomerPurchaseChart();
         this.automaticUpdateGraphs();
-      }, 8000);
+      }, 15000);
     }
-
   }
 
   tabGroupDispatcher($event) {
     switch ($event.index) {
-      case 0: 
-      this.groupdispacher = 1;
+      case 0:
+        this.groupdispacher = 1;
 
-      this.automaticUpdateGraphs();
-      this.createFoodChart();
+        // this.automaticUpdateGraphs();
+        this.createFoodChart();
         break;
 
-      case 1: 
-      this.groupdispacher = 2;
+      case 1:
+        this.groupdispacher = 2;
 
-      this.automaticUpdateGraphs();
-      this.createCustomerPurchaseChart();
+        // this.automaticUpdateGraphs();
+        this.createCustomerPurchaseChart();
         break;
 
-      case 2: 
-      this.groupdispacher = 3;
-      // this.createFoodChart();
+      case 2:
+        this.groupdispacher = 3;
+        // this.createFoodChart();
         break;
-      case 3: 
-      this.groupdispacher = 4;
-      // this.myChild.openDialog();
+      case 3:
+        this.groupdispacher = 4;
+        // this.myChild.openDialog();
         break;
     }
   }
@@ -138,29 +145,29 @@ export class ManagerComponent implements OnInit {
   openCustomerPanel(id: string) {
     this.allpreviouscurrentcustomerbills = [];
     this.stepfood = -1;
-    
-    let element = document.getElementById("panel" + id);
-    element.scrollIntoView({behavior: 'smooth', block: "nearest", inline: "nearest"});
 
-    for (let i:number = 0; i < this.allbills.length; i++){
-      if (this.allbills[i].account.aid == this.customers[id].aid){
+    let element = document.getElementById("panel" + id);
+    element.scrollIntoView({ behavior: 'smooth', block: "nearest", inline: "nearest" });
+
+    for (let i: number = 0; i < this.allbills.length; i++) {
+      if (this.allbills[i].account.aid == this.customers[id].aid) {
         this.allpreviouscurrentcustomerbills.push(this.allbills[i]);
       }
     }
 
   }
 
-  openCustomerFoodsPanel(bill: Bill, x:number) {
-    if (this.stepfood != x){
+  openCustomerFoodsPanel(bill: Bill, x: number) {
+    if (this.stepfood != x) {
       this.stepfood = x;
       this.getAllBillFoodAmountsConsumer(bill);
       console.log(bill);
-      }
+    }
   }
 
   // after clicking accept or decline on dialog box, call this function
-  emittedValueDialogBox(){
-    console.log(this.myChild.result); 
+  emittedValueDialogBox() {
+    console.log(this.myChild.result);
   }
 
   async getAllBillFoodAmounts() {
@@ -174,7 +181,7 @@ export class ManagerComponent implements OnInit {
             if (this.foods[i].foodID === onfulfilled[j].food.foodID) {
               this.foodsmap.set(this.foods[i].name,
                 this.foodsmap.get(this.foods[i].name) + (onfulfilled[j].amount * this.foods[i].price));
-                this.grossprofit += (onfulfilled[j].amount * this.foods[i].price);
+              this.grossprofit += (onfulfilled[j].amount * this.foods[i].price);
             }
           }
         }
@@ -183,7 +190,7 @@ export class ManagerComponent implements OnInit {
       })
   }
 
-  async getAllBillFoodAmountsConsumer(bill:Bill) {
+  async getAllBillFoodAmountsConsumer(bill: Bill) {
     let special: any = await this.billfooditemservice.getAllBillFooditems()
       .then((onfulfilled) => {
         this.allbillfoodamountscurrentcustomer = [];
@@ -191,13 +198,12 @@ export class ManagerComponent implements OnInit {
 
         for (let i: number = 0; i < this.foods.length; i++) {
           for (let j: number = 0; j < onfulfilled.length; j++) {
-            if (this.foods[i].foodID === onfulfilled[j].food.foodID) {              
-              if (onfulfilled[j].bill.bId == bill.bId)
-              {
+            if (this.foods[i].foodID === onfulfilled[j].food.foodID) {
+              if (onfulfilled[j].bill.bId == bill.bId) {
                 this.allbillfoodamountsquantitycurrentcustomer.push(onfulfilled[j].amount);
                 this.allbillfoodamountscurrentcustomer.push(this.foods[i]);
               }
-             
+
             }
           }
         }
@@ -211,12 +217,12 @@ export class ManagerComponent implements OnInit {
     let special: any = await this.billservice.getAllBills()
       .then((onfulfilled) => {
         this.allbills = onfulfilled;
-        for (let x:number = 0; x < onfulfilled.length; x++){
-          if (this.customersmap.has(onfulfilled[x].account.username)){
+        for (let x: number = 0; x < onfulfilled.length; x++) {
+          if (this.customersmap.has(onfulfilled[x].account.username)) {
             console.log(onfulfilled[x].account.username);
             this.customersmap.set(onfulfilled[x].account.username,
               this.customersmap.get(onfulfilled[x].account.username) +
-            onfulfilled[x].total);
+              onfulfilled[x].total);
           }
         }
         return onfulfilled;
@@ -234,7 +240,7 @@ export class ManagerComponent implements OnInit {
           this.foodsmap.set(onfulfilled[i].name, 0);
           console.log(onfulfilled[i].name);
         }
-        
+
         return onfulfilled;
       })
   }
@@ -254,10 +260,10 @@ export class ManagerComponent implements OnInit {
       })
   }
 
-  getKeys(map){
+  getKeys(map) {
     return Array.from(map.keys());
 
-}
+  }
 
   createFoodChart() {
 
@@ -273,7 +279,7 @@ export class ManagerComponent implements OnInit {
             data: Array.from(this.foodsmap.values()),
             borderColor: 'white',
             backgroundColor: 'rgba(255, 0, 0, 0.5)',
-            
+
             fill: true
 
           }
@@ -302,9 +308,9 @@ export class ManagerComponent implements OnInit {
             ticks: {
               beginAtZero: true,
               fontSize: 20,
-              callback: function(value, index, values) {
-                  return '$' + value.toFixed(2);
-                }
+              callback: function (value, index, values) {
+                return '$' + value.toFixed(2);
+              }
             },
           }],
         }
@@ -353,7 +359,7 @@ export class ManagerComponent implements OnInit {
             ticks: {
               beginAtZero: true,
               fontSize: 40,
-              callback: function(value, index, values) {
+              callback: function (value, index, values) {
                 return '$' + value.toFixed(2);
               }
             }
