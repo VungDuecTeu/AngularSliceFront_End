@@ -47,13 +47,9 @@ export class BillFooditemService {
       }
     ).toPromise();
   }
-  createBillFooditem(bill_fooditem:number): Promise<any> {
-    return this.http.get<Bill_Fooditem>(this.url,
-        { // httpOptions
-          headers: new HttpHeaders({'Content-Type': 'application/json'}),
-          params: new HttpParams()
-        .set('bfiid', bill_fooditem.toString())
-      }
+  createBillFooditem(bill_fooditem:Bill_Fooditem): Promise<any> {
+
+    return this.http.post<Bill_Fooditem>(this.url, bill_fooditem
     ).toPromise();
   }
   deleteBillFooditem(id:number): Promise<Bill_Fooditem> {
