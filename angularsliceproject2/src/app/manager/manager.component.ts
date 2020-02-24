@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { Bill_Fooditem } from 'src/app/entities/Bill_Fooditem';
 import * as Chart from 'chart.js';
 import { FoodService } from '../services/fooditemservice/food.service';
-import { Fooditem } from '../entities/Fooditem';
+import { Food } from '../entities/Food';
 import { BillService } from '../services/billservice/bill.service';
 import { BillFooditemService } from '../services/billfooditemservice/Bill_Fooditem.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -49,7 +49,8 @@ export class ManagerComponent implements OnInit {
   foodchart: any;
   customerpurchasechart: any;
   stepfood:number = -1;
-  
+  groupdispacher:number = -1;
+
   ngOnInit() {
     this.GetAllFoodService();
     this.getAllAccounts();
@@ -69,25 +70,66 @@ export class ManagerComponent implements OnInit {
     }, 1000);
   }
 
+  automaticUpdateGraphs(){  
+  
+    if (this.groupdispacher == 1){
+      setTimeout(() => {
+        this.GetAllFoodService()
+      }, 1000);
+  
+      setTimeout(() => {
+        this.getAllBillFoodAmounts()
+      }, 1000);
+
+      setTimeout(() => {
+        this.createFoodChart()
+        this.automaticUpdateGraphs();
+      }, 8000);
+    }
+    else if (this.groupdispacher == 2)
+    {
+      setTimeout(() => {
+        this.getAllAccounts();
+      }, 1000);
+  
+      setTimeout(() => {
+        this.getAllBills();
+      }, 1000);
+
+      setTimeout(() => {
+        this.getAllBillFoodAmounts();
+      }, 1000);
+
+      setTimeout(() => {
+        this.createCustomerPurchaseChart();
+        this.automaticUpdateGraphs();
+      }, 8000);
+    }
+
+  }
+
   tabGroupDispatcher($event) {
     switch ($event.index) {
       case 0: 
-      this.GetAllFoodService(); // always first
-      this.getAllBillFoodAmounts(); // always second
+      this.groupdispacher = 1;
+
+      this.automaticUpdateGraphs();
       this.createFoodChart();
         break;
 
       case 1: 
-      this.getAllAccounts();
-      this.getAllBills();
-      this.getAllBillFoodAmounts();
+      this.groupdispacher = 2;
+
+      this.automaticUpdateGraphs();
       this.createCustomerPurchaseChart();
         break;
 
       case 2: 
+      this.groupdispacher = 3;
       // this.createFoodChart();
         break;
       case 3: 
+      this.groupdispacher = 4;
       // this.myChild.openDialog();
         break;
     }
@@ -226,8 +268,8 @@ export class ManagerComponent implements OnInit {
 
             data: Array.from(this.foodsmap.values()),
             borderColor: 'white',
-            backgroundColor: ["red", "blue", "green", "orange", "yellow", "pink", "purple", "violet", "gold",
-              "aqua", "lime", "coral", "teal", "brown"],
+            backgroundColor: 'rgba(255, 0, 0, 0.5)',
+            
             fill: true
 
           }
@@ -238,7 +280,7 @@ export class ManagerComponent implements OnInit {
         maintainAspectRatio: false,
         title: {
           display: true,
-          text: 'Food Revenue ($' + (this.grossprofit) + ')'
+          text: 'Food Revenue ($' + (this.grossprofit.toFixed(2)) + ')'
         },
         legend: {
           display: false,
@@ -257,7 +299,7 @@ export class ManagerComponent implements OnInit {
               beginAtZero: true,
               fontSize: 20,
               callback: function(value, index, values) {
-                  return '$' + value;
+                  return '$' + value.toFixed(2);
                 }
             },
           }],
@@ -278,8 +320,7 @@ export class ManagerComponent implements OnInit {
 
             data: Array.from(this.customersmap.values()),
             borderColor: 'white',
-            backgroundColor: ["red", "blue", "green", "orange", "yellow", "pink", "purple", "violet", "gold",
-              "aqua", "lime", "coral", "teal", "brown"],
+            backgroundColor: 'rgba(255, 0, 0, 0.5)',
             fill: true
 
           }
@@ -309,7 +350,7 @@ export class ManagerComponent implements OnInit {
               beginAtZero: true,
               fontSize: 40,
               callback: function(value, index, values) {
-                return '$' + value;
+                return '$' + value.toFixed(2);
               }
             }
           }],
