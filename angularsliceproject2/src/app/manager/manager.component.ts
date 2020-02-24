@@ -38,7 +38,7 @@ export class ManagerComponent implements OnInit {
   allpreviouscurrentcustomerbills = [];
   allbills = [];
   allbillfoodamountscurrentcustomer = [];
-
+  allbillfoodamountsquantitycurrentcustomer = [];
   @ViewChild('foodChart', { static: true })
   private foodchartRef;
   @ViewChild('customerpurchasechart', { static: true })
@@ -137,7 +137,8 @@ export class ManagerComponent implements OnInit {
 
   openCustomerPanel(id: string) {
     this.allpreviouscurrentcustomerbills = [];
-
+    this.stepfood = -1;
+    
     let element = document.getElementById("panel" + id);
     element.scrollIntoView({behavior: 'smooth', block: "nearest", inline: "nearest"});
 
@@ -153,7 +154,8 @@ export class ManagerComponent implements OnInit {
     if (this.stepfood != x){
       this.stepfood = x;
       this.getAllBillFoodAmountsConsumer(bill);
-    }
+      console.log(bill);
+      }
   }
 
   // after clicking accept or decline on dialog box, call this function
@@ -185,12 +187,14 @@ export class ManagerComponent implements OnInit {
     let special: any = await this.billfooditemservice.getAllBillFooditems()
       .then((onfulfilled) => {
         this.allbillfoodamountscurrentcustomer = [];
+        this.allbillfoodamountsquantitycurrentcustomer = [];
 
         for (let i: number = 0; i < this.foods.length; i++) {
           for (let j: number = 0; j < onfulfilled.length; j++) {
-            if (this.foods[i].foodID === onfulfilled[j].food.foodID) {
+            if (this.foods[i].foodID === onfulfilled[j].food.foodID) {              
               if (onfulfilled[j].bill.bId == bill.bId)
               {
+                this.allbillfoodamountsquantitycurrentcustomer.push(onfulfilled[j].amount);
                 this.allbillfoodamountscurrentcustomer.push(this.foods[i]);
               }
              
