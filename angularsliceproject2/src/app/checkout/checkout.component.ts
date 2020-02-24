@@ -86,7 +86,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   async newBillFood(bill:Bill, quantity:any, food:Food){
-    let billfood = new Bill_Fooditem(0, bill, quantity, food);  
+    let billfood: Bill_Fooditem = new Bill_Fooditem(0, bill, quantity, food);  
     console.log(billfood);
 
     await this.billfoodservice.createBillFooditem(billfood).then((onfulfilled)=>{
