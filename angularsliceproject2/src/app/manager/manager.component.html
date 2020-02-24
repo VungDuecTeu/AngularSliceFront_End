@@ -57,7 +57,7 @@
                     <!-- initial card -->
 
                     <mat-expansion-panel [expanded]="stepfood === x" id = "{{'panelfood' + x}}"
-                     (opened)="openCustomerFoodsPanel(bill, x)" hideToggle class="border border-light"> 
+                     (afterExpand)="openCustomerFoodsPanel(bill, x)" hideToggle class="border border-light"> 
                         <!-- Header for this panel -->
                         <mat-expansion-panel-header>
                             <mat-panel-title>Date Purchased</mat-panel-title>
@@ -68,8 +68,11 @@
 
 
                         <div>
-                          <mat-card style="height:100px" *ngFor = "let foods of allbillfoodamountscurrentcustomer">
+                          <mat-card style="height:100px" *ngFor = "let foods of allbillfoodamountscurrentcustomer; index as j">
                             <mat-card-title>{{foods.name}}</mat-card-title> 
+                            <span style="min-width: 60%; height: 80%; word-wrap:break-word;">
+                                <h3 style=" width: 30%; float:right">Quantity: {{allbillfoodamountsquantitycurrentcustomer[j]}}</h3>
+                            </span>
                             <span style="min-width: 60%; height: 80%; word-wrap:break-word;">
                                 <h3 style=" width: 30%; float:right">Price: {{foods.price | currency}}</h3>
                             </span>
@@ -77,7 +80,7 @@
                         </mat-card>
                         <br><br>
     
-                          <p style="font-size:35px; color:black; float:right;">Total: ${{bill.total | currency}}</p>
+                          <p style="font-size:35px; color:black; float:right;">Total: {{bill.total | currency}}</p>
                           </div>
             
 
