@@ -1,7 +1,13 @@
 #sticky-footer {
   background-color: black;
   opacity: 0.8;
-    height: 50px;
+    height: 100px;
     color:white;
     font-size: 20px;
   }
+
+.foot{
+ 
+ width: 100%; 
+ /* height: 100%; */
+}
