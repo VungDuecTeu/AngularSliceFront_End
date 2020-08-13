@@ -5,5 +5,7 @@ and log-out. Managers can log-in and view Food analytics, Customer purchase anal
 purchase history. They can also modify food items and log out.
 
 ![alt text](https://raw.githubusercontent.com/VungDuecTeu/AngularSliceFront_End/master/frontpage.PNG)
-
+![alt text](https://raw.githubusercontent.com/VungDuecTeu/AngularSliceFront_End/master/checkout.PNG)
+![alt text](https://raw.githubusercontent.com/VungDuecTeu/AngularSliceFront_End/master/manager.PNG)
+![alt text](https://raw.githubusercontent.com/VungDuecTeu/AngularSliceFront_End/master/orderpage.PNG)
 
