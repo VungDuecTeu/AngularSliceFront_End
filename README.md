@@ -4,6 +4,6 @@ Manager). The customers can create an account, log-in, select their order, submi
 and log-out. Managers can log-in and view Food analytics, Customer purchase analytics, and Customer
 purchase history. They can also modify food items and log out.
 
-![alt text](http://url/to/frontpage.PNG)
+![alt text](https://raw.githubusercontent.com/VungDuecTeu/AngularSliceFront_End/master/frontpage.PNG)
 
 
