@@ -3,3 +3,5 @@ logged and connected to the user’s account. The application consists of two us
 Manager). The customers can create an account, log-in, select their order, submit their order, checkout
 and log-out. Managers can log-in and view Food analytics, Customer purchase analytics, and Customer
 purchase history. They can also modify food items and log out.
+
+
