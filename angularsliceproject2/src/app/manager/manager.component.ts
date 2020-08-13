@@ -64,7 +64,7 @@ export class ManagerComponent implements OnInit {
     this.automaticUpdateData();
 
     setTimeout(() => {
-      this.automaticUpdateGraphs();
+      // this.automaticUpdateGraphs();
       this.getAllBillFoodAmounts();
     }, 500);
 
@@ -77,57 +77,59 @@ export class ManagerComponent implements OnInit {
     if (this.groupdispacher == 1) {
       setTimeout(() => {
         this.GetAllFoodService()
-      }, 1000);
+      }, 0);
 
       setTimeout(() => {
         this.getAllBillFoodAmounts()
-      }, 1000);
+      }, 0);
 
     }
     else if (this.groupdispacher == 2) {
       setTimeout(() => {
         this.getAllAccounts();
-      }, 1000);
+      }, 0);
 
       setTimeout(() => {
         this.getAllBills();
-      }, 1000);
+      }, 0);
 
       setTimeout(() => {
         this.getAllBillFoodAmounts();
-      }, 1000);
+      }, 0);
     }
   }
 
-  automaticUpdateGraphs() {
+  // automaticUpdateGraphs() {
 
-    if (this.groupdispacher == 1) {
-      setTimeout(() => {
-        this.createFoodChart()
-        this.automaticUpdateGraphs();
-      }, 15000);
-    }
-    else {
-      setTimeout(() => {
-        this.createCustomerPurchaseChart();
-        this.automaticUpdateGraphs();
-      }, 15000);
-    }
-  }
+  //   if (this.groupdispacher == 1) {
+  //     setTimeout(() => {
+  //       this.automaticUpdateGraphs();
+  //     }, 15000);
+  //     setTimeout(() => {
+  //       this.createFoodChart()
+  //     }, 15000);
+  //   }
+  //   else {
+  //     setTimeout(() => {
+  //       this.createCustomerPurchaseChart();
+  //       this.automaticUpdateGraphs();
+  //     }, 15000);
+  //   }
+  // }
 
   tabGroupDispatcher($event) {
     switch ($event.index) {
       case 0:
         this.groupdispacher = 1;
 
-        // this.automaticUpdateGraphs();
+        this.automaticUpdateData();
         this.createFoodChart();
         break;
 
       case 1:
         this.groupdispacher = 2;
 
-        // this.automaticUpdateGraphs();
+        this.automaticUpdateData();
         this.createCustomerPurchaseChart();
         break;
 
